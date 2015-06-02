@@ -14,7 +14,6 @@
                 <li class="dropdown-header"><i class="fa fa-group"></i>Usuarios</li>
                 <li><a href="#">Cambio de Contraseña</a></li>
                 <li><a href="#">Perfil de Usuario</a></li>
-                <li><a href="#">Algo más aquí</a></li>
                 <li class="dropdown-header"><i class="fa fa-question-circle"></i>Información</li>
                 <li><a href="#">Listas Peps y Negras</a></li>
                 <li><a href="#">FAQ</a></li>
@@ -24,13 +23,8 @@
             <li  class="col-sm-6 no-padding">
               <ul>
                 <li class="dropdown-header"><i class="fa fa-gear"></i>Matriz de Riesgo</li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Frecuencia Pagos</a></li>
-                <li><a href="#">Transaccionalidad</a></li>
-                <li><a href="#">Riesgo geográfico</a></li>
-                <li><a href="#">Tipo de persona</a></li>
-                <li><a href="#">Tipo de movimiento</a></li>
-
+                <li><a href="#">Datos de la SOFOM</a></li>
+                <li><a href="<?=base_url('index.php/matriz/mostrar_pagina_matriz');?>">Configuración de Matriz</a></li>
               </ul>
             </li>
           </ul>

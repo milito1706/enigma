@@ -10,6 +10,7 @@ var App = (function () {
     $("#datatable-creditos").dataTable();
     $("#datatable-movimientos").dataTable();
     $("#datatable-alertas").dataTable();
+    $("#datatable-productos").dataTable();
 
     
     //Search input style
