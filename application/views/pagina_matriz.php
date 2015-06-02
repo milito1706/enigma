@@ -118,7 +118,27 @@
           </div>          
         </div>        
       </div>
-    
+    <!-- Modal Nuevo producto-->
+    <form id="form-creditos" method="POST">
+      <div id="form-primary-productos" class="md-modal colored-header custom-width-creditos md-effect-8">
+        <div class="md-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
+          </div>
+          <div class="modal-body form">
+            
+            
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
+              <button type="submit" class="btn btn-primary btn-flat md-close" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>  
+      <div class="md-overlay"></div>
+    </form>
+
+    <!-- Fin -->
     </div>
   </div> 
 </div>
