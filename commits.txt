@@ -1,0 +1,29 @@
+commit 61907ca6529e1e936389cbdbd43a89713a88ace8
+Author: mike <milito1706@gmail.com>
+Date:   Tue May 19 14:31:36 2015 -0500
+
+    prueba_formulario_expediente
+
+commit ee4dca8e6693742ad0c1a2a4b8590ed33ebcf0e4
+Author: mike <milito1706@gmail.com>
+Date:   Tue May 19 14:26:57 2015 -0500
+
+    prueba_formulario_expediente
+
+commit 0d72ee918291af9ae4cad402c16723c2825e5de4
+Author: mike <milito1706@gmail.com>
+Date:   Mon May 18 11:18:26 2015 -0500
+
+    prueba2
+
+commit 256d1cf9ac576f15aa726af201442527b3a7a1ba
+Author: mike <milito1706@gmail.com>
+Date:   Fri May 15 17:49:08 2015 -0500
+
+    first commit
+
+commit 575e462567ab3977b73ee0cd74ad060a7d530d78
+Author: mike <milito1706@gmail.com>
+Date:   Fri May 15 17:43:55 2015 -0500
+
+    estructura base
