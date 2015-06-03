@@ -37,7 +37,7 @@
               
             <div class="form-group">
               <label>Max Monto de credito</label>
-              <input type="text" name="T2" id="T2" placeholder="Max Monto de credito" class="form-control">
+              <input type="text" name="T2" id="T2" value="0" placeholder="Max Monto de credito" class="form-control">
             </div>
             <div class="form-group">
                 <label>Max Plazo de credito en meses</label>

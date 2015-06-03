@@ -76,7 +76,7 @@
                 </div>
          </div>
      </div>
-     <form  id="frmnewproduct" method="post">
+     <form  id="frminformacion" method="post">
               <div class="md-modal colored-header-encabezado custom-width-expedientes md-effect-9" id="modal-tab">
         <div class="md-content">
           <div class="modal-header">

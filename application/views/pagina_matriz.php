@@ -56,22 +56,17 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="odd gradeX">
-                          <td>SIMPLE INDIVIDUAL</td>
-                          <td>2.99</td>
-                          <td>0.00</td>
-                          <td class="center"> 4000.00</td>
-                          <td class="center">120000.00</td>
-                          <td class="center"></td>
-                        </tr>
-                        <tr class="even gradeC">
-                          <td>SIMPLE INDIVIDUAL</td>
-                          <td>2.99</td>
-                          <td>0.00</td>
-                          <td class="center"> 4000.00</td>
-                          <td class="center">120000.00</td>
-                          <td class="center"></td>
-                        </tr>
+                        <?php foreach ( $productos as $producto):?>
+                          <tr class="odd gradeX">
+                            <td><?php echo $producto['Nombre_Producto'];?></td>
+                            <td><?php echo $producto['tolerancia_cuota'];?></td>
+                            <td><?php echo $producto['tiempo_liquidacion'];?></td>
+                            <td class="center"><?php echo $producto['min_monto'];?> </td>
+                            <td class="center"><?php echo $producto['max_monto'];?></td>
+                            <td class="center">
+                             <button id="editar" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $producto['Id'];?>" data-persona="<?php echo $producto['Nombre_Producto'];?>" data-edit="editClient" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
+                           </tr>
+                        <?php endforeach;?>
                         
                       </tbody>
                     </table>
@@ -120,7 +115,7 @@
       </div>
     <!-- Modal Nuevo producto-->
     <form id="form-creditos" method="POST">
-      <div id="form-primary-productos" class="md-modal colored-header custom-width-creditos md-effect-8">
+      <div id="form-primary-productos" class="md-modal colored-header-encabezado custom-width-creditos md-effect-8">
         <div class="md-content">
           <div class="modal-header">
             <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
