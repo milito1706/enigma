@@ -126,22 +126,20 @@
             <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
           </div>
           <div class="modal-body form">
-            
-            
+            <?php $this->load->view('formularios_matriz/form_productos');?>
             <div class="modal-footer">
               <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
               <button type="submit" class="btn btn-primary btn-flat md-close" data-dismiss="modal">Guardar</button>
             </div>
           </div>
         </div>
+        <div class="md-overlay"></div>
       </div>  
-      <div class="md-overlay"></div>
     </form>
 
     <!-- Fin -->
     </div>
   </div> 
-</div>
-</form>
+
 </body>
 </html>

@@ -4,7 +4,8 @@ class Matriz extends CI_Controller {
 
 	public function mostrar_pagina_matriz(){
 
-        $this->load->view('header');      
+		//$this->load->model('productos_model');
+        $this->load->view('header');
         $this->load->view('pagina_matriz');
         $this->load->view('footer');
     }
