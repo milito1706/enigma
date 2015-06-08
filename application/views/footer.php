@@ -22,6 +22,7 @@
     <script src="<?=base_url('assets/lib/jquery.datatables/plugins/bootstrap/3/dataTables.bootstrap.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('assets/js/page-data-tables.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('assets/lib/jquery.niftymodals/js/jquery.modalEffects.js')?>" type="text/javascript"></script> 
+    <script src="//cdn.datatables.net/tabletools/2.2.4/js/dataTables.tableTools.min.js"></script>
 <script type="text/javascript"> 
     $(document).ready(function(){
         //initialize the javascript
@@ -103,12 +104,19 @@
             })  
     })        
 ////////////////////////////////////////////////////////////////////////////////
+
 $('.table').dataTable({
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
         },
-        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]]
+        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
+        "dom": 'T<"clear">lfrtip',
+        "tableTools": {
+            "sSwfPath": "<?=base_url('assets/lib/jquery.datatables/extensions/tabletools')?>/swf/copy_csv_xls_pdf.swf"
+        }
+        
 });
 </script>
+
   </body>
 </html>
