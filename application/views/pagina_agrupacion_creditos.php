@@ -1,4 +1,40 @@
 <html>
+    <head>
+      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+     google.load("visualization", "1.1", {packages:["bar"]});
+      google.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Move', 'TOTAL'],
+        <?php foreach($graficar as $data_grafica):?>
+          ["<?php echo $data_grafica['tipo_credito'];?>", <?php echo $data_grafica['suma']; ?>],
+        <?php endforeach;?>
+        ]);
+
+        var options = {
+          title: '',
+          width: 'auto',
+          legend: { position: 'none' },
+          chart: { subtitle: '' },
+          vAxis: {format: 'currency'},
+          axes: {
+            x: {
+              0: { side: 'top', label: ''} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        // Convert the Classic options to Material options.
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+       
+      };
+
+    </script> 
+    </head>
     <body>
       <div id="head-nav" class="navbar navbar-default navbar-fixed-top">
         <!-- Main Menu -->
@@ -46,12 +82,30 @@
                           <?php echo $data_cliente['T19'];?>
                         </td>
                       </tr>
+                      <tr>
+                      <td><strong>Detalle</strong></td>
+                      <td class="center">
+                          <button class="btn  btn-xs md-trigger"data-modal="modal-tab_detalle" ><i class="fa fa-info-circle fa-4x  color-primary"></i></button></td>
+                      </tr>
                     </tbody>
                     <?php };?>
                   </table>
                 </div>
               </div>
             </div>
+             <div id="modal-tab_detalle" class="md-modal colored-header custom-width md-effect-8">
+      <div class="md-content">
+        <div class="modal-header">
+          <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
+        </div>
+          <div class="modal-body form">
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    <div class="md-overlay"></div>
+  </div>  
           </div>
         </div>
         <div class="row">
@@ -135,7 +189,7 @@
                   <h3>Analisis de Créditos.</h3>
                 </div>
                 <div class="content">
-                  <div id="site_statistics" style="height: 180px; padding: 0px; position: relative;"></div>
+                  <div id="top_x_div" style="height: 180px; padding: 0px; position: relative;"></div>
                 </div>
               </div>
             </div>
@@ -144,21 +198,14 @@
                 <h4>Análisis de riesgo</h4>
               </div>
               <div class="list-group todo list-widget">
-                <li href="#" class="list-group-item"><span class="date"> 1</span> Riesgo geográfico - DF</li>
-                <li href="#" class="list-group-item"><span class="date"> 1</span> Riesgo país - MEXICO</li>
-                <li href="#" class="list-group-item"><span class="date"> 3</span> Riesgo actividad - SERVICIOS DE ADMINISTRACIÓN PÚBLICA, DEFENSA Y SEGURIDAD SOCIAL</li>
-                <li href="#" class="list-group-item"><span class="date"> 2</span> Riesgo tipo persona - FISICA</li>                
-                <li href="#" class="list-group-item"><span class="date"> <strong>7</strong></span> <strong>Total</strong></li>
-              </div>
-            </div>
-            <div class="block widget-notes">
-              <div class="header dark">
-                <h4>Observaciones</h4>
-              </div>
-              <div class="content">
-                <div contenteditable="true" class="paper">
-                  hola
-                </div>
+               
+
+
+                <li href="#" class="list-group-item"><span class="date"><?php foreach($r_estado as $dat_restado){ $dat1=$dat_restado['calificacion']; $dat1_estado=$dat_restado['estado'];} if(isset($dat1,$dat1_estado)){ echo $dat1; ?> </span>Factor de riesgo de estado - <?php echo $dat1_estado;} else { ?> </span>Factor de riesgo de estado  -  <?php  $dat1=0;  echo ' Informacion en  expediente incorrecta'; }?></li>
+                <li href="#" class="list-group-item"><span class="date"><?php foreach($r_pais as $dat_pais){ $dat2=$dat_pais['calificacion']; $dat2_pais=$dat_pais['pais'];} if(isset($dat2,$dat2_pais)){ echo $dat2;?> </span>Factor de riesgo de pais - <?php echo $dat2_pais;} else { ?> </span>Factor de riesgo de pais  -  <?php  $dat2=0;  echo ' Informacion en  expediente incorrecta'; }?></li>
+                <li href="#" class="list-group-item"><span class="date"><?php foreach($r_actividad as $dat_act){ $dat3=$dat_act['calificacion']; $dat3_act=$dat_act['actividad'];} if(isset($dat3,$dat3_act)){ echo $dat3;?> </span>Factor de riesgo de actividad economica - <?php echo $dat3_act;} else { ?> </span>Factor de riesgo de actividad economica  -  <?php  $dat3=0;  echo ' Informacion en  expediente incorrecta'; }?></li>
+                <li href="#" class="list-group-item"><span class="date"><?php foreach($r_tipopersona as $dat_per){ $dat4=$dat_per['calificacion']; $dat4_per=$dat_per['nombre'];} if(isset($dat4,$dat4_per)){ echo $dat4;?> </span>Factor de riesgo por tipo de persona - <?php echo $dat4_per;} else { ?> </span>Factor de riesgo por tipo de persona -  <?php  $dat4=0;  echo ' Informacion en  expediente incorrecta'; }?></li>             
+                <li href="#" class="list-group-item"><span class="date"> <strong><?php echo $suma=$dat1+$dat2+$dat3+$dat4;?></strong></span> <strong>Total</strong></li>
               </div>
             </div>
           </div>

@@ -7,11 +7,11 @@ class Expediente extends CI_Controller{
         $listado_total_clientes= $this->expediente_model->get_Numero_total();
         $listado_fisicas=$this->expediente_model->get_Empleados_fisica();
         $listado_moral=$this->expediente_model->get_Empleados_moral(); 
-        $data = array(
+  $data = array(
         'empleados' => $listadoEmpleados
         );
         $data['count_clientes']=$listado_total_clientes;
-        $data['count_personas_fisica'] = $listado_fisicas;
+ $data['count_personas_fisica'] = $listado_fisicas;
         $data['count_personas_moaral']=$listado_moral;
         $this->load->view('header');      
         $this->load->view('pagina_expedientes', $data);

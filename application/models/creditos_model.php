@@ -22,7 +22,7 @@ class Creditos_model extends CI_Model{
         $this->db->from('book_clientes');
         return $this->db->count_all_results();
     }
-    ///DATOS PARA MOSTRAR AGRUPACION AGRUPACION DE CREDITOS///
+    ///DATOS PARA MOSTRAREN  AGRUPACION AGRUPACION DE CREDITOS///
     public function get_Creditos_cliente($id){
         $query = $this->db->query("SELECT Id,no_credito,T1,tipo_moneda,T3,T4,tipo_credito,T2,@rownum:=@rownum+1 as num_credito,Estado  FROM book_creditos,(SELECT @rownum:=0)R where id_expediente=$id order by Id desc;");
         return $query->result_array();
@@ -47,7 +47,28 @@ class Creditos_model extends CI_Model{
         $row = $query->row(); 
         return $row->total;
     }
-
+    public function get_Grafica_creditos($id){
+        $query = $this->db->query("select sum(T1) as suma,tipo_credito from book_creditos where id_expediente='$id' group by tipo_credito;");
+        return $query->result_array();
+    }
+    ///CALIFICACION DE MATRIZ DE RIESGO
+    public function get_R_estado($id){
+        $query = $this->db->query("select  DISTINCT est.calificacion as calificacion, est.nombre_estado as estado from book_clientes cl,r_estado est where  (cl.T11= est.nombre_estado) and cl.Id=$id;");
+        return $query->result_array();
+    }
+    public function get_R_pais($id){
+        $query = $this->db->query("select DISTINCT pais.calificacion as calificacion ,pais.nombre_estado as pais from book_clientes cl,r_pais pais where  (cl.T14= pais.nombre_estado) and cl.Id=$id ;");
+        return $query->result_array();
+    }
+    public function get_R_actividad($id){
+        $query = $this->db->query("select act.calificacion as calificacion ,act.actividad_economica  as actividad from book_clientes cl,r_actividad act where  (cl.T16= act.actividad_economica) and cl.Id=$id;");
+        return $query->result_array();
+    }
+    public function get_R_tipo_persona($id){
+        $query = $this->db->query("select per.calificacion as calificacion ,per.nombre  as nombre from book_clientes cl, r_persona per where  (cl.tipo= per.nombre) and cl.Id=$id;");
+        return $query->result_array();
+    }
+    ///////////////
     ///CATALOGOS DE FORMULARIO fromulario creditos
     public function get_Catalogotipocredito(){
         $query = $this->db->get('cat_tipocredito');

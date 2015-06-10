@@ -69,7 +69,7 @@
                                                 <td><?php echo $cliente['T19'];?></td>
                                                 <td><?php echo $cliente['tipo'];?></td>                                            
                                               <td class="center">
-                                             <button id="id_credito" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $cliente['Id'];?>"><i class="fa fa-pencil"></i></button></td>
+                                             <button id="id_credito" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $cliente['Id'];?>"><i class="fa fa-folder-open"></i></button></td>
                                             </tr>
                                              <?php endforeach;?>
                                         </tbody>

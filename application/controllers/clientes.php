@@ -31,6 +31,13 @@ class Clientes extends CI_Controller{
         $listado_tipocredito=$this->creditos_model->get_Catalogotipocredito();
         $listado_frecuencia_pagos=$this->creditos_model->get_Frecuenciapago();
         $listado_tipodivisa=$this->creditos_model->get_Divisa();
+        $listado_grafica=$this->creditos_model->get_Grafica_creditos($id_cliente);
+        $listado_riesgo_estado=$this->creditos_model->get_R_estado($id_cliente);
+        $listado_riesgo_pais=$this->creditos_model->get_R_pais($id_cliente);
+        $listado_riesgo_actividad=$this->creditos_model->get_R_actividad($id_cliente);
+        $listado_riesgo_persona=$this->creditos_model->get_R_tipo_persona($id_cliente);
+         
+
         $data['clientes_creditos'] = $listadoCreditos;
         $data['total_oi']=$total_oi;
         $data['total_or']=$total_or;
@@ -39,6 +46,11 @@ class Clientes extends CI_Controller{
         $data['tipo_credito'] = $listado_tipocredito;
         $data['frecuencia'] =$listado_frecuencia_pagos;
         $data['tipo_divisa'] =$listado_tipodivisa;
+        $data['graficar'] =$listado_grafica;
+        $data['r_estado'] = $listado_riesgo_estado;
+        $data['r_pais'] =  $listado_riesgo_pais;
+        $data['r_actividad'] =$listado_riesgo_actividad;
+        $data['r_tipopersona'] =$listado_riesgo_persona;
 
         $this->load->view('header');
         $this->load->view('pagina_agrupacion_creditos',$data);
