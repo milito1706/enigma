@@ -68,7 +68,7 @@
         var action =$(this).attr('data-new');
         params={};
         console.log(params.persona=persona);
-        $('.modal-body').load('get_Formulario_nuevo', params,function(){
+        $('.modal-body form').load('get_Formulario_nuevo', params,function(){
          
         })  
     }) 
@@ -93,12 +93,19 @@
                 //return false;
     });
 
+    $(document).on('click','#id_credito_detalle',function(){
+        var id= $(this).attr('data-id');
+        var id_exp= $(this).attr('data-exp');
+        var url='mostrar_detalle_credito?v='+id_exp+'&v2='+id;
+        document.location=(url);
+        }) 
+  
+
      $(document).on('click','#editar_credito',function(){
-        var id_credito= $(this).attr('data-id');
+        var id_credito= $(this).attr('data-idcredito');
         params={};
         console.log(params.id_credito=id_credito);
-        console.log(params.action=action);
-        $('.modal-body').load('get_Formulariocredito_update', params,function(){
+        $('.modal-body').load('get_Formulario_credito_consulta', params,function(){
          
             })  
     })        
@@ -112,3 +119,4 @@ $('.table').dataTable({
 </script>
   </body>
 </html>
+

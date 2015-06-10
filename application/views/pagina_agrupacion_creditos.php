@@ -132,6 +132,7 @@
                             <th>Termino</th>
                             <th>Tipo Crédito</th>
                             <th>Limite Cuota</th>
+                            <th>Estado</th>
 
                             <th></th>                          
                           </tr>
@@ -147,8 +148,9 @@
                             <td class="center"><?php echo $data_creditos['T4'];?></td>
                             <td class="center"><?php echo $data_creditos['tipo_credito'];?></td>
                             <td class="center"><?php echo number_format ($data_creditos['T2'],2);?></td>
+                            <td class="center"><?php echo $data_creditos['Estado'];?></td>
 
-                            <td class="center"><button data-modal="form-primary-creditos" class="btn btn-primary  btn-sm md-trigger"><i class="fa fa-folder-open"></i></button></td>
+                            <td class="center"> <button id="id_credito_detalle" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $data_creditos['no_credito'];?>" data-exp="<?php echo $id_expediente;?>"><i class="fa fa-folder-open"></i></button></td>
                           </tr>
                           <?php };?>
                         </tbody>
