@@ -11,14 +11,14 @@ class Expediente extends CI_Controller{
         'empleados' => $listadoEmpleados
         );
         $data['count_clientes']=$listado_total_clientes;
- $data['count_personas_fisica'] = $listado_fisicas;
+        $data['count_personas_fisica'] = $listado_fisicas;
         $data['count_personas_moaral']=$listado_moral;
         $this->load->view('header');      
         $this->load->view('pagina_expedientes', $data);
         $this->load->view('footer');
     }
     public function get_Formulario_nuevo(){
-        $tipo_persona=$this->input->post('persona');
+        echo $tipo_persona=$this->input->post('persona');
         $this->load->model('expedientes_model/expediente_model');
         $list_actividad = $this->expediente_model->get_Actividad_economica();
         $data = array(
