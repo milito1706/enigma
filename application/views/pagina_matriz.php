@@ -64,7 +64,7 @@
                                     <td class="center"><?php echo $producto['min_monto'];?> </td>
                                     <td class="center"><?php echo $producto['max_monto'];?></td>
                                     <td class="center">
-                                     <button id="editar" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $producto['Id'];?>" data-persona="<?php echo $producto['Nombre_Producto'];?>" data-edit="editClient" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
+                                     <button id="edit_producto" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $producto['Id'];?>" data-edit="editProducto" data-modal="form-primary-productos" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
                                  <?php endforeach;?>
 
@@ -300,7 +300,7 @@
         </div>        
       </div>
     <!-- Modal Nuevo producto-->
-    <form id="form-creditos" method="POST">
+    <form id="form-productos">
       <div id="form-primary-productos" class="md-modal colored-header-encabezado custom-width-creditos md-effect-8">
         <div class="md-content">
           <div class="modal-header">

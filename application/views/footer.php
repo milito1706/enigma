@@ -54,14 +54,14 @@
          
             })  
     })
-    $(document).on('click','#new',function(){
+    $(document).on('click','#new',function() {
         var persona=$(this).attr('data-persona');
         var action =$(this).attr('data-new');
         params={};
         console.log(params.persona=persona);
         $('.modal-body').load('get_Formulario_nuevo', params,function(){
          
-        })  
+        }) 
       
     })
     $(document).on('click','#new_moral',function(){
@@ -102,7 +102,32 @@
         $('.modal-body').load('get_Formulariocredito_update', params,function(){
          
             })  
-    })        
+    })
+
+    // Nuevo producto
+    $("#form-productos").submit(function() {
+              var formulario_producto = $("#form-productos").serializeArray();
+              console.log('Form Productos');
+                $.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    url: "get_Insert_Nuevo_Producto",
+                    data: formulario_producto,
+                });
+                return false;
+    });
+
+     $(document).on('click','#edit_producto',function() {
+        var id_producto = $(this).attr('data-id');
+        edit = $(this).attr('data-edit');
+        params={};
+        console.log(params.id_producto=id_producto);
+        console.log(params.edit = edit);
+        //console.log(params.action=action);
+        $('.modal-body').load('get_update_producto', params,function() {
+         
+        })
+    }) 
 ////////////////////////////////////////////////////////////////////////////////
 
 $('.table').dataTable({

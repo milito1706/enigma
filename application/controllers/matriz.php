@@ -43,6 +43,36 @@ class Matriz extends CI_Controller {
         $this->load->view('footer');
     }
     
+    public function get_Insert_Nuevo_Producto(){
+            //$id_credito=$this->input->post('id_credito');
+            $data = array(            
+                'Nombre_Producto'=>$this->input->post('T1'),
+                'tolerancia_cuota'=>$this->input->post('T2'),
+                'tiempo_liquidacion'=>$this->input->post('tiempo_liquidacion'),
+                'min_monto'=>$this->input->post('T3'),
+                'max_monto'=>$this->input->post('T6'),
+                'min_tiempo'=>$this->input->post('T4'),
+                'max_tiempo'=>$this->input->post('T7'),
+                'tolerancia_cuota_interes'=>$this->input->post('T5'),
+                'id_entidad'=>$this->input->post('id_entidad'),
+                'id_operador'=>$this->input->post('id_operador'),
+                'fecha_alta'=>$this->input->post('fecha_alta')
+            );
+       
+                $this->load->model('matriz_model');
+                $list_nuevo_producto = $this->matriz_model->get_Insert_tabla_cat_productos($data);
+
+    }
+    public function get_update_producto() {
+        $Id = $this->input->post('Id');        
+        $this->load->model('matriz_model');
+        $list_producto = $this->matriz_model->get_update_tabla_cat_productos($Id);
+        $data = array(
+        'producto' => $list_producto
+        );
+        $this->load->view('formularios_matriz/form_productos',$data);
+        
+    }
 
 }
 

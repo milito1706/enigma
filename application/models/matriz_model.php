@@ -50,5 +50,13 @@ class Matriz_model extends CI_Model{
         return $query->result_array();
     }
     
+    public function get_Insert_tabla_cat_productos($data){
+        $this->db->insert('cat_productos',$data); 
+    }
+
+    public function get_update_tabla_cat_productos($data, $Id){
+        $this->db->where('Id', $Id);
+        $this->db->update('cat_productos',$data); 
+    }
 }
 ?>
