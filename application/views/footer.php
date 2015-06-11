@@ -57,7 +57,7 @@
         var persona=$(this).attr('data-persona');
         var action =$(this).attr('data-new');
         params={};
-        console.log(params.persona=persona);
+        params.persona=persona;
         $('.modal-body').load('get_Formulario_nuevo', params,function(){
          
         })  
@@ -67,8 +67,8 @@
         var persona=$(this).attr('data-persona');
         var action =$(this).attr('data-new');
         params={};
-        console.log(params.persona=persona);
-        $('.modal-body form').load('get_Formulario_nuevo', params,function(){
+        params.persona=persona;
+        $('.modal-body').load('get_Formulario_nuevo', params,function(){
          
         })  
     }) 
@@ -105,7 +105,7 @@
         var id_credito= $(this).attr('data-idcredito');
         params={};
         console.log(params.id_credito=id_credito);
-        $('.modal-body').load('get_Formulario_credito_consulta', params,function(){
+        $('#cre').load('get_Formulario_credito_consulta', params,function(){
          
             })  
     })        
