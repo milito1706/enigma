@@ -39,12 +39,12 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="block-flat">
-                        <div class="butpro butstyle-credit btn-sm md-trigger" id="new_producto" data-modal="form-primary-productos">
+                        <div class="butpro  btn btn-sm md-trigger" id="new_producto" data-modal="form-primary-productos">
                           <i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Nuevo Producto
                         </div>
                         <div class="content">
                           <div>
-                            <table id="datatable-productos" class="table table-bordered productos">
+                            <table id="datatable-productos" class="no-border blue">
                               <thead>
                                 <tr>
                                   <th>Nombre</th>
@@ -59,10 +59,10 @@
                                 <?php foreach ( $productos as $producto):?>
                                   <tr class="odd gradeX">
                                     <td><?php echo $producto['Nombre_Producto'];?></td>
-                                    <td><?php echo $producto['tolerancia_cuota'];?></td>
-                                    <td><?php echo $producto['tiempo_liquidacion'];?></td>
-                                    <td class="center"><?php echo $producto['min_monto'];?> </td>
-                                    <td class="center"><?php echo $producto['max_monto'];?></td>
+                                    <td class="center" align="right"><?php echo $producto['tolerancia_cuota'];?></td>
+                                    <td class="center" align="right"><?php echo $producto['tiempo_liquidacion'];?></td>
+                                    <td class="center" align="right"><?php echo $producto['min_monto'];?> </td>
+                                    <td class="center" align="right"><?php echo $producto['max_monto'];?></td>
                                     <td class="center">
                                      <button id="edit_producto" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $producto['Id'];?>" data-edit="editProducto" data-modal="form-primary-productos" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
@@ -148,7 +148,7 @@
                          </div>
                        </div>
                      </div>
-                   </div> example of content writen by <b>Jeff Hanneman</b>, as you can see it is a clean design with large</p>
+                   </div> 
                 </div>
                 <div id="estados" class="tab-pane">
                   <h3 class="hthin">Riesgo por estados</h3>
@@ -191,7 +191,7 @@
                          </div>
                        </div>
                      </div>
-                   </div> example of content writen by <b>Jeff Hanneman</b>, as you can see it is a clean design with large</p>
+                   </div> 
                 </div>
                 <div id="tipoPersona" class="tab-pane">
                   <h3 class="hthin">Tipo de Persona</h3>
@@ -224,7 +224,7 @@
                          </div>
                        </div>
                      </div>
-                   </div> example of content writen by <b>Jeff Hanneman</b>, as you can see it is a clean design with large</p>
+                   </div> 
                 </div>
                 <div id="noPersonas" class="tab-pane">
                   <h3 class="hthin">Número de Personas</h3>
@@ -259,7 +259,7 @@
                          </div>
                        </div>
                      </div>
-                   </div> example of content writen by <b>Jeff Hanneman</b>, as you can see it is a clean design with large</p>
+                   </div> 
                 </div>
                 <div id="movimientos" class="tab-pane">
                   <h3 class="hthin">Movimientos</h3>
@@ -292,33 +292,34 @@
                          </div>
                        </div>
                      </div>
-                   </div> example of content writen by <b>Jeff Hanneman</b>, as you can see it is a clean design with large</p>
+                   </div> 
                 </div>
               </div>
             </div>
-          </div>          
-        </div>        
-      </div>
-    <!-- Modal Nuevo producto-->
+    <!-- Nifty Modal-->
     <form id="form-productos">
-      <div id="form-primary-productos" class="md-modal colored-header-encabezado custom-width-creditos md-effect-8">
-        <div class="md-content">
-          <div class="modal-header">
+    <div id="form-primary-productos" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
+      <div class="md-content">
+        <div class="modal-header">          
             <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
           </div>
-          <div class="modal-body form">
-            <?php $this->load->view('formularios_matriz/form_productos');?>
-            <div class="modal-footer">
-              <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
-              <button type="submit" class="btn btn-primary btn-flat md-close" data-dismiss="modal">Guardar</button>
-            </div>
-          </div>
-        </div>
-        <div class="md-overlay"></div>
-      </div>  
-    </form>
+        <div class="modal-body form">
 
-    <!-- Fin -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
+          <button type="submit" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Guardar</button>
+        </div>
+      </div>
+    </div>
+    <div class="md-overlay"></div>
+    </form>
+          </div>          
+        
+
+        </div>        
+      </div>
+
     </div>
   </div> 
 

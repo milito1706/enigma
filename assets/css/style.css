@@ -4981,6 +4981,10 @@ button::-moz-focus-inner {
   width: 40%;
   max-width: none;
 }
+.custom-width-productos {
+  width: 50%;
+  max-width: none;
+}
 .custom-width-expedientes {
   width: 70%;
   max-width: none;

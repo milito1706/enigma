@@ -52,7 +52,7 @@
         console.log(params.action=action);
         $('.modal-body').load('get_Formulario_update', params,function(){
          
-            })  
+        })  
     })
     $(document).on('click','#new',function() {
         var persona=$(this).attr('data-persona');
@@ -105,6 +105,13 @@
     })
 
     // Nuevo producto
+    $(document).on('click','#new_producto',function(){        
+        var action =$(this).attr('data-new');
+        params={};        
+        $('.modal-body').load('get_nuevo_producto', params,function() {
+            console.log("nuevo producto");
+        })  
+    })
     $("#form-productos").submit(function() {
               var formulario_producto = $("#form-productos").serializeArray();
               console.log('Form Productos');
@@ -112,20 +119,20 @@
                     type: "post",
                     dataType: 'json',
                     url: "get_Insert_Nuevo_Producto",
-                    data: formulario_producto,
+                    cache: false,
+                    data: formulario_producto
                 });
                 return false;
     });
 
      $(document).on('click','#edit_producto',function() {
-        var id_producto = $(this).attr('data-id');
-        edit = $(this).attr('data-edit');
+        var id = $(this).attr('data-id');       
+        var action =$(this).attr('data-edit');
         params={};
-        console.log(params.id_producto=id_producto);
-        console.log(params.edit = edit);
-        //console.log(params.action=action);
-        $('.modal-body').load('get_update_producto', params,function() {
-         
+        console.log(params.id = id);        
+        console.log(params.action = action);
+        $('#form-primary-productos .modal-body').load('get_update_producto', params,function(){
+            console.log("editar" + " " + id);
         })
     }) 
 ////////////////////////////////////////////////////////////////////////////////

@@ -54,9 +54,14 @@ class Matriz_model extends CI_Model{
         $this->db->insert('cat_productos',$data); 
     }
 
-    public function get_update_tabla_cat_productos($data, $Id){
-        $this->db->where('Id', $Id);
-        $this->db->update('cat_productos',$data); 
+    public function get_consulta_productos($id){
+        $query = $this->db->get_where('cat_productos', array('Id' => $id));
+        return $query->result_array();
+    }
+
+    public function get_update_tabla_cat_productos($data, $id){
+        $this->db->where('Id', $id);
+        $this->db->update('cat_productos',$data);
     }
 }
 ?>

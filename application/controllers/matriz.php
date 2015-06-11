@@ -45,6 +45,7 @@ class Matriz extends CI_Controller {
     
     public function get_Insert_Nuevo_Producto(){
             //$id_credito=$this->input->post('id_credito');
+            $id = $this->input->post('id');
             $data = array(            
                 'Nombre_Producto'=>$this->input->post('T1'),
                 'tolerancia_cuota'=>$this->input->post('T2'),
@@ -59,18 +60,40 @@ class Matriz extends CI_Controller {
                 'fecha_alta'=>$this->input->post('fecha_alta')
             );
        
+                
+                //$this->load->model('matriz_model');
+                //$list_nuevo_producto = $this->matriz_model->get_Insert_tabla_cat_productos($data);
+                if($id > 0 ){
+                $this->load->model('matriz_model');
+                $list_nuevo_producto = $this->matriz_model->get_update_tabla_cat_productos($data,$id);
+                }
+                else{
                 $this->load->model('matriz_model');
                 $list_nuevo_producto = $this->matriz_model->get_Insert_tabla_cat_productos($data);
-
+                }
     }
     public function get_update_producto() {
-        $Id = $this->input->post('Id');        
-        $this->load->model('matriz_model');
-        $list_producto = $this->matriz_model->get_update_tabla_cat_productos($Id);
-        $data = array(
-        'producto' => $list_producto
-        );
+        $id_producto = $this->input->post('id');
+
+        $datos_productos = $this->matriz_model->get_consulta_productos($id_producto);
+        foreach ( $datos_productos as $item_producto) { 
+            $data['Id'] = $item_producto['Id'];
+            $data['Nombre_Producto'] = $item_producto['Nombre_Producto'];
+            $data['tolerancia_cuota'] = $item_producto['tolerancia_cuota'];
+            $data['tiempo_liquidacion'] = $item_producto['tiempo_liquidacion'];
+            $data['min_monto'] = $item_producto['min_monto'];
+            $data['max_monto'] = $item_producto['max_monto'];
+            $data['min_tiempo'] = $item_producto['min_tiempo'];
+            $data['max_tiempo'] = $item_producto['max_tiempo'];
+            $data['tolerancia_cuota_interes'] = $item_producto['tolerancia_cuota_interes'];
+             
+          }
         $this->load->view('formularios_matriz/form_productos',$data);
+        
+    }
+    public function get_nuevo_producto() {
+        
+        $this->load->view('formularios_matriz/form_productos');
         
     }
 
