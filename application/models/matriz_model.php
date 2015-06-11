@@ -50,18 +50,37 @@ class Matriz_model extends CI_Model{
         return $query->result_array();
     }
     
-    public function get_Insert_tabla_cat_productos($data){
+    // Tab Productos
+    public function get_Insert_tabla_cat_productos($data) {
         $this->db->insert('cat_productos',$data); 
     }
 
-    public function get_consulta_productos($id){
+    public function get_consulta_productos($id) {
         $query = $this->db->get_where('cat_productos', array('Id' => $id));
         return $query->result_array();
     }
 
-    public function get_update_tabla_cat_productos($data, $id){
+    public function get_update_tabla_cat_productos($data, $id) {
         $this->db->where('Id', $id);
         $this->db->update('cat_productos',$data);
     }
+    // Fin Tab Productos
+    
+    // Tab Tipo Persona
+    public function get_insert_tipo_persona($data) {
+        $this->db->insert('cat_tipopersona',$data); 
+    }
+
+    public function get_consulta_tipo_persona($id) {
+        $query = $this->db->get_where('cat_tipopersona', array('Id' => $id));
+        return $query->result_array();
+    }
+
+    public function get_update_tipo_persona($data, $id) {
+        $this->db->where('Id', $id);
+        $this->db->update('cat_tipopersona',$data);
+    }
+    // Fin Tipo Persona
+    
 }
 ?>

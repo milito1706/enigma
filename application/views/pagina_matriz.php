@@ -13,7 +13,7 @@
     </div>
     <div id="pcont" class="container-fluid">
       <div class="page-head">
-        
+
         <h3 class="hthin">Configuración de Matriz de Riesgo</h3>
         
       </div>
@@ -76,7 +76,7 @@
                      </div>
                    </div>
                  </div>
-                <div id="frecuencia" class="tab-pane cont">
+                 <div id="frecuencia" class="tab-pane cont">
                   <h3 class="hthin">Frecuencia de Pagos</h3>
                   <div class="row">
                     <div class="col-md-12">
@@ -90,7 +90,7 @@
                               <thead>
                                 <tr>
                                   <th>Unidad de Credito</th>
-                                  <th># de Pagos</th>                              
+                                  <th>Números de Pagos</th>                              
                                   <th></th>
                                 </tr>
                               </thead>
@@ -98,7 +98,7 @@
                                 <?php foreach ( $frecuencia_pagos as $frecuencia_pago):?>
                                   <tr class="odd gradeX">
                                     <td><?php echo $frecuencia_pago['unidad_credito'];?></td>
-                                    <td><?php echo $frecuencia_pago['frecuencia_pago'];?></td>                                    
+                                    <td><?php echo $frecuencia_pago['frecuencia_pago'];?></td>                                
                                     <td class="center">
                                      <button id="editar" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $frecuencia_pago['unidad_credito'];?>" data-persona="<?php echo $frecuencia_pago['unidad_credito'];?>" data-edit="editClient" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
@@ -111,13 +111,12 @@
                        </div>
                      </div>
                    </div>
-                </div>
-                <div id="transaccionalidad" class="tab-pane">
+                 </div>
+                 <div id="transaccionalidad" class="tab-pane">
                   <h3 class="hthin">Transaccionalidad</h3>
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="block-flat">
-                        
+                      <div class="block-flat">                        
                         <div class="content">
                           <div>
                             <table id="datatable-transaccionalidad" class="table table-bordered">
@@ -141,7 +140,6 @@
                                      <button id="editar" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $transaccion['Id'];?>" data-persona="<?php echo $transaccion['Id'];?>" data-edit="editClient" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
                                  <?php endforeach;?>
-
                                </tbody>
                              </table>
                            </div>
@@ -149,8 +147,8 @@
                        </div>
                      </div>
                    </div> 
-                </div>
-                <div id="estados" class="tab-pane">
+                 </div>
+                 <div id="estados" class="tab-pane">
                   <h3 class="hthin">Riesgo por estados</h3>
                   <p>This is just an example of content writen by <b>Jeff Hanneman</b>, as you can see it is a clean design with large</p>
                 </div>
@@ -162,16 +160,14 @@
                   <h3 class="hthin">Transaccionalidad</h3>
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="block-flat">
-                        
+                      <div class="block-flat">                        
                         <div class="content">
                           <div>
                             <table id="datatable-actividad" class="table table-bordered">
                               <thead>
                                 <tr>
                                   <th>Actividad</th>
-                                  <th>Calificación</th>
-                                                                    
+                                  <th>Calificación</th>                                                                    
                                   <th></th>
                                 </tr>
                               </thead>
@@ -184,7 +180,6 @@
                                      <button id="editar" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $actividad['Id'];?>" data-persona="<?php echo $actividad['Id'];?>" data-edit="editClient" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
                                  <?php endforeach;?>
-
                                </tbody>
                              </table>
                            </div>
@@ -192,13 +187,15 @@
                        </div>
                      </div>
                    </div> 
-                </div>
-                <div id="tipoPersona" class="tab-pane">
+                 </div>
+                 <div id="tipoPersona" class="tab-pane">
                   <h3 class="hthin">Tipo de Persona</h3>
                   <div class="row">
                     <div class="col-md-12">
                       <div class="block-flat">
-                        
+                        <div class="butpro  btn btn-sm md-trigger" id="new_tipo_persona" data-modal="form-primary-tipo-persona">
+                          <i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Nuevo Tipo de Persona
+                        </div>
                         <div class="content">
                           <div>
                             <table id="datatable-tipo_persona" class="table table-bordered">
@@ -215,7 +212,7 @@
                                     <td><?php echo $tipo_persona['etiqueta'];?></td>
                                     <td><?php echo $tipo_persona['codigo'];?></td>                                                                       
                                     <td class="center">
-                                     <button id="editar" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $tipo_persona['Id'];?>" data-persona="<?php echo $tipo_persona['Id'];?>" data-edit="editClient" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
+                                     <button id="editar_tipo_persona" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $tipo_persona['Id'];?>" data-edit="editTipoPersona" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
                                  <?php endforeach;?>
                                </tbody>
@@ -225,13 +222,12 @@
                        </div>
                      </div>
                    </div> 
-                </div>
-                <div id="noPersonas" class="tab-pane">
+                 </div>
+                 <div id="noPersonas" class="tab-pane">
                   <h3 class="hthin">Número de Personas</h3>
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="block-flat">
-                        
+                      <div class="block-flat">                        
                         <div class="content">
                           <div>
                             <table id="datatable-n_personas" class="table table-bordered">
@@ -260,13 +256,12 @@
                        </div>
                      </div>
                    </div> 
-                </div>
-                <div id="movimientos" class="tab-pane">
+                 </div>
+                 <div id="movimientos" class="tab-pane">
                   <h3 class="hthin">Movimientos</h3>
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="block-flat">
-                        
+                      <div class="block-flat">                        
                         <div class="content">
                           <div>
                             <table id="datatable-movimientos" class="table table-bordered">
@@ -293,29 +288,47 @@
                        </div>
                      </div>
                    </div> 
+                 </div>
+               </div>
+             </div>
+             <!-- Nifty Modal Productos -->
+             <form id="form-productos">
+              <div id="form-primary-productos" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
+                <div class="md-content">
+                  <div class="modal-header">          
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
+                  </div>
+                  <div class="modal-body form">
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
+                    <button type="submit" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Guardar</button>
+                  </div>
                 </div>
               </div>
-            </div>
-    <!-- Nifty Modal-->
-    <form id="form-productos">
-    <div id="form-primary-productos" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
-      <div class="md-content">
-        <div class="modal-header">          
-            <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
-          </div>
-        <div class="modal-body form">
+              <div class="md-overlay"></div>
+            </form>
+            <!-- Nifty Modal Tipo de Persona -->
+             <form id="form-tipo-persona">
+              <div id="form-primary-tipo-persona" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
+                <div class="md-content">
+                  <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
+                  </div>
+                  <div class="modal-body form">
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
-          <button type="submit" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Guardar</button>
-        </div>
-      </div>
-    </div>
-    <div class="md-overlay"></div>
-    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
+                    <button type="submit" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Guardar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="md-overlay"></div>
+            </form>
           </div>          
-        
+
 
         </div>        
       </div>

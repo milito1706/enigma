@@ -8,24 +8,23 @@ class Matriz extends CI_Controller {
         $this->load->database();
 		$this->load->model('matriz_model');
     }
-    
+    // Funcion que me consulta todos los resultados de la matriz de riesgo
     public function mostrar_pagina_matriz(){
 
         // Obtengo los productos
 		$listadoProductos = $this->matriz_model->get_Productos();
-		$listado_total_productos= $this->matriz_model->get_Numero_total_productos();
-        
+		$listado_total_productos= $this->matriz_model->get_Numero_total_productos();        
         // Obtengo las frecuencias de pagos
         $listadoFrecuenciaPagos = $this->matriz_model->get_Frecuenciapagos();
         // Obtengo la Transaccionalidad
         $listadoTransaccionalidad = $this->matriz_model->get_Transaccionalidad();
-
+        // Obtengo el catalogo de Actividades
         $listadoActividad = $this->matriz_model->get_Actividad();
-
+        // Obtengo los tipos de Personas
         $listadoTipoPersona = $this->matriz_model->get_TipoPersona();
-
+        // Obtengo el numero de personas dentro de la organizacion
         $listadoNpersonas = $this->matriz_model->get_Npersonas();
-
+        // Obtengo los movimientos
         $listadoMovimientos = $this->matriz_model->get_Movimientos();
         
         $data = array(
@@ -43,6 +42,13 @@ class Matriz extends CI_Controller {
         $this->load->view('footer');
     }
     
+    // Funciones para el tab Productos
+    public function get_nuevo_producto() {
+
+        $this->load->view('formularios_matriz/form_productos');
+        
+    }
+
     public function get_Insert_Nuevo_Producto(){
             //$id_credito=$this->input->post('id_credito');
             $id = $this->input->post('id');
@@ -59,22 +65,21 @@ class Matriz extends CI_Controller {
                 'id_operador'=>$this->input->post('id_operador'),
                 'fecha_alta'=>$this->input->post('fecha_alta')
             );
-       
                 
-                //$this->load->model('matriz_model');
-                //$list_nuevo_producto = $this->matriz_model->get_Insert_tabla_cat_productos($data);
-                if($id > 0 ){
+            if($id > 0)
+            {
                 $this->load->model('matriz_model');
                 $list_nuevo_producto = $this->matriz_model->get_update_tabla_cat_productos($data,$id);
-                }
-                else{
+            }
+            else
+            {
                 $this->load->model('matriz_model');
                 $list_nuevo_producto = $this->matriz_model->get_Insert_tabla_cat_productos($data);
-                }
+            }
     }
+    
     public function get_update_producto() {
         $id_producto = $this->input->post('id');
-
         $datos_productos = $this->matriz_model->get_consulta_productos($id_producto);
         foreach ( $datos_productos as $item_producto) { 
             $data['Id'] = $item_producto['Id'];
@@ -87,16 +92,46 @@ class Matriz extends CI_Controller {
             $data['max_tiempo'] = $item_producto['max_tiempo'];
             $data['tolerancia_cuota_interes'] = $item_producto['tolerancia_cuota_interes'];
              
-          }
+        }
         $this->load->view('formularios_matriz/form_productos',$data);
-        
     }
-    public function get_nuevo_producto() {
-        
-        $this->load->view('formularios_matriz/form_productos');
-        
-    }
+    // Fin Funciones para el tab Productos
+    
+    // Funciones para el tab Tipo Persona
+    public function get_nuevo_tipo_persona() {
 
+        $this->load->view('formularios_matriz/form_tipo_persona');
+        
+    }
+    
+    public function get_insert_tipo_persona(){
+            //$id_credito=$this->input->post('id_credito');
+            $id = $this->input->post('id');
+            $data = array(            
+                'codigo'=>$this->input->post('T2'),
+                'etiqueta'=>$this->input->post('T1')                
+            );
+                
+            if($id > 0)
+            {
+                $list_nuevo_tipo_persona = $this->matriz_model->get_update_tipo_persona($data,$id);
+            }
+            else
+            {
+                $list_nuevo_tipo_persona = $this->matriz_model->get_insert_tipo_persona($data);
+            }
+    }
+    
+    public function get_update_tipo_persona() {
+        $id_tipo_persona = $this->input->post('id');
+        $datos_tipo_persona = $this->matriz_model->get_consulta_productos($id_tipo_persona);
+        foreach ( $datos_tipo_persona as $item_tipo_persona) { 
+            $data['Id'] = $item_tipo_persona['Id'];
+            $data['codigo'] = $item_tipo_persona['codigo'];
+            $data['etiqueta'] = $item_tipo_persona['etiqueta'];
+        }
+        $this->load->view('formularios_matriz/form_tipo_persona',$data);
+    }
 }
 
 /* End of file matriz.php */

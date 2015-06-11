@@ -134,7 +134,40 @@
         $('#form-primary-productos .modal-body').load('get_update_producto', params,function(){
             console.log("editar" + " " + id);
         })
-    }) 
+    })
+
+    // Nuevo Tipo Persona
+    $(document).on('click','#new_tipo_persona',function(){        
+        var action =$(this).attr('data-new');
+        params={};        
+        $('.modal-body').load('get_nuevo_tipo_persona', params,function() {
+            console.log("nuevo tipo persona");
+        })  
+    })
+
+    $("#form-tipo-persona").submit(function() {
+              var formulario_tipo_persona = $("#form-tipo-persona").serializeArray();
+              console.log('Form tipo persona');
+                $.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    url: "get_insert_tipo_persona",
+                    cache: false,
+                    data: formulario_tipo_persona
+                });
+                return false;
+    });
+
+     $(document).on('click','#editar_tipo_persona',function() {
+        var id = $(this).attr('data-id');       
+        var action =$(this).attr('data-edit');
+        params={};
+        console.log(params.id = id);        
+        console.log(params.action = action);
+        $('#form-primary-tipo-persona .modal-body').load('get_update_tipo_persona', params,function(){
+            console.log("editar" + " " + id);
+        })
+    })
 ////////////////////////////////////////////////////////////////////////////////
 
 $('.table').dataTable({
