@@ -208,6 +208,48 @@ class Matriz extends CI_Controller {
     }
     // Fin Funciones para el tab Movimientos
 
+    // Funciones para el tab Transaccionalidad
+    public function get_nuevo_transaccionalidad() {
+
+        $this->load->view('formularios_matriz/form_transaccionalidad');
+        
+    }
+    
+    public function get_insert_transaccionalidad(){
+            
+            $id = $this->input->post('id');
+            $data = array(            
+                'r_min' => $this->input->post('minimo'),
+                'r_max' => $this->input->post('maximo'),
+                'calificacion' => $this->input->post('clasificacion'),
+                'divisa' => $this->input->post('divisa')
+            );
+                
+            if($id > 0)
+            {
+                $list_nuevo_transaccionalidad = $this->matriz_model->get_update_transaccionalidad($data,$id);
+            }
+            else
+            {
+                $list_nuevo_transaccionalidad = $this->matriz_model->get_insert_transaccionalidad($data);
+            }
+    }
+    
+    public function get_update_transaccionalidad() {
+        $id_transaccionalidad = $this->input->post('id');
+        $datos_transaccionalidad = $this->matriz_model->get_consulta_transaccionalidad($id_transaccionalidad);
+        foreach ( $datos_transaccionalidad as $item_transaccionalidad) { 
+            $data['Id'] = $item_transaccionalidad['Id'];
+            $data['r_min'] = $item_transaccionalidad['r_min'];
+            $data['r_max'] = $item_transaccionalidad['r_max'];
+            $data['calificacion'] = $item_transaccionalidad['calificacion'];
+            $data['divisa'] = $item_transaccionalidad['divisa'];
+        }
+        $this->load->view('formularios_matriz/form_transaccionalidad',$data);
+    }
+    // Fin Funciones para el tab Movimientos
+    
+
 }
 
 /* End of file matriz.php */

@@ -137,7 +137,7 @@
                                     <td><?php echo $transaccion['calificacion'];?></td>
                                     <td class="center"><?php echo $transaccion['divisa'];?> </td>                                    
                                     <td class="center">
-                                     <button id="editar" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $transaccion['Id'];?>" data-persona="<?php echo $transaccion['Id'];?>" data-edit="editClient" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
+                                     <button id="editar_transaccionalidad" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $transaccion['Id'];?>" data-persona="<?php echo $transaccion['Id'];?>" data-edit="editTransaccionalidad" data-modal="form-primary-transaccionalidad" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
                                  <?php endforeach;?>
                                </tbody>
@@ -351,6 +351,24 @@
             <!-- Nifty Modal Frecuencia de Pago -->
              <form id="form-frecuencia-pago">
               <div id="form-primary-frecuencia-pago" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
+                <div class="md-content">
+                  <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
+                  </div>
+                  <div class="modal-body form">
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
+                    <button type="submit" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Guardar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="md-overlay"></div>
+            </form>
+            <!-- Nifty Modal Transaccionalidad -->
+             <form id="form-transaccionalidad">
+              <div id="form-primary-transaccionalidad" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
                 <div class="md-content">
                   <div class="modal-header">
                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>

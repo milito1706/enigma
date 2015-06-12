@@ -234,6 +234,39 @@
             console.log("editar" + " " + id);
         })
     })
+
+    // Nuevo Transaccionalidad
+    $(document).on('click','#new_transaccionalidad',function(){        
+        var action =$(this).attr('data-new');
+        params={};        
+        $('.modal-body').load('get_nuevo_transaccionalidad', params,function() {
+            console.log("nuevo transaccionalidad");
+        })  
+    })
+
+    $("#form-transaccionalidad").submit(function() {
+              var formulario_transaccionalidad = $("#form-transaccionalidad").serializeArray();
+              console.log('Form transaccionalidad');
+                $.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    url: "get_insert_transaccionalidad",
+                    cache: false,
+                    data: formulario_transaccionalidad
+                });
+                return false;
+    });
+
+    $(document).on('click','#editar_transaccionalidad',function() {
+        var id = $(this).attr('data-id');       
+        var action =$(this).attr('data-edit');
+        params={};
+        console.log(params.id = id);        
+        console.log(params.action = action);
+        $('#form-primary-transaccionalidad .modal-body').load('get_update_transaccionalidad', params,function(){
+            console.log("editar" + " " + id);
+        })
+    })
 ////////////////////////////////////////////////////////////////////////////////
 
 $('.table').dataTable({

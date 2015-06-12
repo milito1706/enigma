@@ -114,5 +114,22 @@ class Matriz_model extends CI_Model{
     }
     // Fin Frecuenca de Pagos
     
+    // Tab transaccionalidad
+    public function get_insert_transaccionalidad($data) {
+        $this->db->insert('transaccionalidad',$data); 
+    }
+
+    public function get_consulta_transaccionalidad($id) {
+        $query = $this->db->get_where('transaccionalidad', array('Id' => $id));
+        return $query->result_array();
+    }
+
+    public function get_update_transaccionalidad($data, $id) {
+        $this->db->where('Id', $id);
+        $this->db->update('transaccionalidad',$data);
+    }
+    // Fin transaccionalidad
+    
+    
 }
 ?>
