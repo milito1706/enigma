@@ -108,8 +108,8 @@ class Matriz extends CI_Controller {
             //$id_credito=$this->input->post('id_credito');
             $id = $this->input->post('id');
             $data = array(            
-                'codigo'=>$this->input->post('T2'),
-                'etiqueta'=>$this->input->post('T1')                
+                'codigo' => $this->input->post('T2'),
+                'etiqueta' => $this->input->post('T1')                
             );
                 
             if($id > 0)
@@ -124,7 +124,7 @@ class Matriz extends CI_Controller {
     
     public function get_update_tipo_persona() {
         $id_tipo_persona = $this->input->post('id');
-        $datos_tipo_persona = $this->matriz_model->get_consulta_productos($id_tipo_persona);
+        $datos_tipo_persona = $this->matriz_model->get_consulta_tipo_persona($id_tipo_persona);
         foreach ( $datos_tipo_persona as $item_tipo_persona) { 
             $data['Id'] = $item_tipo_persona['Id'];
             $data['codigo'] = $item_tipo_persona['codigo'];

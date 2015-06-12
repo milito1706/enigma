@@ -11,9 +11,9 @@
       <label>Calificación</label>
       <select name="T2" id="T2" class="form-control">
         <option value=""></option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+        <option value="1" <?php if ( !empty($codigo == 1) ) echo 'selected="selected"'; ?> > 1 </option>
+        <option value="2" <?php if ( !empty($codigo == 2) ) echo 'selected="selected"'; ?> > 2 </option>
+        <option value="3" <?php if ( !empty($codigo == 3) ) echo 'selected="selected"'; ?> > 3 </option>
       </select>
     </div>
   </div>
