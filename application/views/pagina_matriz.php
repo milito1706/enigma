@@ -44,7 +44,7 @@
                         </div>
                         <div class="content">
                           <div>
-                            <table id="datatable-productos" class="no-border blue">
+                            <table id="datatable-productos" class="table no-border blue">
                               <thead>
                                 <tr>
                                   <th>Nombre</th>
@@ -149,15 +149,29 @@
                    </div> 
                  </div>
                  <div id="estados" class="tab-pane">
-                  <h3 class="hthin">Riesgo por estados</h3>
-                  <p>This is just an example of content writen by <b>Jeff Hanneman</b>, as you can see it is a clean design with large</p>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="block-flat">                        
+                        <div class="content">
+                          <h3>Mapa</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div id="pais" class="tab-pane">
-                  <h3 class="hthin">Riesgo por país</h3>
-                  <p>This is just an example of content writen by <b>Jeff Hanneman</b>, as you can see it is a clean design with large</p>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="block-flat">                        
+                        <div class="content">
+                          <h3>Mapa 2</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div id="actividad" class="tab-pane">
-                  <h3 class="hthin">Transaccionalidad</h3>
+                  <h3 class="hthin">Riesgo por Actividad</h3>
                   <div class="row">
                     <div class="col-md-12">
                       <div class="block-flat">                        
@@ -177,7 +191,7 @@
                                     <td><?php echo $actividad['actividad_economica'];?></td>
                                     <td><?php echo $actividad['calificacion'];?></td>                                                                       
                                     <td class="center">
-                                     <button id="editar" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $actividad['Id'];?>" data-persona="<?php echo $actividad['Id'];?>" data-edit="editClient" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
+                                     <button id="editar_actividad" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $actividad['Id'];?>" data-persona="<?php echo $actividad['Id'];?>" data-edit="editActividad" data-modal="form-primary-actividad" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
                                  <?php endforeach;?>
                                </tbody>
@@ -402,9 +416,26 @@
               </div>
               <div class="md-overlay"></div>
             </form>
-          </div>          
+            <!-- Nifty Modal Actividad -->
+             <form id="form-actividad">
+              <div id="form-primary-actividad" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
+                <div class="md-content">
+                  <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
+                  </div>
+                  <div class="modal-body form">
 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
+                    <button type="submit" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Guardar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="md-overlay"></div>
+            </form>
 
+          </div>
         </div>        
       </div>
 

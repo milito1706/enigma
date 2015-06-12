@@ -288,6 +288,44 @@ class Matriz extends CI_Controller {
     }
     // Fin Funciones para el tab No Personas
 
+    // Funciones para el tab Actividad
+    public function get_nuevo_actividad() {
+
+        $this->load->view('formularios_matriz/form_actividad');
+        
+    }
+    
+    public function get_insert_actividad(){
+            
+            $id = $this->input->post('id');
+            $data = array(            
+                'calificacion' => $this->input->post('calificacion'),
+                'riesgo' => $this->input->post('riesgo')
+            );
+                
+            if($id > 0)
+            {
+                $list_nuevo_actividad = $this->matriz_model->get_update_actividad($data,$id);
+            }
+            else
+            {
+                $list_nuevo_actividad = $this->matriz_model->get_insert_actividad($data);
+            }
+    }
+    
+    public function get_update_actividad() {
+        $id_actividad = $this->input->post('id');
+        $datos_actividad = $this->matriz_model->get_consulta_actividad($id_actividad);
+        foreach ( $datos_actividad as $item_actividad) { 
+            $data['Id'] = $item_actividad['Id'];
+            $data['actividad_economica'] = $item_actividad['actividad_economica'];
+            $data['calificacion'] = $item_actividad['calificacion'];
+            $data['riesgo'] = $item_actividad['riesgo'];            
+        }
+        $this->load->view('formularios_matriz/form_actividad',$data);
+    }
+    // Fin Funciones para el tab No Personas
+
 }
 
 /* End of file matriz.php */

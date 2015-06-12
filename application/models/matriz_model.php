@@ -146,6 +146,20 @@ class Matriz_model extends CI_Model{
     }
     // Fin no personas
     
-    
+    // Tab Actividad
+    public function get_insert_actividad($data) {
+        $this->db->insert('r_actividad',$data); 
+    }
+
+    public function get_consulta_actividad($id) {
+        $query = $this->db->get_where('r_actividad', array('Id' => $id));
+        return $query->result_array();
+    }
+
+    public function get_update_actividad($data, $id) {
+        $this->db->where('Id', $id);
+        $this->db->update('r_actividad',$data);
+    }
+    // Fin no personas
 }
 ?>

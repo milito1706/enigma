@@ -274,6 +274,39 @@ $(document).ready(function(){
             console.log("editar" + " " + id);
         })
     })
+
+    // Nuevo Actividad
+    $(document).on('click','#new_actividad',function(){        
+        var action =$(this).attr('data-new');
+        params={};        
+        $('.modal-body').load('get_nuevo_actividad', params,function() {
+            console.log("nuevo actividad");
+        })  
+    })
+
+    $("#form-actividad").submit(function() {
+              var formulario_actividad = $("#form-actividad").serializeArray();
+              console.log('Form actividad');
+                $.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    url: "get_insert_actividad",
+                    cache: false,
+                    data: formulario_actividad
+                });
+                return false;
+    });
+
+    $(document).on('click','#editar_actividad',function() {
+        var id = $(this).attr('data-id');       
+        var action =$(this).attr('data-edit');
+        params={};
+        console.log(params.id = id);        
+        console.log(params.action = action);
+        $('#form-primary-actividad .modal-body').load('get_update_actividad', params,function(){
+            console.log("editar" + " " + id);
+        })
+    })
 ////////////////////////////////////////////////////////////////////////////////
 
 $('.table').dataTable({
