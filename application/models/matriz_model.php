@@ -82,5 +82,21 @@ class Matriz_model extends CI_Model{
     }
     // Fin Tipo Persona
     
+    // Tab Movimientos
+    public function get_insert_movimiento($data) {
+        $this->db->insert('cat_origen_pago',$data); 
+    }
+
+    public function get_consulta_movimiento($id) {
+        $query = $this->db->get_where('cat_origen_pago', array('Id' => $id));
+        return $query->result_array();
+    }
+
+    public function get_update_movimiento($data, $id) {
+        $this->db->where('Id', $id);
+        $this->db->update('cat_origen_pago',$data);
+    }
+    // Fin Movimientos
+    
 }
 ?>

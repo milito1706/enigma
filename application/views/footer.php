@@ -158,13 +158,46 @@
                 return false;
     });
 
-     $(document).on('click','#editar_tipo_persona',function() {
+    $(document).on('click','#editar_tipo_persona',function() {
         var id = $(this).attr('data-id');       
         var action =$(this).attr('data-edit');
         params={};
         console.log(params.id = id);        
         console.log(params.action = action);
         $('#form-primary-tipo-persona .modal-body').load('get_update_tipo_persona', params,function(){
+            console.log("editar" + " " + id);
+        })
+    })
+
+    // Nuevo Movimientos
+    $(document).on('click','#new_movimiento',function(){        
+        var action =$(this).attr('data-new');
+        params={};        
+        $('.modal-body').load('get_nuevo_movimiento', params,function() {
+            console.log("nuevo movimiento");
+        })  
+    })
+
+    $("#form-movimientos").submit(function() {
+              var formulario_movimiento = $("#form-movimientos").serializeArray();
+              console.log('Form movimiento');
+                $.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    url: "get_insert_movimiento",
+                    cache: false,
+                    data: formulario_movimiento
+                });
+                return false;
+    });
+
+    $(document).on('click','#editar_movimiento',function() {
+        var id = $(this).attr('data-id');       
+        var action =$(this).attr('data-edit');
+        params={};
+        console.log(params.id = id);        
+        console.log(params.action = action);
+        $('#form-primary-movimiento .modal-body').load('get_update_movimiento', params,function(){
             console.log("editar" + " " + id);
         })
     })

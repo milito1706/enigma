@@ -132,6 +132,44 @@ class Matriz extends CI_Controller {
         }
         $this->load->view('formularios_matriz/form_tipo_persona',$data);
     }
+    // Fin Funciones para el tab Tipo Persona
+    
+    // Funciones para el tab Movimientos
+    public function get_nuevo_movimiento() {
+
+        $this->load->view('formularios_matriz/form_movimiento');
+        
+    }
+    
+    public function get_insert_movimiento(){
+            
+            $id = $this->input->post('id');
+            $data = array(            
+                'etiqueta' => $this->input->post('etiqueta'),
+                'calificacion' => $this->input->post('calificacion')
+            );
+                
+            if($id > 0)
+            {
+                $list_nuevo_movimiento = $this->matriz_model->get_update_movimiento($data,$id);
+            }
+            else
+            {
+                $list_nuevo_movimiento = $this->matriz_model->get_insert_movimiento($data);
+            }
+    }
+    
+    public function get_update_movimiento() {
+        $id_movimiento = $this->input->post('id');
+        $datos_movimiento = $this->matriz_model->get_consulta_movimiento($id_movimiento);
+        foreach ( $datos_movimiento as $item_movimiento) { 
+            $data['Id'] = $item_movimiento['Id'];
+            $data['etiqueta'] = $item_movimiento['etiqueta'];
+            $data['calificacion'] = $item_movimiento['calificacion'];
+        }
+        $this->load->view('formularios_matriz/form_movimiento',$data);
+    }
+    // Fin Funciones para el tab Movimientos
 }
 
 /* End of file matriz.php */

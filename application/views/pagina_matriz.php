@@ -198,7 +198,7 @@
                         </div>
                         <div class="content">
                           <div>
-                            <table id="datatable-tipo_persona" class="table table-bordered">
+                            <table id="datatable-tipo_persona" class="table no-border blue">
                               <thead>
                                 <tr>
                                   <th>Nombre</th>
@@ -246,7 +246,7 @@
                                     <td><?php echo $num_persona['r_max'];?></td>                                                                       
                                     <td><?php echo $num_persona['calificacion'];?></td>                                                                       
                                     <td class="center">
-                                     <button id="editar" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $num_persona['Id'];?>" data-persona="<?php echo $num_persona['Id'];?>" data-edit="editClient" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
+                                     <button id="editar_movimiento" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $num_persona['Id'];?>" data-persona="<?php echo $num_persona['Id'];?>" data-edit="editClient" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
                                  <?php endforeach;?>
                                </tbody>
@@ -261,7 +261,10 @@
                   <h3 class="hthin">Movimientos</h3>
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="block-flat">                        
+                      <div class="block-flat"> 
+                      <div class="butpro  btn btn-sm md-trigger" id="new_movimiento" data-modal="form-primary-movimiento">
+                          <i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Nuevo Movimiento
+                        </div>                      
                         <div class="content">
                           <div>
                             <table id="datatable-movimientos" class="table table-bordered">
@@ -278,7 +281,7 @@
                                     <td><?php echo $movimiento['etiqueta'];?></td>
                                     <td><?php echo $movimiento['calificacion'];?></td>                                                                      
                                     <td class="center">
-                                     <button id="editar" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $movimiento['Id'];?>" data-persona="<?php echo $movimiento['Id'];?>" data-edit="editClient" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
+                                     <button id="editar_movimiento" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $movimiento['Id'];?>" data-persona="<?php echo $movimiento['Id'];?>" data-edit="editMovimiento" data-modal="form-primary-movimiento" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
                                  <?php endforeach;?>
                                </tbody>
@@ -312,6 +315,24 @@
             <!-- Nifty Modal Tipo de Persona -->
              <form id="form-tipo-persona">
               <div id="form-primary-tipo-persona" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
+                <div class="md-content">
+                  <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
+                  </div>
+                  <div class="modal-body form">
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
+                    <button type="submit" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Guardar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="md-overlay"></div>
+            </form>
+            <!-- Nifty Modal Movimientos -->
+             <form id="form-movimientos">
+              <div id="form-primary-movimiento" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
                 <div class="md-content">
                   <div class="modal-header">
                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
