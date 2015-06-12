@@ -81,7 +81,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="block-flat">
-                        <div class="butpro butstyle-credit btn-sm md-trigger" id="new_producto" data-modal="form-primary-productos">
+                        <div class="butpro btn btn-sm md-trigger" id="new_frecuencia_pago" data-modal="form-primary-frecuencia-pago">
                           <i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Frecuencia de Pago
                         </div>
                         <div class="content">
@@ -100,7 +100,7 @@
                                     <td><?php echo $frecuencia_pago['unidad_credito'];?></td>
                                     <td><?php echo $frecuencia_pago['frecuencia_pago'];?></td>                                
                                     <td class="center">
-                                     <button id="editar" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $frecuencia_pago['unidad_credito'];?>" data-persona="<?php echo $frecuencia_pago['unidad_credito'];?>" data-edit="editClient" data-modal="modal-tab" ><i class="fa fa-pencil"></i></button></td>
+                                     <button id="editar_frecuencia_pago" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $frecuencia_pago['id'];?>" data-persona="<?php echo $frecuencia_pago['unidad_credito'];?>" data-edit="editFrecuencia" data-modal="form-primary-frecuencia-pago" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
                                  <?php endforeach;?>
                                  
@@ -267,7 +267,7 @@
                         </div>                      
                         <div class="content">
                           <div>
-                            <table id="datatable-movimientos" class="table table-bordered">
+                            <table id="datatable-movimientos" class="table no-border blue">
                               <thead>
                                 <tr>
                                   <th>Nombre</th>                                  
@@ -347,7 +347,26 @@
                 </div>
               </div>
               <div class="md-overlay"></div>
+            </form>              
+            <!-- Nifty Modal Frecuencia de Pago -->
+             <form id="form-frecuencia-pago">
+              <div id="form-primary-frecuencia-pago" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
+                <div class="md-content">
+                  <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
+                  </div>
+                  <div class="modal-body form">
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
+                    <button type="submit" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Guardar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="md-overlay"></div>
             </form>
+
           </div>          
 
 

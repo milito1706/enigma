@@ -170,6 +170,44 @@ class Matriz extends CI_Controller {
         $this->load->view('formularios_matriz/form_movimiento',$data);
     }
     // Fin Funciones para el tab Movimientos
+
+    // Funciones para el tab Movimientos
+    public function get_nuevo_frecuencia_pago() {
+
+        $this->load->view('formularios_matriz/form_frecuencia_pago');
+        
+    }
+    
+    public function get_insert_frecuencia_pago(){
+            
+            $id = $this->input->post('id');
+            $data = array(            
+                'unidad_credito' => $this->input->post('unidad_credito'),
+                'frecuencia_pago' => $this->input->post('frecuencia_pago')
+            );
+                
+            if($id > 0)
+            {
+                $list_nuevo_frecuencia_pago = $this->matriz_model->get_update_frecuencia_pago($data,$id);
+            }
+            else
+            {
+                $list_nuevo_frecuencia_pago = $this->matriz_model->get_insert_frecuencia_pago($data);
+            }
+    }
+    
+    public function get_update_frecuencia_pago() {
+        $id_frecuencia_pago = $this->input->post('id');
+        $datos_frecuencia_pago = $this->matriz_model->get_consulta_frecuencia_pago($id_frecuencia_pago);
+        foreach ( $datos_frecuencia_pago as $item_frecuencia_pago) { 
+            $data['id'] = $item_frecuencia_pago['id'];
+            $data['unidad_credito'] = $item_frecuencia_pago['unidad_credito'];
+            $data['frecuencia_pago'] = $item_frecuencia_pago['frecuencia_pago'];
+        }
+        $this->load->view('formularios_matriz/form_frecuencia_pago',$data);
+    }
+    // Fin Funciones para el tab Movimientos
+
 }
 
 /* End of file matriz.php */

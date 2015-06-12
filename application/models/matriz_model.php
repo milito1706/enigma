@@ -98,5 +98,21 @@ class Matriz_model extends CI_Model{
     }
     // Fin Movimientos
     
+    // Tab Frecuencia de Pagos
+    public function get_insert_frecuencia_pago($data) {
+        $this->db->insert('cat_unidadcredito',$data); 
+    }
+
+    public function get_consulta_frecuencia_pago($id) {
+        $query = $this->db->get_where('cat_unidadcredito', array('id' => $id));
+        return $query->result_array();
+    }
+
+    public function get_update_frecuencia_pago($data, $id) {
+        $this->db->where('id', $id);
+        $this->db->update('cat_unidadcredito',$data);
+    }
+    // Fin Frecuenca de Pagos
+    
 }
 ?>

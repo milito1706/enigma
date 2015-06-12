@@ -201,6 +201,39 @@
             console.log("editar" + " " + id);
         })
     })
+
+    // Nuevo Frecuencia de Pagos
+    $(document).on('click','#new_frecuencia_pago',function(){        
+        var action =$(this).attr('data-new');
+        params={};        
+        $('.modal-body').load('get_nuevo_frecuencia_pago', params,function() {
+            console.log("nuevo frecuencia pago");
+        })  
+    })
+
+    $("#form-frecuencia-pago").submit(function() {
+              var formulario_frecuencia_pago = $("#form-frecuencia-pago").serializeArray();
+              console.log('Form frecuencia pago');
+                $.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    url: "get_insert_frecuencia_pago",
+                    cache: false,
+                    data: formulario_frecuencia_pago
+                });
+                return false;
+    });
+
+    $(document).on('click','#editar_frecuencia_pago',function() {
+        var id = $(this).attr('data-id');       
+        var action =$(this).attr('data-edit');
+        params={};
+        console.log(params.id = id);        
+        console.log(params.action = action);
+        $('#form-primary-frecuencia-pago .modal-body').load('get_update_frecuencia_pago', params,function(){
+            console.log("editar" + " " + id);
+        })
+    })
 ////////////////////////////////////////////////////////////////////////////////
 
 $('.table').dataTable({
