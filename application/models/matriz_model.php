@@ -130,6 +130,22 @@ class Matriz_model extends CI_Model{
     }
     // Fin transaccionalidad
     
+    // Tab no personas
+    public function get_insert_nopersonas($data) {
+        $this->db->insert('r_numpersonas',$data); 
+    }
+
+    public function get_consulta_nopersonas($id) {
+        $query = $this->db->get_where('r_numpersonas', array('Id' => $id));
+        return $query->result_array();
+    }
+
+    public function get_update_nopersonas($data, $id) {
+        $this->db->where('Id', $id);
+        $this->db->update('r_numpersonas',$data);
+    }
+    // Fin no personas
+    
     
 }
 ?>

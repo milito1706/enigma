@@ -247,8 +247,46 @@ class Matriz extends CI_Controller {
         }
         $this->load->view('formularios_matriz/form_transaccionalidad',$data);
     }
-    // Fin Funciones para el tab Movimientos
+    // Fin Funciones para el tab Transaccionalidad
     
+    // Funciones para el tab No Personas
+    public function get_nuevo_nopersonas() {
+
+        $this->load->view('formularios_matriz/form_nopersonas');
+        
+    }
+    
+    public function get_insert_nopersonas(){
+            
+            $id = $this->input->post('id');
+            $data = array(            
+                'r_min' => $this->input->post('minimo'),
+                'r_max' => $this->input->post('maximo'),
+                'calificacion' => $this->input->post('clasificacion'),                
+            );
+                
+            if($id > 0)
+            {
+                $list_nuevo_nopersonas = $this->matriz_model->get_update_nopersonas($data,$id);
+            }
+            else
+            {
+                $list_nuevo_nopersonas = $this->matriz_model->get_insert_nopersonas($data);
+            }
+    }
+    
+    public function get_update_nopersonas() {
+        $id_nopersonas = $this->input->post('id');
+        $datos_nopersonas = $this->matriz_model->get_consulta_nopersonas($id_nopersonas);
+        foreach ( $datos_nopersonas as $item_nopersonas) { 
+            $data['Id'] = $item_nopersonas['Id'];
+            $data['r_min'] = $item_nopersonas['r_min'];
+            $data['r_max'] = $item_nopersonas['r_max'];
+            $data['calificacion'] = $item_nopersonas['calificacion'];            
+        }
+        $this->load->view('formularios_matriz/form_nopersonas',$data);
+    }
+    // Fin Funciones para el tab No Personas
 
 }
 
