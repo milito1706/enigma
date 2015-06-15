@@ -44,7 +44,7 @@
                         </div>
                         <div class="content">
                           <div>
-                            <table id="datatable-productos" class="table no-border blue">
+                            <table data-order='[[ 1, "desc" ]]' id="datatable-productos" class="table no-border blue">
                               <thead>
                                 <tr>
                                   <th>Nombre</th>
@@ -154,6 +154,7 @@
                       <div class="block-flat">                        
                         <div class="content">
                           <h3>Mapa</h3>
+                           <div id="chart_div" style="width: 700px; height: 500px;"></div>
                         </div>
                       </div>
                     </div>
@@ -442,5 +443,29 @@
     </div>
   </div> 
 
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+     google.load('visualization', '1', {'packages': ['geochart']});
+     google.setOnLoadCallback(drawMarkersMap);
+
+      function drawMarkersMap() {
+      var data = google.visualization.arrayToDataTable([
+        ['City',   'Factor Riesgo'],
+        ['MEXICO',1],
+        ['DISTRITO FEDERAL',1],
+        ['AGUASCALIENTES',2],
+        ['YUCATAN',3]
+      ]);
+
+      var options = {
+        region: 'MX',
+        displayMode:'markers',
+        colorAxis: {colors: ['#00853f', 'yellow', '#e31b23']},
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    };
+</script>
 </body>
 </html>

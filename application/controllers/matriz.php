@@ -9,7 +9,7 @@ class Matriz extends CI_Controller {
 		$this->load->model('matriz_model');
     }
     // Funcion que me consulta todos los resultados de la matriz de riesgo
-    public function mostrar_pagina_matriz(){
+    public function mostrar_pagina_matriz() {
 
         // Obtengo los productos
 		$listadoProductos = $this->matriz_model->get_Productos();
@@ -49,7 +49,7 @@ class Matriz extends CI_Controller {
         
     }
 
-    public function get_Insert_Nuevo_Producto(){
+    public function get_Insert_Nuevo_Producto() {
             //$id_credito=$this->input->post('id_credito');
             $id = $this->input->post('id');
             $data = array(            
@@ -97,6 +97,122 @@ class Matriz extends CI_Controller {
     }
     // Fin Funciones para el tab Productos
     
+    // Funciones para el tab Frecuencia de Pagos
+    public function get_nuevo_frecuencia_pago() {
+
+        $this->load->view('formularios_matriz/form_frecuencia_pago');
+        
+    }
+    
+    public function get_insert_frecuencia_pago() {
+            
+            $id = $this->input->post('id');
+            $data = array(
+                'unidad_credito' => $this->input->post('unidad_credito'),
+                'frecuencia_pago' => $this->input->post('frecuencia_pago')
+            );
+                
+            if($id > 0)
+            {
+                $list_nuevo_frecuencia_pago = $this->matriz_model->get_update_frecuencia_pago($data,$id);
+            }
+            else
+            {
+                $list_nuevo_frecuencia_pago = $this->matriz_model->get_insert_frecuencia_pago($data);
+            }
+    }
+    
+    public function get_update_frecuencia_pago() {
+        $id_frecuencia_pago = $this->input->post('id');
+        $datos_frecuencia_pago = $this->matriz_model->get_consulta_frecuencia_pago($id_frecuencia_pago);
+        foreach ( $datos_frecuencia_pago as $item_frecuencia_pago) { 
+            $data['id'] = $item_frecuencia_pago['id'];
+            $data['unidad_credito'] = $item_frecuencia_pago['unidad_credito'];
+            $data['frecuencia_pago'] = $item_frecuencia_pago['frecuencia_pago'];
+        }
+        $this->load->view('formularios_matriz/form_frecuencia_pago',$data);
+    }
+    // Fin Funciones para Frecuencia Pagos
+
+    // Funciones para el tab Transaccionalidad
+    public function get_nuevo_transaccionalidad() {
+
+        $this->load->view('formularios_matriz/form_transaccionalidad');
+        
+    }
+    
+    public function get_insert_transaccionalidad() {
+            
+            $id = $this->input->post('id');
+            $data = array(            
+                'r_min' => $this->input->post('minimo'),
+                'r_max' => $this->input->post('maximo'),
+                'calificacion' => $this->input->post('clasificacion'),
+                'divisa' => $this->input->post('divisa')
+            );
+                
+            if($id > 0)
+            {
+                $list_nuevo_transaccionalidad = $this->matriz_model->get_update_transaccionalidad($data,$id);
+            }
+            else
+            {
+                $list_nuevo_transaccionalidad = $this->matriz_model->get_insert_transaccionalidad($data);
+            }
+    }
+    
+    public function get_update_transaccionalidad() {
+        $id_transaccionalidad = $this->input->post('id');
+        $datos_transaccionalidad = $this->matriz_model->get_consulta_transaccionalidad($id_transaccionalidad);
+        foreach ( $datos_transaccionalidad as $item_transaccionalidad) { 
+            $data['Id'] = $item_transaccionalidad['Id'];
+            $data['r_min'] = $item_transaccionalidad['r_min'];
+            $data['r_max'] = $item_transaccionalidad['r_max'];
+            $data['calificacion'] = $item_transaccionalidad['calificacion'];
+            $data['divisa'] = $item_transaccionalidad['divisa'];
+        }
+        $this->load->view('formularios_matriz/form_transaccionalidad',$data);
+    }
+    // Fin Funciones para el tab Transaccionalidad
+
+    // Funciones para el tab Actividad
+    public function get_nuevo_actividad() {
+
+        $this->load->view('formularios_matriz/form_actividad');
+        
+    }
+    
+    public function get_insert_actividad() {
+            
+            $id = $this->input->post('id');
+            $data = array(            
+                'calificacion' => $this->input->post('calificacion'),
+                'riesgo' => $this->input->post('riesgo')
+            );
+                
+            if($id > 0)
+            {
+                $list_nuevo_actividad = $this->matriz_model->get_update_actividad($data,$id);
+            }
+            else
+            {
+                $list_nuevo_actividad = $this->matriz_model->get_insert_actividad($data);
+            }
+    }
+    
+    public function get_update_actividad() {
+        $id_actividad = $this->input->post('id');
+        $datos_actividad = $this->matriz_model->get_consulta_actividad($id_actividad);
+        foreach ( $datos_actividad as $item_actividad) { 
+            $data['Id'] = $item_actividad['Id'];
+            $data['actividad_economica'] = $item_actividad['actividad_economica'];
+            $data['calificacion'] = $item_actividad['calificacion'];
+            $data['riesgo'] = $item_actividad['riesgo'];            
+        }
+        $this->load->view('formularios_matriz/form_actividad',$data);
+    }
+    // Fin Funciones para el tab Actividad
+
     // Funciones para el tab Tipo Persona
     public function get_nuevo_tipo_persona() {
 
@@ -104,7 +220,7 @@ class Matriz extends CI_Controller {
         
     }
     
-    public function get_insert_tipo_persona(){
+    public function get_insert_tipo_persona() {
             //$id_credito=$this->input->post('id_credito');
             $id = $this->input->post('id');
             $data = array(            
@@ -134,6 +250,45 @@ class Matriz extends CI_Controller {
     }
     // Fin Funciones para el tab Tipo Persona
     
+    // Funciones para el tab No Personas
+    public function get_nuevo_nopersonas() {
+
+        $this->load->view('formularios_matriz/form_nopersonas');
+        
+    }
+    
+    public function get_insert_nopersonas() {
+            
+            $id = $this->input->post('id');
+            $data = array(            
+                'r_min' => $this->input->post('minimo'),
+                'r_max' => $this->input->post('maximo'),
+                'calificacion' => $this->input->post('clasificacion'),                
+            );
+                
+            if($id > 0)
+            {
+                $list_nuevo_nopersonas = $this->matriz_model->get_update_nopersonas($data,$id);
+            }
+            else
+            {
+                $list_nuevo_nopersonas = $this->matriz_model->get_insert_nopersonas($data);
+            }
+    }
+    
+    public function get_update_nopersonas() {
+        $id_nopersonas = $this->input->post('id');
+        $datos_nopersonas = $this->matriz_model->get_consulta_nopersonas($id_nopersonas);
+        foreach ( $datos_nopersonas as $item_nopersonas) { 
+            $data['Id'] = $item_nopersonas['Id'];
+            $data['r_min'] = $item_nopersonas['r_min'];
+            $data['r_max'] = $item_nopersonas['r_max'];
+            $data['calificacion'] = $item_nopersonas['calificacion'];            
+        }
+        $this->load->view('formularios_matriz/form_nopersonas',$data);
+    }
+    // Fin Funciones para el tab No Personas
+
     // Funciones para el tab Movimientos
     public function get_nuevo_movimiento() {
 
@@ -170,161 +325,8 @@ class Matriz extends CI_Controller {
         $this->load->view('formularios_matriz/form_movimiento',$data);
     }
     // Fin Funciones para el tab Movimientos
-
-    // Funciones para el tab Movimientos
-    public function get_nuevo_frecuencia_pago() {
-
-        $this->load->view('formularios_matriz/form_frecuencia_pago');
-        
-    }
     
-    public function get_insert_frecuencia_pago(){
-            
-            $id = $this->input->post('id');
-            $data = array(            
-                'unidad_credito' => $this->input->post('unidad_credito'),
-                'frecuencia_pago' => $this->input->post('frecuencia_pago')
-            );
-                
-            if($id > 0)
-            {
-                $list_nuevo_frecuencia_pago = $this->matriz_model->get_update_frecuencia_pago($data,$id);
-            }
-            else
-            {
-                $list_nuevo_frecuencia_pago = $this->matriz_model->get_insert_frecuencia_pago($data);
-            }
-    }
     
-    public function get_update_frecuencia_pago() {
-        $id_frecuencia_pago = $this->input->post('id');
-        $datos_frecuencia_pago = $this->matriz_model->get_consulta_frecuencia_pago($id_frecuencia_pago);
-        foreach ( $datos_frecuencia_pago as $item_frecuencia_pago) { 
-            $data['id'] = $item_frecuencia_pago['id'];
-            $data['unidad_credito'] = $item_frecuencia_pago['unidad_credito'];
-            $data['frecuencia_pago'] = $item_frecuencia_pago['frecuencia_pago'];
-        }
-        $this->load->view('formularios_matriz/form_frecuencia_pago',$data);
-    }
-    // Fin Funciones para el tab Movimientos
-
-    // Funciones para el tab Transaccionalidad
-    public function get_nuevo_transaccionalidad() {
-
-        $this->load->view('formularios_matriz/form_transaccionalidad');
-        
-    }
-    
-    public function get_insert_transaccionalidad(){
-            
-            $id = $this->input->post('id');
-            $data = array(            
-                'r_min' => $this->input->post('minimo'),
-                'r_max' => $this->input->post('maximo'),
-                'calificacion' => $this->input->post('clasificacion'),
-                'divisa' => $this->input->post('divisa')
-            );
-                
-            if($id > 0)
-            {
-                $list_nuevo_transaccionalidad = $this->matriz_model->get_update_transaccionalidad($data,$id);
-            }
-            else
-            {
-                $list_nuevo_transaccionalidad = $this->matriz_model->get_insert_transaccionalidad($data);
-            }
-    }
-    
-    public function get_update_transaccionalidad() {
-        $id_transaccionalidad = $this->input->post('id');
-        $datos_transaccionalidad = $this->matriz_model->get_consulta_transaccionalidad($id_transaccionalidad);
-        foreach ( $datos_transaccionalidad as $item_transaccionalidad) { 
-            $data['Id'] = $item_transaccionalidad['Id'];
-            $data['r_min'] = $item_transaccionalidad['r_min'];
-            $data['r_max'] = $item_transaccionalidad['r_max'];
-            $data['calificacion'] = $item_transaccionalidad['calificacion'];
-            $data['divisa'] = $item_transaccionalidad['divisa'];
-        }
-        $this->load->view('formularios_matriz/form_transaccionalidad',$data);
-    }
-    // Fin Funciones para el tab Transaccionalidad
-    
-    // Funciones para el tab No Personas
-    public function get_nuevo_nopersonas() {
-
-        $this->load->view('formularios_matriz/form_nopersonas');
-        
-    }
-    
-    public function get_insert_nopersonas(){
-            
-            $id = $this->input->post('id');
-            $data = array(            
-                'r_min' => $this->input->post('minimo'),
-                'r_max' => $this->input->post('maximo'),
-                'calificacion' => $this->input->post('clasificacion'),                
-            );
-                
-            if($id > 0)
-            {
-                $list_nuevo_nopersonas = $this->matriz_model->get_update_nopersonas($data,$id);
-            }
-            else
-            {
-                $list_nuevo_nopersonas = $this->matriz_model->get_insert_nopersonas($data);
-            }
-    }
-    
-    public function get_update_nopersonas() {
-        $id_nopersonas = $this->input->post('id');
-        $datos_nopersonas = $this->matriz_model->get_consulta_nopersonas($id_nopersonas);
-        foreach ( $datos_nopersonas as $item_nopersonas) { 
-            $data['Id'] = $item_nopersonas['Id'];
-            $data['r_min'] = $item_nopersonas['r_min'];
-            $data['r_max'] = $item_nopersonas['r_max'];
-            $data['calificacion'] = $item_nopersonas['calificacion'];            
-        }
-        $this->load->view('formularios_matriz/form_nopersonas',$data);
-    }
-    // Fin Funciones para el tab No Personas
-
-    // Funciones para el tab Actividad
-    public function get_nuevo_actividad() {
-
-        $this->load->view('formularios_matriz/form_actividad');
-        
-    }
-    
-    public function get_insert_actividad(){
-            
-            $id = $this->input->post('id');
-            $data = array(            
-                'calificacion' => $this->input->post('calificacion'),
-                'riesgo' => $this->input->post('riesgo')
-            );
-                
-            if($id > 0)
-            {
-                $list_nuevo_actividad = $this->matriz_model->get_update_actividad($data,$id);
-            }
-            else
-            {
-                $list_nuevo_actividad = $this->matriz_model->get_insert_actividad($data);
-            }
-    }
-    
-    public function get_update_actividad() {
-        $id_actividad = $this->input->post('id');
-        $datos_actividad = $this->matriz_model->get_consulta_actividad($id_actividad);
-        foreach ( $datos_actividad as $item_actividad) { 
-            $data['Id'] = $item_actividad['Id'];
-            $data['actividad_economica'] = $item_actividad['actividad_economica'];
-            $data['calificacion'] = $item_actividad['calificacion'];
-            $data['riesgo'] = $item_actividad['riesgo'];            
-        }
-        $this->load->view('formularios_matriz/form_actividad',$data);
-    }
-    // Fin Funciones para el tab No Personas
 
 }
 

@@ -14,8 +14,7 @@ class Matriz_model extends CI_Model{
     public function get_Numero_total_productos(){
         return  $this->db->count_all('cat_productos');
     }
-
-    ///CATALOGOS DE FORMULARIO fromulario creditos
+    
     public function get_Catalogotipocredito(){
         $query = $this->db->get('cat_tipocredito');
         return $query->result_array();
