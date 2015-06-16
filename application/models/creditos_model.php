@@ -71,11 +71,11 @@ class Creditos_model extends CI_Model{
     ///////////////
      ///DATOS DE CONSULTA E INSERT MOSTRADOS QUE SE CONECTAN CON EL CONTROLADOR CLIENTES Y SE MUESTRAN EN LA VISTA pagina_detalle_credito.php///
     public function get_Credito_detalle($n_credito){
-        $query = $this->db->query("SELECT Id,no_credito,T1,tipo_moneda,T3,T4,tipo_credito,T2,Estado  FROM book_creditos where no_credito='$n_credito';");
+        $query = $this->db->query("SELECT Id,no_credito,T1,tipo_moneda,T3,T4,tipo_credito,T2,Estado  FROM book_creditos where no_credito='$n_credito' ;");
         return $query->result_array();
     }
     public function get_Movimientos($n_credito){
-        $query = $this->db->query("select T4 as num_movimiento,Id, id_credito,origen_pago,tipo_cargo,tipo_moneda,T1,T2,T3,T4,monto_usd from book_movimientos ,(SELECT @rownum:=0)R where id_credito='$n_credito'");
+        $query = $this->db->query("select T4 as num_movimiento,Id, id_credito,origen_pago,tipo_cargo,tipo_moneda,T1,T2,T3,T4,monto_usd from book_movimientos  where id_credito='$n_credito' order by T2 desc");
         return $query->result_array();
     }
     public function get_consulta_formulario_credito($no_credito){
@@ -102,6 +102,19 @@ class Creditos_model extends CI_Model{
     public function get_Insert_tabla_creditos($data){
         $this->db->insert('book_creditos',$data); 
     }
+    //CATALOGO DE FORMULARIO MOVIMIENTOS
+    public function get_Tcargo(){
+        $query = $this->db->get("cat_tipo_cargo");
+        return $query->result_array();
+    }
+     public function get_Opago(){
+        $query = $this->db->get("cat_origen_pago");
+        return $query->result_array();
+    }
+
+
+
+
     ///////////////
 }
 ?>

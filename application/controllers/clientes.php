@@ -130,16 +130,21 @@ class Clientes extends CI_Controller{
         $this->load->model('creditos_model');
         $listadoCreditos=$this->creditos_model->get_Credito_detalle($id_credito);
         $listadoMovimientos=$this->creditos_model->get_Movimientos($id_credito);
+        $listado_opercioncargo=$this->creditos_model->get_Tcargo();
+        $listado_origenpago=$this->creditos_model->get_Opago();
         
 
-        $total_oi=$this->creditos_model->get_Total_oi($id_cliente);
+
+
+
+
+        /*$total_oi=$this->creditos_model->get_Total_oi($id_cliente);
         $total_or=$this->creditos_model->get_Total_or($id_cliente);
         $total_ip=$this->creditos_model->get_Total_ip($id_cliente);
-        $total_kyc=$this->creditos_model->get_Total_kyc($id_cliente);
+        $total_kyc=$this->creditos_model->get_Total_kyc($id_cliente);*/
         $listado_tipocredito=$this->creditos_model->get_Catalogotipocredito();
         $listado_frecuencia_pagos=$this->creditos_model->get_Frecuenciapago();
         $listado_tipodivisa=$this->creditos_model->get_Divisa();
-        $listado_grafica=$this->creditos_model->get_Grafica_creditos($id_cliente);
         $listado_riesgo_estado=$this->creditos_model->get_R_estado($id_cliente);
         $listado_riesgo_pais=$this->creditos_model->get_R_pais($id_cliente);
         $listado_riesgo_actividad=$this->creditos_model->get_R_actividad($id_cliente);
@@ -148,16 +153,15 @@ class Clientes extends CI_Controller{
         $data['credito']=$id_credito;
         $data['clientes_creditos'] = $listadoCreditos;
         $data['clientes_movimientos'] = $listadoMovimientos;
-
-
-        $data['total_oi']=$total_oi;
-        $data['total_or']=$total_or;
-        $data['total_ip']=$total_ip;
-        $data['total_kyc']=$total_kyc;
+        $data['tcargo']=$listado_opercioncargo;
+        $data['torigen']=$listado_origenpago;
+        //$data['total_oi']=$total_oi;
+        //$data['total_or']=$total_or;
+        //$data['total_ip']=$total_ip;
+        //$data['total_kyc']=$total_kyc;
         $data['tipo_credito'] = $listado_tipocredito;
         $data['frecuencia'] =$listado_frecuencia_pagos;
         $data['tipo_divisa'] =$listado_tipodivisa;
-        $data['graficar'] =$listado_grafica;
         $data['r_estado'] = $listado_riesgo_estado;
         $data['r_pais'] =  $listado_riesgo_pais;
         $data['r_actividad'] =$listado_riesgo_actividad;
@@ -169,5 +173,42 @@ class Clientes extends CI_Controller{
         $this->load->view('footer');
 
     } 
+     public function get_Insert_movimiento(){
+                $id_movimiento=$this->input->post('id_movimiento');
+                $this->load->model('movimientos_model');
+                $numero_pago=$this->movimientos_model->get_Numero_pago($this->input->post('no_credito'));
+                //$this->movimientos_model->
+
+                $data = array( 
+                'id_credito'=>$this->input->post('no_credito'),
+                'origen_pago'=>$this->input->post('origen_pago'),
+                'tipo_cargo'=>$this->input->post('tipo_cargo'),
+                'tipo_moneda'=>$this->input->post('tipo_moneda'),
+                'T1'=>$this->input->post('T1'),
+                'T2'=>$this->input->post('T2'),
+                'T3'=>$this->input->post('T3'),
+                'T4'=>$numero_pago
+                );
+                 //if($id_movimiento > 0){
+                    //$this->load->model('movimientos_model');
+                    //$this->movimientos_model->get_Update_movimiento($data,$id_movimiento);
+                //}
+                //else{
+                    $this->load->model('movimientos_model');
+                    $this->movimientos_model->get_Insert_tabla_movimientos($data);
+                    $this->movimientos_model->get_Movimiento_datos($this->input->post('no_credito'),$this->input->post('origen_pago'),$this->input->post('tipo_cargo'),$this->input->post('tipo_moneda'),$this->input->post('T1'),$this->input->post('T2'),$this->input->post('T3'),$this->input->post('T4'),$numero_pago);
+                    $this->movimientos_model->getDatoscredito($this->input->post('no_credito'));
+                    $this->movimientos_model->get_Id_mov();
+                    $this->movimientos_model->get_Datosproducto();
+                    $this->movimientos_model->get_Unidad_credito();
+                    $this->movimientos_model->get_Tolerancia_pago();
+                    $this->movimientos_model->getAcumulado_movimiento();
+               // }
+                
+
+            } 
+
+
+
 }
 ?>

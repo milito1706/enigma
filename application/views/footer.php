@@ -73,7 +73,7 @@
         })  
     }) 
         ///////////////fin de eventos expedientes////////////////
-        //////////////Eventos Clientes//////////////////////////
+        //////////////Eventos Clientes CREDITO//////////////////////////
     $(document).on('click','#id_credito',function(){
         var id= $(this).attr('data-id');
         var url='mostrar_agrupacion_creditos?v='.concat(id);
@@ -105,10 +105,22 @@
         var id_credito= $(this).attr('data-idcredito');
         params={};
         console.log(params.id_credito=id_credito);
-        $('#cre').load('get_Formulario_credito_consulta', params,function(){
+        $('#creditos').load('get_Formulario_credito_consulta', params,function(){
          
             })  
-    })        
+    })
+//////////////EVENTO DE MOVIMIENTOS/////////77
+ $("#form-movimientos").submit(function() {
+              var formulario=$("#form-movimientos").serializeArray();
+              console.log('hola putos');
+                $.ajax({
+                type: "post",
+                dataType: 'json',
+                url: "get_Insert_movimiento",
+                data: formulario,
+        })
+                //return false;
+    });
 ////////////////////////////////////////////////////////////////////////////////
 $('.table').dataTable({
         "language": {

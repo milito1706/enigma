@@ -3,24 +3,33 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>No Crédito</label>
-                  <input type="text" placeholder="No Crédito" class="form-control" readonly>
+                  <input type="text" placeholder="No Crédito" class="form-control" name="no_credito" id="no_credito" value="<?= $credito;?>" readonly>
                 </div>
                 <div class="form-group">
                   <label>Origen de Pago</label>
                   <select name="origen_pago" id="origen_pago" class="form-control">
-                    <option value=""></option>                
+                  <option value="<?php if(isset($origen_pago)){echo $origen_pago;}else{echo 'Seleccione Opci&oacute;n';}?>"><?php if(isset($origen_pago)){echo $origen_pago;}else{echo 'Seleccione Opci&oacute;n';}?></option>
+                              <?php foreach ($torigen as $dat_origen):?>
+                                    <option value="<?php echo $dat_origen['etiqueta'] ?>"><?php echo $dat_origen['etiqueta'];?></option>
+                              <?php endforeach;?>  
                   </select>
                 </div>
                 <div class="form-group">
                   <label>Tipo de Cargo</label>
                   <select name="tipo_cargo" id="tipo_cargo" class="form-control">
-                    <option value=""></option>                
+                    <option value="<?php if(isset($tipo_cargo)){echo $tipo_cargo;}else{echo 'Seleccione Opci&oacute;n';}?>"><?php if(isset($tipo_cargo)){echo $tipo_cargo;}else{echo 'Seleccione Opci&oacute;n';}?></option>
+                              <?php foreach ($tcargo as $dat_tcargo):?>
+                                    <option value="<?php echo $dat_tcargo['etiqueta'] ?>"><?php echo $dat_tcargo['etiqueta'];?></option>
+                              <?php endforeach;?>  
                   </select>
                 </div>
                 <div class="form-group">
                   <label>Divisa</label>
                   <select name="tipo_moneda" id="tipo_moneda" class="form-control">
-                    <option value=""></option>                
+                             <option value="<?php if(isset($tipo_mone)){echo $tipo_mone;}else{echo 'Seleccione Opci&oacute;n';}?>"><?php if(isset($tipo_mone)){echo $tipo_mone;}else{echo 'Seleccione Opci&oacute;n';}?></option>
+                              <?php foreach ($tipo_divisa as $dat_divisa):?>
+                                    <option value="<?php echo $dat_divisa['codigo'] ?>"><?php echo $dat_divisa['codigo'];?></option>
+                              <?php endforeach;?>
                   </select>
                 </div>
               </div>
