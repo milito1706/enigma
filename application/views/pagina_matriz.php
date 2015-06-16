@@ -1,3 +1,6 @@
+<?php  
+  header("cache-control: no-cache");
+?>
 <html>
 <body>
   <div id="head-nav" class="navbar navbar-default navbar-fixed-top">
@@ -60,9 +63,9 @@
                                   <tr class="odd gradeX">
                                     <td><?php echo $producto['Nombre_Producto'];?></td>
                                     <td class="center" align="right"><?php echo $producto['tolerancia_cuota'];?></td>
-                                    <td class="center" align="right"><?php echo $producto['tiempo_liquidacion'];?></td>
-                                    <td class="center" align="right"><?php echo $producto['min_monto'];?> </td>
-                                    <td class="center" align="right"><?php echo $producto['max_monto'];?></td>
+                                    <td class="center" align="right"><?= number_format($producto['tiempo_liquidacion'],2);?></td>
+                                    <td class="center" align="right"><?= number_format($producto['min_monto'],2);?> </td>
+                                    <td class="center" align="right"><?= number_format($producto['max_monto'],2);?></td>
                                     <td class="center">
                                      <button id="edit_producto" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $producto['Id'];?>" data-edit="editProducto" data-modal="form-primary-productos" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
@@ -85,7 +88,7 @@
                           <i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Frecuencia de Pago
                         </div>
                         <div class="content">
-                          <div>
+                          <div id="reloadFrecuencia">
                             <table id="datatable-frecuencia" class="table table-bordered">
                               <thead>
                                 <tr>
@@ -97,10 +100,11 @@
                               <tbody>
                                 <?php foreach ( $frecuencia_pagos as $frecuencia_pago):?>
                                   <tr class="odd gradeX">
-                                    <td><?php echo $frecuencia_pago['unidad_credito'];?></td>
-                                    <td><?php echo $frecuencia_pago['frecuencia_pago'];?></td>                                
+                                    <td><?= $frecuencia_pago['unidad_credito'];?></td>
+                                    <td align="center"><?= $frecuencia_pago['frecuencia_pago'];?></td>                                
                                     <td class="center">
-                                     <button id="editar_frecuencia_pago" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $frecuencia_pago['id'];?>" data-persona="<?php echo $frecuencia_pago['unidad_credito'];?>" data-edit="editFrecuencia" data-modal="form-primary-frecuencia-pago" ><i class="fa fa-pencil"></i></button></td>
+                                     <button id="editar_frecuencia_pago" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $frecuencia_pago['id'];?>" data-persona="<?php echo $frecuencia_pago['unidad_credito'];?>" data-edit="editFrecuencia" data-modal="form-primary-frecuencia-pago" ><i class="fa fa-pencil"></i></button>
+                                    </td>
                                    </tr>
                                  <?php endforeach;?>
                                  
@@ -132,11 +136,11 @@
                               <tbody>
                                 <?php foreach ( $transaccionalidad as $transaccion):?>
                                   <tr class="odd gradeX">
-                                    <td><?php echo $transaccion['r_min'];?></td>
-                                    <td><?php echo $transaccion['r_max'];?></td>
-                                    <td><?php echo $transaccion['calificacion'];?></td>
-                                    <td class="center"><?php echo $transaccion['divisa'];?> </td>                                    
-                                    <td class="center">
+                                    <td align="right"><?= $transaccion['r_min'];?></td>
+                                    <td align="right"><?= $transaccion['r_max'];?></td>
+                                    <td align="center"><?= $transaccion['calificacion'];?></td>
+                                    <td class="center" align="center"><?= $transaccion['divisa'];?> </td>                                    
+                                    <td class="center" align="center">
                                      <button id="editar_transaccionalidad" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $transaccion['Id'];?>" data-persona="<?php echo $transaccion['Id'];?>" data-edit="editTransaccionalidad" data-modal="form-primary-transaccionalidad" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
                                  <?php endforeach;?>
@@ -189,8 +193,8 @@
                               <tbody>
                                 <?php foreach ( $actividades as $actividad):?>
                                   <tr class="odd gradeX">
-                                    <td><?php echo $actividad['actividad_economica'];?></td>
-                                    <td><?php echo $actividad['calificacion'];?></td>                                                                       
+                                    <td><?= $actividad['actividad_economica'];?></td>
+                                    <td align="center"><?= $actividad['calificacion'];?></td>                                                                       
                                     <td class="center">
                                      <button id="editar_actividad" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $actividad['Id'];?>" data-persona="<?php echo $actividad['Id'];?>" data-edit="editActividad" data-modal="form-primary-actividad" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
@@ -224,8 +228,8 @@
                               <tbody>
                                 <?php foreach ( $tipo_personas as $tipo_persona):?>
                                   <tr class="odd gradeX">
-                                    <td><?php echo $tipo_persona['etiqueta'];?></td>
-                                    <td><?php echo $tipo_persona['codigo'];?></td>                                                                       
+                                    <td><?= $tipo_persona['etiqueta'];?></td>
+                                    <td align="center"><?= $tipo_persona['codigo'];?></td>                                                                       
                                     <td class="center">
                                      <button id="editar_tipo_persona" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $tipo_persona['Id'];?>" data-edit="editTipoPersona" data-modal="form-primary-tipo-persona" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
@@ -257,9 +261,9 @@
                               <tbody>
                                 <?php foreach ( $num_personas as $num_persona):?>
                                   <tr class="odd gradeX">
-                                    <td><?php echo $num_persona['r_min'];?></td>
-                                    <td><?php echo $num_persona['r_max'];?></td>                                                                       
-                                    <td><?php echo $num_persona['calificacion'];?></td>                                                                       
+                                    <td align="center"><?= $num_persona['r_min'];?></td>
+                                    <td align="center"><?= $num_persona['r_max'];?></td>                                                                       
+                                    <td align="center"><?= $num_persona['calificacion'];?></td>                                                                       
                                     <td class="center">
                                      <button id="editar_nopersonas" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $num_persona['Id'];?>" data-persona="<?php echo $num_persona['Id'];?>" data-edit="editNoPersonas" data-modal="form-primary-nopersonas" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
@@ -294,7 +298,7 @@
                                 <?php foreach ( $movimientos as $movimiento):?>
                                   <tr class="odd gradeX">
                                     <td><?php echo $movimiento['etiqueta'];?></td>
-                                    <td><?php echo $movimiento['calificacion'];?></td>                                                                      
+                                    <td align="center"><?= $movimiento['calificacion'];?></td>                                                                      
                                     <td class="center">
                                      <button id="editar_movimiento" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $movimiento['Id'];?>" data-persona="<?php echo $movimiento['Id'];?>" data-edit="editMovimiento" data-modal="form-primary-movimiento" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
@@ -454,6 +458,8 @@
         ['MEXICO',1],
         ['DISTRITO FEDERAL',1],
         ['AGUASCALIENTES',2],
+        ['JALISCO',3],
+        ['NUEVO LEON',3],
         ['YUCATAN',3]
       ]);
 

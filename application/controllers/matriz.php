@@ -9,7 +9,7 @@ class Matriz extends CI_Controller {
 		$this->load->model('matriz_model');
     }
     // Funcion que me consulta todos los resultados de la matriz de riesgo
-    public function mostrar_pagina_matriz() {
+    public function mostrar_pagina_matriz(){
 
         // Obtengo los productos
 		$listadoProductos = $this->matriz_model->get_Productos();
@@ -49,7 +49,7 @@ class Matriz extends CI_Controller {
         
     }
 
-    public function get_Insert_Nuevo_Producto() {
+    public function get_Insert_Nuevo_Producto(){
             //$id_credito=$this->input->post('id_credito');
             $id = $this->input->post('id');
             $data = array(            
@@ -97,7 +97,81 @@ class Matriz extends CI_Controller {
     }
     // Fin Funciones para el tab Productos
     
-    // Funciones para el tab Frecuencia de Pagos
+    // Funciones para el tab Tipo Persona
+    public function get_nuevo_tipo_persona() {
+
+        $this->load->view('formularios_matriz/form_tipo_persona');
+        
+    }
+    
+    public function get_insert_tipo_persona(){
+            //$id_credito=$this->input->post('id_credito');
+            $id = $this->input->post('id');
+            $data = array(            
+                'codigo' => $this->input->post('T2'),
+                'etiqueta' => $this->input->post('T1')                
+            );
+                
+            if($id > 0)
+            {
+                $list_nuevo_tipo_persona = $this->matriz_model->get_update_tipo_persona($data,$id);
+            }
+            else
+            {
+                $list_nuevo_tipo_persona = $this->matriz_model->get_insert_tipo_persona($data);
+            }
+    }
+    
+    public function get_update_tipo_persona() {
+        $id_tipo_persona = $this->input->post('id');
+        $datos_tipo_persona = $this->matriz_model->get_consulta_tipo_persona($id_tipo_persona);
+        foreach ( $datos_tipo_persona as $item_tipo_persona) { 
+            $data['Id'] = $item_tipo_persona['Id'];
+            $data['codigo'] = $item_tipo_persona['codigo'];
+            $data['etiqueta'] = $item_tipo_persona['etiqueta'];
+        }
+        $this->load->view('formularios_matriz/form_tipo_persona',$data);
+    }
+    // Fin Funciones para el tab Tipo Persona
+    
+    // Funciones para el tab Movimientos
+    public function get_nuevo_movimiento() {
+
+        $this->load->view('formularios_matriz/form_movimiento');
+        
+    }
+    
+    public function get_insert_movimiento(){
+            
+            $id = $this->input->post('id');
+            $data = array(            
+                'etiqueta' => $this->input->post('etiqueta'),
+                'calificacion' => $this->input->post('calificacion')
+            );
+                
+            if($id > 0)
+            {
+                $list_nuevo_movimiento = $this->matriz_model->get_update_movimiento($data,$id);
+            }
+            else
+            {
+                $list_nuevo_movimiento = $this->matriz_model->get_insert_movimiento($data);
+            }
+    }
+    
+    public function get_update_movimiento() {
+        $id_movimiento = $this->input->post('id');
+        $datos_movimiento = $this->matriz_model->get_consulta_movimiento($id_movimiento);
+        foreach ( $datos_movimiento as $item_movimiento) { 
+            $data['Id'] = $item_movimiento['Id'];
+            $data['etiqueta'] = $item_movimiento['etiqueta'];
+            $data['calificacion'] = $item_movimiento['calificacion'];
+        }
+        $this->load->view('formularios_matriz/form_movimiento',$data);
+    }
+    // Fin Funciones para el tab Movimientos
+
+    // Funciones para el tab Frecuencia de Pago
     public function get_nuevo_frecuencia_pago() {
 
         $this->load->view('formularios_matriz/form_frecuencia_pago');
@@ -132,7 +206,7 @@ class Matriz extends CI_Controller {
         }
         $this->load->view('formularios_matriz/form_frecuencia_pago',$data);
     }
-    // Fin Funciones para Frecuencia Pagos
+    // Fin Funciones para el tab Movimientos
 
     // Funciones para el tab Transaccionalidad
     public function get_nuevo_transaccionalidad() {
@@ -174,81 +248,6 @@ class Matriz extends CI_Controller {
         $this->load->view('formularios_matriz/form_transaccionalidad',$data);
     }
     // Fin Funciones para el tab Transaccionalidad
-
-    // Funciones para el tab Actividad
-    public function get_nuevo_actividad() {
-
-        $this->load->view('formularios_matriz/form_actividad');
-        
-    }
-    
-    public function get_insert_actividad() {
-            
-            $id = $this->input->post('id');
-            $data = array(            
-                'calificacion' => $this->input->post('calificacion'),
-                'riesgo' => $this->input->post('riesgo')
-            );
-                
-            if($id > 0)
-            {
-                $list_nuevo_actividad = $this->matriz_model->get_update_actividad($data,$id);
-            }
-            else
-            {
-                $list_nuevo_actividad = $this->matriz_model->get_insert_actividad($data);
-            }
-    }
-    
-    public function get_update_actividad() {
-        $id_actividad = $this->input->post('id');
-        $datos_actividad = $this->matriz_model->get_consulta_actividad($id_actividad);
-        foreach ( $datos_actividad as $item_actividad) { 
-            $data['Id'] = $item_actividad['Id'];
-            $data['actividad_economica'] = $item_actividad['actividad_economica'];
-            $data['calificacion'] = $item_actividad['calificacion'];
-            $data['riesgo'] = $item_actividad['riesgo'];            
-        }
-        $this->load->view('formularios_matriz/form_actividad',$data);
-    }
-    // Fin Funciones para el tab Actividad
-
-    // Funciones para el tab Tipo Persona
-    public function get_nuevo_tipo_persona() {
-
-        $this->load->view('formularios_matriz/form_tipo_persona');
-        
-    }
-    
-    public function get_insert_tipo_persona() {
-            //$id_credito=$this->input->post('id_credito');
-            $id = $this->input->post('id');
-            $data = array(            
-                'codigo' => $this->input->post('T2'),
-                'etiqueta' => $this->input->post('T1')                
-            );
-                
-            if($id > 0)
-            {
-                $list_nuevo_tipo_persona = $this->matriz_model->get_update_tipo_persona($data,$id);
-            }
-            else
-            {
-                $list_nuevo_tipo_persona = $this->matriz_model->get_insert_tipo_persona($data);
-            }
-    }
-    
-    public function get_update_tipo_persona() {
-        $id_tipo_persona = $this->input->post('id');
-        $datos_tipo_persona = $this->matriz_model->get_consulta_tipo_persona($id_tipo_persona);
-        foreach ( $datos_tipo_persona as $item_tipo_persona) { 
-            $data['Id'] = $item_tipo_persona['Id'];
-            $data['codigo'] = $item_tipo_persona['codigo'];
-            $data['etiqueta'] = $item_tipo_persona['etiqueta'];
-        }
-        $this->load->view('formularios_matriz/form_tipo_persona',$data);
-    }
-    // Fin Funciones para el tab Tipo Persona
     
     // Funciones para el tab No Personas
     public function get_nuevo_nopersonas() {
@@ -257,7 +256,7 @@ class Matriz extends CI_Controller {
         
     }
     
-    public function get_insert_nopersonas() {
+    public function get_insert_nopersonas(){
             
             $id = $this->input->post('id');
             $data = array(            
@@ -289,44 +288,43 @@ class Matriz extends CI_Controller {
     }
     // Fin Funciones para el tab No Personas
 
-    // Funciones para el tab Movimientos
-    public function get_nuevo_movimiento() {
+    // Funciones para el tab Actividad
+    public function get_nuevo_actividad() {
 
-        $this->load->view('formularios_matriz/form_movimiento');
+        $this->load->view('formularios_matriz/form_actividad');
         
     }
     
-    public function get_insert_movimiento(){
+    public function get_insert_actividad(){
             
             $id = $this->input->post('id');
             $data = array(            
-                'etiqueta' => $this->input->post('etiqueta'),
-                'calificacion' => $this->input->post('calificacion')
+                'calificacion' => $this->input->post('calificacion'),
+                'riesgo' => $this->input->post('riesgo')
             );
                 
             if($id > 0)
             {
-                $list_nuevo_movimiento = $this->matriz_model->get_update_movimiento($data,$id);
+                $list_nuevo_actividad = $this->matriz_model->get_update_actividad($data,$id);
             }
             else
             {
-                $list_nuevo_movimiento = $this->matriz_model->get_insert_movimiento($data);
+                $list_nuevo_actividad = $this->matriz_model->get_insert_actividad($data);
             }
     }
     
-    public function get_update_movimiento() {
-        $id_movimiento = $this->input->post('id');
-        $datos_movimiento = $this->matriz_model->get_consulta_movimiento($id_movimiento);
-        foreach ( $datos_movimiento as $item_movimiento) { 
-            $data['Id'] = $item_movimiento['Id'];
-            $data['etiqueta'] = $item_movimiento['etiqueta'];
-            $data['calificacion'] = $item_movimiento['calificacion'];
+    public function get_update_actividad() {
+        $id_actividad = $this->input->post('id');
+        $datos_actividad = $this->matriz_model->get_consulta_actividad($id_actividad);
+        foreach ( $datos_actividad as $item_actividad) { 
+            $data['Id'] = $item_actividad['Id'];
+            $data['actividad_economica'] = $item_actividad['actividad_economica'];
+            $data['calificacion'] = $item_actividad['calificacion'];
+            $data['riesgo'] = $item_actividad['riesgo'];            
         }
-        $this->load->view('formularios_matriz/form_movimiento',$data);
+        $this->load->view('formularios_matriz/form_actividad',$data);
     }
-    // Fin Funciones para el tab Movimientos
-    
-    
+    // Fin Funciones para el tab No Personas
 
 }
 
