@@ -7,6 +7,7 @@ class Matriz extends CI_Controller {
         parent::__construct();
         $this->load->database();
 		$this->load->model('matriz_model');
+        
     }
     // Funcion que me consulta todos los resultados de la matriz de riesgo
     public function mostrar_pagina_matriz(){
@@ -16,6 +17,7 @@ class Matriz extends CI_Controller {
 		$listado_total_productos= $this->matriz_model->get_Numero_total_productos();        
         // Obtengo las frecuencias de pagos
         $listadoFrecuenciaPagos = $this->matriz_model->get_Frecuenciapagos();
+
         // Obtengo la Transaccionalidad
         $listadoTransaccionalidad = $this->matriz_model->get_Transaccionalidad();
         // Obtengo el catalogo de Actividades
@@ -179,7 +181,10 @@ class Matriz extends CI_Controller {
     }
     
     public function get_insert_frecuencia_pago() {
-            
+            $respuestaOK = false;
+            $mensajeError = "No se puede ejecutar la aplicación";
+            $contenidoOK = "";
+            $max = 7;
             $id = $this->input->post('id');
             $data = array(
                 'unidad_credito' => $this->input->post('unidad_credito'),
@@ -193,7 +198,29 @@ class Matriz extends CI_Controller {
             else
             {
                 $list_nuevo_frecuencia_pago = $this->matriz_model->get_insert_frecuencia_pago($data);
+                if ($list_nuevo_frecuencia_pago == true) {
+                    $respuestaOK = true;
+                    $mensajeError = "Se ha agregado el registro correctamente";
+                    $contenidoOK = '
+                        <tr>
+                            <td>'.$this->input->post('unidad_credito').'</td>                            
+                            <td align="center">'.$this->input->post('frecuencia_pago').'</td>                            
+                            <td class="center">
+                                <button id="editar_frecuencia_pago" class="btn btn-primary btn-xs md-trigger" data-id="'. $max .'" data-edit="editFrecuencia" data-modal="form-primary-frecuencia-pago" ><i class="fa fa-pencil"></i></button>
+                            </td>
+                        <tr>
+                    ';
+                }
+                else{
+                    $mensajeError = "No se puede guardar el registro en la base de datos";
+                }
             }
+
+            $salidaJson = array("respuesta" => $respuestaOK,
+                                "mensaje" => $mensajeError,
+                                "contenido" => $contenidoOK);
+
+            echo json_encode($salidaJson);
     }
     
     public function get_update_frecuencia_pago() {

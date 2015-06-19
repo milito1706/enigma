@@ -195,17 +195,24 @@ $(document).on('click','#editar_credito',function(){
             dataType: 'json',
             url: "get_insert_frecuencia_pago",
             cache: false,
-            data: formulario_frecuencia_pago
-        }).done(function() {
-            console.log( "success" );
-          })
-          .fail(function() {
-            console.log( "error" );
-            $("#reloadFrecuencia").load();
-          })
-          .always(function() {
-            console.log( "complete" );
-          });
+            data: formulario_frecuencia_pago,
+            success: function(response) {
+
+                // Validar mensaje de error
+                if(response.respuesta == false)
+                {
+                    alert(response.mensaje);
+                }
+                else 
+                {
+                    $('#listaFrecuneciaPagos').append(response.contenido);
+                }
+
+            },
+            error:function(){
+                alert('ERROR GENERAL DEL SISTEMA, INTENTE MAS TARDE');
+            } 
+        });
       
       return false;
   });
@@ -330,7 +337,7 @@ $('.table').dataTable({
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-        "sSwfPath": "<?=base_url('assets/lib/jquery.datatables/extensions/tabletools')?>/swf/copy_csv_xls_pdf.swf"
+        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.0/swf/copy_csv_xls_pdf.swf"
     }
 
 });

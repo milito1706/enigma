@@ -97,7 +97,7 @@
                                   <th></th>
                                 </tr>
                               </thead>
-                              <tbody>
+                              <tbody id="listaFrecuneciaPagos">
                                 <?php foreach ( $frecuencia_pagos as $frecuencia_pago):?>
                                   <tr class="odd gradeX">
                                     <td><?= $frecuencia_pago['unidad_credito'];?></td>

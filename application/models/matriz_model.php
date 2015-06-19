@@ -99,7 +99,11 @@ class Matriz_model extends CI_Model{
     
     // Tab Frecuencia de Pagos
     public function get_insert_frecuencia_pago($data) {
-        $this->db->insert('cat_unidadcredito',$data); 
+        $this->db->insert('cat_unidadcredito',$data);
+        if($this->db->affected_rows() > 0)
+        {
+            return true;
+        }
     }
 
     public function get_consulta_frecuencia_pago($id) {
