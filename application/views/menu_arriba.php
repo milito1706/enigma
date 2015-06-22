@@ -23,7 +23,7 @@
             <li  class="col-sm-6 no-padding">
               <ul>
                 <li class="dropdown-header"><i class="fa fa-gear"></i>Matriz de Riesgo</li>
-                <li><a href="#">Datos de la SOFOM</a></li>
+                <li><a href="#" class="md-trigger" data-modal="form-primary-datos-generales" id="datos-generales">Datos de la SOFOM</a></li>
                 <li><a href="<?=base_url('index.php/matriz/mostrar_pagina_matriz');?>">Configuración de Matriz</a></li>
               </ul>
             </li>
@@ -81,4 +81,22 @@
     <!--/.nav-collapse -->
   </div>
 </div>
+<!-- Nifty Modal Productos -->
+<form id="form-datos-generales">
+  <div id="form-primary-datos-generales" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
+    <div class="md-content">
+      <div class="modal-header">          
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
+      </div>
+      <div class="modal-body form">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
+        <button type="submit" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Guardar</button>
+      </div>
+    </div>
+  </div>
+  <div class="md-overlay"></div>
+</form>
 

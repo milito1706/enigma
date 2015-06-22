@@ -9,6 +9,64 @@ class Matriz extends CI_Controller {
 		$this->load->model('matriz_model');
         
     }
+    
+    public function get_datos_generales() {
+
+        $listadoDatosGenerales = $this->matriz_model->get_datos_generales();
+        $data = array(            
+            'datos_generales' => $listadoDatosGenerales
+        );        
+        
+        $this->load->view('formularios_matriz/datos_generales', $data);
+    }
+    public function get_insert_datos_generales() {
+            $respuestaOK = false;
+            $mensajeError = "No se puede ejecutar la aplicación";
+            
+            $id = $this->input->post('id');
+            $data = array(            
+                'empresa'=>$this->input->post('empresa'),
+                'entidad_casfim'=>$this->input->post('enttidad_casfim'),
+                'direccion_completa'=>$this->input->post('direccion_completa'),
+                'cp'=>$this->input->post('cp'),
+                'name_operador'=>$this->input->post('oficial_cumplimiento'),
+                'email'=>$this->input->post('email')
+            );
+                
+            if($id > 0)
+            {
+                
+                $list_datos_generales = $this->matriz_model->get_update_datos_generales($data,$id);
+                if ($list_datos_generales == true) {
+                    $respuestaOK = true;
+                    $mensajeError = "Se han actualizado los datos correctamente";                    
+                }
+                else {
+                    $mensajeError = "No se han podido actualizar los datos";
+                }
+            }
+            else
+            {
+                
+                $list_datos_generales = $this->matriz_model->get_insert_datos_generales($data);
+            }
+
+            $salidaJson = array("respuesta" => $respuestaOK,
+                                "mensaje" => $mensajeError);
+
+            echo json_encode($salidaJson);
+    }
+    
+    public function get_Frecuenciapagos() {
+        $listadoFrecuenciaPagos = $this->matriz_model->get_Frecuenciapagos();
+        $data = array(            
+            'frecuencia_pagos' => $listadoFrecuenciaPagos
+        );        
+        
+        $this->load->view('pagina_matriz', $data, TRUE);
+        
+    }
+
     // Funcion que me consulta todos los resultados de la matriz de riesgo
     public function mostrar_pagina_matriz(){
 
@@ -184,7 +242,7 @@ class Matriz extends CI_Controller {
             $respuestaOK = false;
             $mensajeError = "No se puede ejecutar la aplicación";
             $contenidoOK = "";
-            $max = 7;
+            $maxid = $this->matriz_model->get_max_frecuencia_pagos();
             $id = $this->input->post('id');
             $data = array(
                 'unidad_credito' => $this->input->post('unidad_credito'),
@@ -206,7 +264,7 @@ class Matriz extends CI_Controller {
                             <td>'.$this->input->post('unidad_credito').'</td>                            
                             <td align="center">'.$this->input->post('frecuencia_pago').'</td>                            
                             <td class="center">
-                                <button id="editar_frecuencia_pago" class="btn btn-primary btn-xs md-trigger" data-id="'. $max .'" data-edit="editFrecuencia" data-modal="form-primary-frecuencia-pago" ><i class="fa fa-pencil"></i></button>
+                                <button id="editar_frecuencia_pago" class="btn btn-primary btn-xs md-trigger" data-id="'. $maxid .'" data-edit="editFrecuencia" data-modal="form-primary-frecuencia-pago" ><i class="fa fa-pencil"></i></button>
                             </td>
                         <tr>
                     ';

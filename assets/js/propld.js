@@ -6,14 +6,15 @@ $(document).ready(function(){
         App.charts();
         $('.md-trigger').modalEffects();
             ////////////eventos de expedientes///////////////
-            $("#frminformacion").submit(function() {
+            $("#frminformacion").submit(function(e) {
+                e.preventDefault();
               var formulario=$("#frminformacion").serializeArray();
               $.ajax({
                 type: "post",
                 dataType: 'json',
                 url: "get_Insert_formularios",
                 data: formulario,
-            })
+            });
                 //return false;
 
             });        
@@ -27,8 +28,8 @@ $(document).ready(function(){
                 console.log(params.action=action);
                 $('.modal-body').load('get_Formulario_update', params,function(){
 
-                })  
-            })
+                });  
+            });
             $(document).on('click','#new',function() {
                 var persona=$(this).attr('data-persona');
                 var action =$(this).attr('data-new');
@@ -36,9 +37,9 @@ $(document).ready(function(){
                 console.log(params.persona=persona);
                 $('.modal-body').load('get_Formulario_nuevo', params,function(){
 
-                }) 
+                }); 
 
-            })
+            });
             $(document).on('click','#new_moral',function(){
                 var persona=$(this).attr('data-persona');
                 var action =$(this).attr('data-new');
@@ -46,18 +47,19 @@ $(document).ready(function(){
                 console.log(params.persona=persona);
                 $('.modal-body').load('get_Formulario_nuevo', params,function(){
 
-                })  
-            }) 
+                });
+            });
         ///////////////fin de eventos expedientes////////////////
         //////////////Eventos Clientes//////////////////////////
         $(document).on('click','#id_credito',function(){
             var id= $(this).attr('data-id');
             var url='mostrar_agrupacion_creditos?v='.concat(id);
             document.location=(url);
-        }) 
+        }); 
 
 
-$("#form-creditos").submit(function() {
+$("#form-creditos").submit(function(e) {
+    e.preventDefault();
   var formulario=$("#form-creditos").serializeArray();
   console.log('hola');
   $.ajax({
@@ -65,7 +67,7 @@ $("#form-creditos").submit(function() {
     dataType: 'json',
     url: "get_Insert_credito",
     data: formulario,
-})
+});
                 //return false;
             });
 
@@ -76,8 +78,48 @@ $(document).on('click','#editar_credito',function(){
     console.log(params.action=action);
     $('.modal-body').load('get_Formulariocredito_update', params,function(){
 
-    })  
-})
+    });  
+});
+    // Datos Generales
+    
+    $(document).on('click','#datos-generales', function() {        
+        var action =$(this).attr('data-new');
+        params={};
+        console.log(params.action = action);
+        $('.modal-body').load('get_datos_generales', params,function() {
+            console.log("Datos Generales")
+        });  
+    });
+
+    // Guardar Datos Generales
+    $("#form-datos-generales").submit(function(e) {
+        e.preventDefault();
+      var formulario_datos_generales = $("#form-datos-generales").serializeArray();
+      console.log('Form Datos Generales');
+
+        $.ajax({
+            type: "post",
+            dataType: 'json',
+            url: "get_insert_datos_generales",
+            data: formulario_datos_generales,
+            success: function(response) {
+                if(response.respuesta == true){
+                    alert("Datos guardados correctamente");
+                } else {
+                    alert("Hubo un error al guardar, intenta mas tarde.");
+                }
+            },
+            error:function(){
+                console.log('Hubo un error al guardar, intenta mas tarde.!');
+            },
+            complete: function() {
+                console.log("Ajax realizado complete")
+            }  
+        });
+      
+      //return false;
+  });
+
 
     // Nuevo producto
     $(document).on('click','#new_producto',function(){        
@@ -85,9 +127,10 @@ $(document).on('click','#editar_credito',function(){
         params={};        
         $('.modal-body').load('get_nuevo_producto', params,function() {
             console.log("nuevo producto");
-        })  
-    })
-    $("#form-productos").submit(function() {
+        });  
+    });
+    $("#form-productos").submit(function(e) {
+        e.preventDefault();
       var formulario_producto = $("#form-productos").serializeArray();
       console.log('Form Productos');
       $.ajax({
@@ -97,7 +140,7 @@ $(document).on('click','#editar_credito',function(){
         cache: false,
         data: formulario_producto
     });
-      return false;
+      //return false;
   });
 
     $(document).on('click','#edit_producto',function() {
@@ -108,8 +151,8 @@ $(document).on('click','#editar_credito',function(){
         console.log(params.action = action);
         $('#form-primary-productos .modal-body').load('get_update_producto', params,function(){
             console.log("editar" + " " + id);
-        })
-    })
+        });
+    });
 
     // Nuevo Tipo Persona
     $(document).on('click','#new_tipo_persona',function(){        
@@ -117,10 +160,11 @@ $(document).on('click','#editar_credito',function(){
         params={};        
         $('.modal-body').load('get_nuevo_tipo_persona', params,function() {
             console.log("nuevo tipo persona");
-        })  
-    })
+        });  
+    });
 
-    $("#form-tipo-persona").submit(function() {
+    $("#form-tipo-persona").submit(function(e) {
+        e.preventDefault();
       var formulario_tipo_persona = $("#form-tipo-persona").serializeArray();
       console.log('Form tipo persona');
       $.ajax({
@@ -130,7 +174,7 @@ $(document).on('click','#editar_credito',function(){
         cache: false,
         data: formulario_tipo_persona
     });
-      return false;
+      //return false;
   });
 
     $(document).on('click','#editar_tipo_persona',function() {
@@ -141,8 +185,8 @@ $(document).on('click','#editar_credito',function(){
         console.log(params.action = action);
         $('#form-primary-tipo-persona .modal-body').load('get_update_tipo_persona', params,function(){
             console.log("editar" + " " + id);
-        })
-    })
+        });
+    });
 
     // Nuevo Movimientos
     $(document).on('click','#new_movimiento',function(){        
@@ -150,10 +194,11 @@ $(document).on('click','#editar_credito',function(){
         params={};        
         $('.modal-body').load('get_nuevo_movimiento', params,function() {
             console.log("nuevo movimiento");
-        })  
-    })
+        }); 
+    });
 
-    $("#form-movimientos").submit(function() {
+    $("#form-movimientos").submit(function(e) {
+        e.preventDefault();
       var formulario_movimiento = $("#form-movimientos").serializeArray();
       console.log('Form movimiento');
       $.ajax({
@@ -163,7 +208,7 @@ $(document).on('click','#editar_credito',function(){
         cache: false,
         data: formulario_movimiento
     });
-      return false;
+      //return false;
   });
 
     $(document).on('click','#editar_movimiento',function() {
@@ -174,22 +219,24 @@ $(document).on('click','#editar_credito',function(){
         console.log(params.action = action);
         $('#form-primary-movimiento .modal-body').load('get_update_movimiento', params,function(){
             console.log("editar" + " " + id);
-        })
-    })
+        });
+    });
 
     // Nuevo Frecuencia de Pagos
-    $(document).on('click','#new_frecuencia_pago',function(){        
+    $(document).on('click','#new_frecuencia_pago',function() {       
         var action =$(this).attr('data-new');
         params={};        
         $('.modal-body').load('get_nuevo_frecuencia_pago', params,function() {
             console.log("nuevo frecuencia pago");
         });
         
-    })
+    });
 
-    $("#form-frecuencia-pago").submit(function() {
+    $("#form-frecuencia-pago").submit(function(e) {
+        e.preventDefault();
       var formulario_frecuencia_pago = $("#form-frecuencia-pago").serializeArray();
       console.log('Form frecuencia pago');
+
         $.ajax({
             type: "post",
             dataType: 'json',
@@ -205,7 +252,7 @@ $(document).on('click','#editar_credito',function(){
                 }
                 else 
                 {
-                    $('#listaFrecuneciaPagos').append(response.contenido);
+                    $('#listaFrecuneciaPagos').append(response.contenido);              
                 }
 
             },
@@ -214,20 +261,20 @@ $(document).on('click','#editar_credito',function(){
             } 
         });
       
-      return false;
+      //return false;
   });
 
     $(document).on('click','#editar_frecuencia_pago',function() {
         var id = $(this).attr('data-id');       
-        var action =$(this).attr('data-edit');
+        var action =$(this).attr('data-edit');        
         params={};
         console.log(params.id = id);        
         console.log(params.action = action);
-        $('#form-primary-frecuencia-pago .modal-body').load('get_update_frecuencia_pago', params,function(){
+        $('#form-primary-frecuencia-pago #modal-body-frecuencia').load('get_update_frecuencia_pago', params,function(){
             console.log("editar" + " " + id);
-        })
+        });
 
-    })
+    });
 
     // Nuevo Transaccionalidad
     $(document).on('click','#new_transaccionalidad',function(){        
@@ -235,20 +282,20 @@ $(document).on('click','#editar_credito',function(){
         params={};        
         $('.modal-body').load('get_nuevo_transaccionalidad', params,function() {
             console.log("nuevo transaccionalidad");
-        })  
-    })
+        });  
+    });
 
-    $("#form-transaccionalidad").submit(function() {
+    $("#form-transaccionalidad").submit(function(e) {
+        e.preventDefault();
       var formulario_transaccionalidad = $("#form-transaccionalidad").serializeArray();
       console.log('Form transaccionalidad');
       $.ajax({
         type: "post",
         dataType: 'json',
-        url: "get_insert_transaccionalidad",
-        cache: false,
+        url: "get_insert_transaccionalidad",        
         data: formulario_transaccionalidad
     });
-      return false;
+      //return false;
   });
 
     $(document).on('click','#editar_transaccionalidad',function() {
@@ -259,8 +306,8 @@ $(document).on('click','#editar_credito',function(){
         console.log(params.action = action);
         $('#form-primary-transaccionalidad .modal-body').load('get_update_transaccionalidad', params,function(){
             console.log("editar" + " " + id);
-        })
-    })
+        });
+    });
 
     // Nuevo No personas
     $(document).on('click','#new_nopersonas',function(){        
@@ -268,10 +315,11 @@ $(document).on('click','#editar_credito',function(){
         params={};        
         $('.modal-body').load('get_nuevo_nopersonas', params,function() {
             console.log("nuevo nopersonas");
-        })  
-    })
+        });  
+    });
 
-    $("#form-nopersonas").submit(function() {
+    $("#form-nopersonas").submit(function(e) {
+        e.preventDefault();
       var formulario_nopersonas = $("#form-nopersonas").serializeArray();
       console.log('Form nopersonas');
       $.ajax({
@@ -281,7 +329,7 @@ $(document).on('click','#editar_credito',function(){
         cache: false,
         data: formulario_nopersonas
     });
-      return false;
+      //return false;
   });
 
     $(document).on('click','#editar_nopersonas',function() {
@@ -292,8 +340,8 @@ $(document).on('click','#editar_credito',function(){
         console.log(params.action = action);
         $('#form-primary-nopersonas .modal-body').load('get_update_nopersonas', params,function(){
             console.log("editar" + " " + id);
-        })
-    })
+        });
+    });
 
     // Nuevo Actividad
     $(document).on('click','#new_actividad',function(){        
@@ -301,10 +349,11 @@ $(document).on('click','#editar_credito',function(){
         params={};        
         $('.modal-body').load('get_nuevo_actividad', params,function() {
             console.log("nuevo actividad");
-        })  
-    })
+        }); 
+    });
 
-    $("#form-actividad").submit(function() {
+    $("#form-actividad").submit(function(e) {
+        e.preventDefault();
       var formulario_actividad = $("#form-actividad").serializeArray();
       console.log('Form actividad');
       $.ajax({
@@ -314,7 +363,7 @@ $(document).on('click','#editar_credito',function(){
         cache: false,
         data: formulario_actividad
     });
-      return false;
+      //return false;
   });
 
     $(document).on('click','#editar_actividad',function() {
@@ -325,8 +374,8 @@ $(document).on('click','#editar_credito',function(){
         console.log(params.action = action);
         $('#form-primary-actividad .modal-body').load('get_update_actividad', params,function(){
             console.log("editar" + " " + id);
-        })
-    })
+        });
+    });
 });
 ////////////////////////////////////////////////////////////////////////////////
 

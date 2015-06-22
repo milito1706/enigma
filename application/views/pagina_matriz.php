@@ -1,6 +1,3 @@
-<?php  
-  header("cache-control: no-cache");
-?>
 <html>
 <body>
   <div id="head-nav" class="navbar navbar-default navbar-fixed-top">
@@ -320,7 +317,7 @@
                   <div class="modal-header">          
                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
                   </div>
-                  <div class="modal-body form">
+                  <div class="modal-body form" id="modal-body-nuevo-producto">
 
                   </div>
                   <div class="modal-footer">
@@ -374,7 +371,7 @@
                   <div class="modal-header">
                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
                   </div>
-                  <div class="modal-body form">
+                  <div class="modal-body form" id="modal-body-frecuencia">
 
                   </div>
                   <div class="modal-footer">

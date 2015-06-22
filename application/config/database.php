@@ -78,7 +78,7 @@ $db['conexion_localidad']['cachedir'] = '';
 $db['conexion_localidad']['char_set'] = 'utf8';
 $db['conexion_localidad']['dbcollat'] = 'utf8_general_ci';
 $db['conexion_localidad']['swap_pre'] = '';
-$db['conexion_localidad']['autoinit'] = FALSE;
+$db['conexion_localidad']['autoinit'] = TRUE;
 $db['conexion_localidad']['stricton'] = FALSE;
 
 
