@@ -1,5 +1,5 @@
 <?php
-class Expediente_model extends CI_Model{
+class Expediente_model extends MY_model_base{
 
     function __construct()
     {

@@ -5,12 +5,13 @@ var App = (function () {
 
     //Basic Instance
     $("#datatable").dataTable();
+    $("#tabla-productos").dataTable();
+    $("#datatable-movimientos").dataTable();
     $("#datatable-expedientes").dataTable();
     $("#datatable-clientes").dataTable();
     $("#datatable-creditos").dataTable();
-    $("#datatable-movimientos").dataTable();
     $("#datatable-alertas").dataTable();
-    $("#datatable-productos").dataTable();
+    $(".datatable").dataTable();
 
     
     //Search input style

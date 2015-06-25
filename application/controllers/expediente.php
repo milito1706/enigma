@@ -1,6 +1,6 @@
 <?php
-class Expediente extends CI_Controller{
-
+class Expediente extends MY_Controlador_base{
+    
     public function mostrar_pagina_expedientes(){
         $this->load->model('expedientes_model/expediente_model');
         $listadoEmpleados = $this->expediente_model->get_Expedientes();

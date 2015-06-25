@@ -4,7 +4,6 @@
     <script type="text/javascript" src="<?= base_url('assets/lib/jquery.nanoscroller/javascripts/jquery.nanoscroller.js')?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/cleanzone.js')?>"></script>
     <script src="<?=base_url('assets/lib/bootstrap/dist/js/bootstrap.min.js')?>"></script>
-    <script src="<?=base_url('assets/js/voice-recognition.js')?>"></script>
     <script src="<?=base_url('assets/lib/jquery.niftymodals/js/jquery.modalEffects.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('assets/lib/jquery.crop/js/jquery.Jcrop.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('assets/lib/jquery.sparkline/jquery.sparkline.min.js')?>" type="text/javascript"></script>
@@ -23,8 +22,9 @@
     <script src="<?=base_url('assets/js/page-data-tables.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('assets/lib/jquery.niftymodals/js/jquery.modalEffects.js')?>" type="text/javascript"></script> 
     <script src="//cdn.datatables.net/tabletools/2.2.4/js/dataTables.tableTools.min.js"></script>
-    <script src="//cdn.datatables.net/plug-ins/1.10.7/api/fnReloadAjax.js"></script>
-    <script src="<?=base_url('assets/js/propld.js')?>" type="text/javascript"></script>
+    <script src="<?=base_url('assets/lib/jquery.gritter/js/jquery.gritter.js')?>" type="text/javascript"></script> 
+    <script src="<?=base_url('assets/js/page-ui-notifications.js')?>" type="text/javascript"></script>    
+    <script src="<?=base_url('assets/js/propld.js')?>" type="text/javascript"></script>   
 
   </body>
 </html>

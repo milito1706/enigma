@@ -5,58 +5,116 @@ class Matriz extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->database();
-		$this->load->model('matriz_model');
-        
-    }
+		$this->load->model('matriz_model');        
+    }    
     
-    public function get_datos_generales() {
-
-        $listadoDatosGenerales = $this->matriz_model->get_datos_generales();
-        $data = array(            
-            'datos_generales' => $listadoDatosGenerales
+    /*  
+     * Mostrar Grid Productos
+     */
+    public function mostrar_productos() {
+        $listadoProductos = $this->matriz_model->get_Productos();
+        $data = array(
+            'productos' => $listadoProductos
         );        
         
-        $this->load->view('formularios_matriz/datos_generales', $data);
-    }
-    public function get_insert_datos_generales() {
-            $respuestaOK = false;
-            $mensajeError = "No se puede ejecutar la aplicación";
-            
-            $id = $this->input->post('id');
-            $data = array(            
-                'empresa'=>$this->input->post('empresa'),
-                'entidad_casfim'=>$this->input->post('enttidad_casfim'),
-                'direccion_completa'=>$this->input->post('direccion_completa'),
-                'cp'=>$this->input->post('cp'),
-                'name_operador'=>$this->input->post('oficial_cumplimiento'),
-                'email'=>$this->input->post('email')
-            );
-                
-            if($id > 0)
-            {
-                
-                $list_datos_generales = $this->matriz_model->get_update_datos_generales($data,$id);
-                if ($list_datos_generales == true) {
-                    $respuestaOK = true;
-                    $mensajeError = "Se han actualizado los datos correctamente";                    
-                }
-                else {
-                    $mensajeError = "No se han podido actualizar los datos";
-                }
-            }
-            else
-            {
-                
-                $list_datos_generales = $this->matriz_model->get_insert_datos_generales($data);
-            }
+        $this->load->view('header');
+        $this->load->view('matriz_riesgo/pagina_productos', $data);
+        $this->load->view('footer');
 
-            $salidaJson = array("respuesta" => $respuestaOK,
-                                "mensaje" => $mensajeError);
-
-            echo json_encode($salidaJson);
     }
-    
+
+    /*  
+     * Mostrar Grid Frecuencia de Pagos
+     */
+    public function mostrar_frecuencia_pagos() {
+        $listadoFrecuenciaPagos = $this->matriz_model->get_FrecuenciaPagos();
+        $data = array(            
+            'frecuencia_pagos' => $listadoFrecuenciaPagos
+        );        
+        
+        $this->load->view('header');
+        $this->load->view('matriz_riesgo/pagina_frecuencia_pagos', $data);
+        $this->load->view('footer');
+
+    }
+
+    /*  
+     * Mostrar Grid Transaccionalidad
+     */
+    public function mostrar_transaccionalidad() {
+        $listadoTransaccionalidad = $this->matriz_model->get_Transaccionalidad();
+        $data = array(            
+            'transaccionalidad' => $listadoTransaccionalidad
+        );        
+        
+        $this->load->view('header');
+        $this->load->view('matriz_riesgo/pagina_transaccionalidad', $data);
+        $this->load->view('footer');
+
+    }
+
+
+    /*  
+     * Mostrar Grid Actividad Economica
+     */
+    public function mostrar_actividad() {
+        $listadoActividad = $this->matriz_model->get_Actividad();
+        $data = array(            
+            'actividades' => $listadoActividad,
+        );        
+        
+        $this->load->view('header');
+        $this->load->view('matriz_riesgo/pagina_actividad', $data);
+        $this->load->view('footer');
+
+    }
+
+    /*  
+     * Mostrar Grid Tipo de Persona
+     */
+    public function mostrar_tipo_persona() {
+        $listadoTipoPersona = $this->matriz_model->get_TipoPersona();
+        $data = array(            
+            'tipo_personas' => $listadoTipoPersona
+        );        
+        
+        $this->load->view('header');
+        $this->load->view('matriz_riesgo/pagina_tipo_persona', $data);
+        $this->load->view('footer');
+
+    }
+
+    /*  
+     * Mostrar Grid Numero de Personas
+     */
+    public function mostrar_numero_personas() {
+        $listadoNpersonas = $this->matriz_model->get_Npersonas();
+        $data = array(            
+            'num_personas' => $listadoNpersonas
+        );        
+        
+        $this->load->view('header');
+        $this->load->view('matriz_riesgo/pagina_numero_personas', $data);
+        $this->load->view('footer');
+
+    }
+
+    /*  
+     * Mostrar Grid Movimientos
+     */
+    public function mostrar_movimientos() {
+        $listadoMovimientos = $this->matriz_model->get_Movimientos();
+        $data = array(            
+            'movimientos' => $listadoMovimientos
+        );        
+        
+        $this->load->view('header');
+        $this->load->view('matriz_riesgo/pagina_movimientos', $data);
+        $this->load->view('footer');
+
+    }
+
+
     public function get_Frecuenciapagos() {
         $listadoFrecuenciaPagos = $this->matriz_model->get_Frecuenciapagos();
         $data = array(            

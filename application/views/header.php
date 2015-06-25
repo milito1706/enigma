@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/lib/jquery.crop/css/jquery.Jcrop.css')?>"/>
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/lib/jquery.datatables/plugins/bootstrap/3/dataTables.bootstrap.css')?>"/>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/tabletools/2.2.4/css/dataTables.tableTools.css"/>
+    <link type="text/css" rel="stylesheet" href="<?=base_url('assets/lib/jquery.gritter/css/jquery.gritter.css')?>">
     <link type="text/css" rel="stylesheet" href="<?=base_url('assets/css/style.css')?>">
+    <link type="text/css" rel="stylesheet" href="<?=base_url('assets/css/custom.css')?>">
   </body>
 </html>

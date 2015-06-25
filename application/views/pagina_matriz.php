@@ -39,12 +39,12 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="block-flat">
-                        <div class="butpro  btn btn-sm md-trigger" id="new_producto" data-modal="form-primary-productos">
-                          <i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Nuevo Producto
+                        <div>
+                          <button class="btn btn-sm md-trigger" id="new_producto" data-modal="form-primary-productos"><i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Nuevo Producto</button>
                         </div>
                         <div class="content">
                           <div>
-                            <table data-order='[[ 1, "desc" ]]' id="datatable-productos" class="table no-border blue">
+                            <table data-order='[[ 1, "desc" ]]' id="tabla-productos" class="table table-bordered datatable">
                               <thead>
                                 <tr>
                                   <th>Nombre</th>
@@ -81,16 +81,16 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="block-flat">
-                        <div class="butpro btn btn-sm md-trigger" id="new_frecuencia_pago" data-modal="form-primary-frecuencia-pago">
-                          <i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Frecuencia de Pago
-                        </div>
+                        <div>
+                          <button class="btn btn-sm md-trigger" id="new_frecuencia_pago" data-modal="form-primary-frecuencia-pago"><i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Frecuencia de Pago</button>
+                        </div>                        
                         <div class="content">
                           <div id="reloadFrecuencia">
                             <table id="datatable-frecuencia" class="table table-bordered">
                               <thead>
                                 <tr>
                                   <th>Unidad de Credito</th>
-                                  <th>Números de Pagos</th>                              
+                                  <th>Números de Pagos</th>                      
                                   <th></th>
                                 </tr>
                               </thead>
@@ -311,13 +311,14 @@
                </div>
              </div>
              <!-- Nifty Modal Productos -->
+            <div id="form-primary-productos" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
+                
              <form id="form-productos">
-              <div id="form-primary-productos" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
                 <div class="md-content">
                   <div class="modal-header">          
                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
                   </div>
-                  <div class="modal-body form" id="modal-body-nuevo-producto">
+                  <div class="modal-body mb-nuevo-producto" id="mb-nuevo-producto">
 
                   </div>
                   <div class="modal-footer">
@@ -325,9 +326,10 @@
                     <button type="submit" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Guardar</button>
                   </div>
                 </div>
+            </form>
+                
               </div>
               <div class="md-overlay"></div>
-            </form>
             <!-- Nifty Modal Tipo de Persona -->
              <form id="form-tipo-persona">
               <div id="form-primary-tipo-persona" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
