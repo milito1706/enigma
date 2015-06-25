@@ -78,7 +78,7 @@
                           <div id="home" class="tab-pane active cont">
                             <div class="row">
                               <div class="col-md-12">
-                                 <table data-order='[[ 1, "desc" ]]' id="datatable-movimientos" class="no-border blue">
+                                 <table data-order='[[ 0, "desc" ]]' id="datatable-movimientos" class="no-border blue">
                                <thead>
                                <div class="butpro butstyle-credit btn-sm md-trigger"  data-modal="form-primary-movimientos">
                                   <i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Movimiento

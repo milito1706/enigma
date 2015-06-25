@@ -203,6 +203,8 @@ class Clientes extends CI_Controller{
                     $this->movimientos_model->get_Unidad_credito();
                     $this->movimientos_model->get_Tolerancia_pago();
                     $this->movimientos_model->getAcumulado_movimiento();
+                    $this->movimientos_model->get_DatosFrecuenciapago();
+                    $this->movimientos_model->get_Frecuencias();
                // }
                 
 

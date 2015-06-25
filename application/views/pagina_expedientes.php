@@ -45,7 +45,7 @@
                         </div>
                         <div class="content">
                             <div>
-                                <table class="table table-bordered" id="datatable-expedientes" >
+                                <table  data-order='[[ 2, "desc" ]]' class="table table-bordered" id="datatable-expedientes" >
                                     <thead>
                                         <tr>
                                             <th>Tipo de Persona</th>
@@ -83,7 +83,7 @@
             <h3></h3>
             <button type="button" class="close md-close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <div class="modal-body form">
+          <div class="modal-body form" id="expediente">
           </div>
           <div class="modal-footer">
            

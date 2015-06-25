@@ -49,7 +49,7 @@
         console.log(params.id=id);
         console.log(params.persona=persona);
         console.log(params.action=action);
-        $('.modal-body').load('get_Formulario_update', params,function(){
+        $('#expediente').load('get_Formulario_update', params,function(){
          
             })  
     })
@@ -58,7 +58,7 @@
         var action =$(this).attr('data-new');
         params={};
         params.persona=persona;
-        $('.modal-body').load('get_Formulario_nuevo', params,function(){
+        $('#expediente').load('get_Formulario_nuevo', params,function(){
          
         })  
       
@@ -68,7 +68,7 @@
         var action =$(this).attr('data-new');
         params={};
         params.persona=persona;
-        $('.modal-body').load('get_Formulario_nuevo', params,function(){
+        $('#expediente').load('get_Formulario_nuevo', params,function(){
          
         })  
     }) 
