@@ -295,6 +295,16 @@ class Matriz extends CI_Controller {
         $this->load->view('formularios_matriz/form_frecuencia_pago');
         
     }
+    public function get_update_frecuencia_pago() {
+        $id_frecuencia_pago = $this->input->post('id');
+        $datos_frecuencia_pago = $this->matriz_model->get_consulta_frecuencia_pago($id_frecuencia_pago);
+        foreach ( $datos_frecuencia_pago as $item_frecuencia_pago) { 
+            $data['id'] = $item_frecuencia_pago['id'];
+            $data['unidad_credito'] = $item_frecuencia_pago['unidad_credito'];
+            $data['frecuencia_pago'] = $item_frecuencia_pago['frecuencia_pago'];
+        }
+        $this->load->view('formularios_matriz/form_frecuencia_pago',$data);
+    }
     
     public function get_insert_frecuencia_pago() {
             $respuestaOK = false;
@@ -316,7 +326,7 @@ class Matriz extends CI_Controller {
                 $list_nuevo_frecuencia_pago = $this->matriz_model->get_insert_frecuencia_pago($data);
                 if ($list_nuevo_frecuencia_pago == true) {
                     $respuestaOK = true;
-                    $mensajeError = "Se ha agregado el registro correctamente";
+                    $mensajeError = "Frecuencia ". $this->input->post('unidad_credito') ." agregada correctamente";
                     $contenidoOK = '
                         <tr>
                             <td>'.$this->input->post('unidad_credito').'</td>                            
@@ -326,9 +336,9 @@ class Matriz extends CI_Controller {
                             </td>
                         <tr>
                     ';
-                }
-                else{
-                    $mensajeError = "No se puede guardar el registro en la base de datos";
+                }               
+                else {
+                    $mensajeError = "No se ha podido agregar, intentalo nuevamente.";
                 }
             }
 
@@ -339,17 +349,8 @@ class Matriz extends CI_Controller {
             echo json_encode($salidaJson);
     }
     
-    public function get_update_frecuencia_pago() {
-        $id_frecuencia_pago = $this->input->post('id');
-        $datos_frecuencia_pago = $this->matriz_model->get_consulta_frecuencia_pago($id_frecuencia_pago);
-        foreach ( $datos_frecuencia_pago as $item_frecuencia_pago) { 
-            $data['id'] = $item_frecuencia_pago['id'];
-            $data['unidad_credito'] = $item_frecuencia_pago['unidad_credito'];
-            $data['frecuencia_pago'] = $item_frecuencia_pago['frecuencia_pago'];
-        }
-        $this->load->view('formularios_matriz/form_frecuencia_pago',$data);
-    }
-    // Fin Funciones para el tab Movimientos
+    
+    
 
     // Funciones para el tab Transaccionalidad
     public function get_nuevo_transaccionalidad() {

@@ -23,7 +23,7 @@
                 <div class="col-md-12">
                   <div class="block-flat">
                     <div>
-                      <button class="btn btn-sm md-trigger" id="new_frecuencia_pago" data-modal="form-primary-frecuencia-pago"><i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Frecuencia de Pago</button>
+                      <button class="btn btn-default btn-sm md-trigger" id="new_frecuencia_pago" data-modal="form-primary-frecuencia-pago">Nuevo Frecuencia de Pago</button>
                     </div>
                     <div class="content">
                       <div>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
-                      <button type="submit" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Guardar</button>
+                      <button type="submit" data-dismiss="modal" class="btn btn-primary " id="btn-submit">Guardar</button>
                     </div>
                   </div>
                 </form>

@@ -106,12 +106,24 @@ class Matriz_model extends MY_model_base{
     
     // Tab Frecuencia de Pagos
     public function get_insert_frecuencia_pago($data) {
-        $this->db->insert('cat_unidadcredito',$data);
-        if($this->db->affected_rows() > 0) {
-            return true;
-        } else {
+        $unidad_credito = $this->input->post('unidad_credito');
+        $query = $this->db->where('unidad_credito', $unidad_credito);
+        $query = $this->db->get('cat_unidadcredito');
+        if( $query->num_rows() > 0)
+        {
             return false;
         }
+        else
+        {
+            $this->db->insert('cat_unidadcredito',$data);
+            if($this->db->affected_rows() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
     }
 
     public function get_consulta_frecuencia_pago($id) {
