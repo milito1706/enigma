@@ -61,12 +61,12 @@
                     <div class="modal-header">
                       <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
                     </div>
-                    <div class="modal-body form" id="modal-body-frecuencia">
+                    <div id="mbfrecuencia" class="modal-body form">
 
                     </div>
                     <div class="modal-footer">
                       <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
-                      <button type="submit" data-dismiss="modal" class="btn btn-primary " id="btn-submit">Guardar</button>
+                      <button type="submit" data-dismiss="modal" class="btn btn-primary" id="btn-submit">Guardar</button>
                     </div>
                   </div>
                 </form>

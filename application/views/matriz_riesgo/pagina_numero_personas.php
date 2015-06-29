@@ -35,14 +35,14 @@
                               <th></th>
                             </tr>
                           </thead>
-                          <tbody>
+                          <tbody id="#listanopersonas">
                             <?php foreach ( $num_personas as $num_persona):?>
                               <tr class="odd gradeX">
                                 <td align="center"><?= $num_persona['r_min'];?></td>
                                 <td align="center"><?= $num_persona['r_max'];?></td>                                                                       
                                 <td align="center"><?= $num_persona['calificacion'];?></td>                                                                       
                                 <td class="center">
-                                 <button id="editar_nopersonas" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $num_persona['Id'];?>" data-persona="<?php echo $num_persona['Id'];?>" data-edit="editNoPersonas" data-modal="form-primary-nopersonas" ><i class="fa fa-pencil"></i></button></td>
+                                 <button id="editar_nopersonas" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $num_persona['Id'];?>" data-edit="editNoPersonas" data-modal="form-primary-nopersonas" ><i class="fa fa-pencil"></i></button></td>
                                </tr>
                              <?php endforeach;?>
                            </tbody>
@@ -60,7 +60,7 @@
                     <div class="modal-header">
                       <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
                     </div>
-                    <div class="modal-body form">
+                    <div id="mbnopersonas" class="modal-body form">
 
                     </div>
                     <div class="modal-footer">

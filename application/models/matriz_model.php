@@ -134,6 +134,11 @@ class Matriz_model extends MY_model_base{
     public function get_update_frecuencia_pago($data, $id) {
         $this->db->where('id', $id);
         $this->db->update('cat_unidadcredito',$data);
+        if($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
     // Fin Frecuenca de Pagos
     
@@ -166,6 +171,11 @@ class Matriz_model extends MY_model_base{
     public function get_update_nopersonas($data, $id) {
         $this->db->where('Id', $id);
         $this->db->update('r_numpersonas',$data);
+        if($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
     // Fin no personas
     

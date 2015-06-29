@@ -125,40 +125,7 @@ class Matriz extends CI_Controller {
         
     }
 
-    // Funcion que me consulta todos los resultados de la matriz de riesgo
-    public function mostrar_pagina_matriz(){
-
-        // Obtengo los productos
-		$listadoProductos = $this->matriz_model->get_Productos();
-		$listado_total_productos= $this->matriz_model->get_Numero_total_productos();        
-        // Obtengo las frecuencias de pagos
-        $listadoFrecuenciaPagos = $this->matriz_model->get_Frecuenciapagos();
-
-        // Obtengo la Transaccionalidad
-        $listadoTransaccionalidad = $this->matriz_model->get_Transaccionalidad();
-        // Obtengo el catalogo de Actividades
-        $listadoActividad = $this->matriz_model->get_Actividad();
-        // Obtengo los tipos de Personas
-        $listadoTipoPersona = $this->matriz_model->get_TipoPersona();
-        // Obtengo el numero de personas dentro de la organizacion
-        $listadoNpersonas = $this->matriz_model->get_Npersonas();
-        // Obtengo los movimientos
-        $listadoMovimientos = $this->matriz_model->get_Movimientos();
-        
-        $data = array(
-            'productos' => $listadoProductos,
-            'frecuencia_pagos' => $listadoFrecuenciaPagos,
-            'transaccionalidad' => $listadoTransaccionalidad,
-            'actividades' => $listadoActividad,
-            'tipo_personas' => $listadoTipoPersona,
-            'num_personas' => $listadoNpersonas,
-            'movimientos' => $listadoMovimientos
-        );        
-        
-        $this->load->view('header');
-        $this->load->view('pagina_matriz', $data);
-        $this->load->view('footer');
-    }
+    
     
     // Funciones para el tab Productos
     public function get_nuevo_producto() {
@@ -320,6 +287,13 @@ class Matriz extends CI_Controller {
             if($id > 0)
             {
                 $list_nuevo_frecuencia_pago = $this->matriz_model->get_update_frecuencia_pago($data,$id);
+                if ($list_nuevo_frecuencia_pago == true) {
+                    $respuestaOK = true;
+                    $mensajeError = "Frecuencia ". $this->input->post('unidad_credito') ." actualizada";                    
+                }               
+                else {
+                    $mensajeError = "No se ha podido actualizar, intentalo nuevamente.";
+                }
             }
             else
             {
@@ -401,32 +375,45 @@ class Matriz extends CI_Controller {
     }
     
     public function get_insert_nopersonas(){
-            
+            $respuestaOK = false;
+            $mensajeError = "No se puede ejecutar la aplicación";
             $id = $this->input->post('id');
             $data = array(            
                 'r_min' => $this->input->post('minimo'),
                 'r_max' => $this->input->post('maximo'),
-                'calificacion' => $this->input->post('clasificacion'),                
+                'calificacion' => $this->input->post('calificacion')      
             );
                 
             if($id > 0)
             {
                 $list_nuevo_nopersonas = $this->matriz_model->get_update_nopersonas($data,$id);
+                if ($list_nuevo_nopersonas == true) {
+                    $respuestaOK = true;
+                    $mensajeError = "Número de personas actualizado";                    
+                }               
+                else {
+                    $mensajeError = "No se ha podido actualizar, intentalo nuevamente.";
+                }
             }
             else
             {
                 $list_nuevo_nopersonas = $this->matriz_model->get_insert_nopersonas($data);
             }
+            
+            $salidaJson = array("respuesta" => $respuestaOK,
+                                "mensaje" => $mensajeError);
+
+            echo json_encode($salidaJson);
     }
     
     public function get_update_nopersonas() {
         $id_nopersonas = $this->input->post('id');
         $datos_nopersonas = $this->matriz_model->get_consulta_nopersonas($id_nopersonas);
-        foreach ( $datos_nopersonas as $item_nopersonas) { 
+        foreach ($datos_nopersonas as $item_nopersonas) { 
             $data['Id'] = $item_nopersonas['Id'];
             $data['r_min'] = $item_nopersonas['r_min'];
             $data['r_max'] = $item_nopersonas['r_max'];
-            $data['calificacion'] = $item_nopersonas['calificacion'];            
+            $data['calificacion'] = $item_nopersonas['calificacion'];          
         }
         $this->load->view('formularios_matriz/form_nopersonas',$data);
     }

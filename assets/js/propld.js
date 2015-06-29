@@ -229,10 +229,10 @@ $(document).on('click','#editar_movimiento',function() {
 $(document).on('click','#new_frecuencia_pago',function() {       
     var action =$(this).attr('data-new');
     params={};        
-    $('.modal-body form').load('get_nuevo_frecuencia_pago', params,function(){
+    $('#mbfrecuencia').load('get_nuevo_frecuencia_pago', params,function(){
         console.log("nuevo frecuencia pago");
     });
-
+    $('#new_frecuencia_pago').off('click', '#mbfrecuencia');
 });
 $(document).on('click','#editar_frecuencia_pago',function() {
     var id = $(this).attr('data-id');       
@@ -240,15 +240,20 @@ $(document).on('click','#editar_frecuencia_pago',function() {
     params={};
     console.log(params.id = id);        
     console.log(params.action = action);
-    $('#modal-body-frecuencia').load('get_update_frecuencia_pago', params,function(){
+    $('#mbfrecuencia').load('get_update_frecuencia_pago', params,function(){
         console.log("editar" + " " + id);
     });
 });
 
-$("#form-frecuencia-pago").submit(function(e) {
-    e.preventDefault();
-    $("#form-primary-frecuencia-pago").css("display", "none");
+function ocultarModal(idModal)
+{
+    $("#" + idModal).css("display", "none");
     $(".md-overlay").css("display", "none");
+}
+$("#form-frecuencia-pago").submit(function(e) {
+    e.preventDefault();    
+    
+    ocultarModal("form-primary-frecuencia-pago");
 
     var formulario_frecuencia_pago = $("#form-frecuencia-pago").serializeArray();
     console.log('Form frecuencia pago');
@@ -260,31 +265,28 @@ $("#form-frecuencia-pago").submit(function(e) {
         data: formulario_frecuencia_pago,
         success: function(response) {
         // Validar mensaje de error
-        if(response.respuesta == false)
-        {
-        //alert(response.mensaje);
-        $.gritter.add({
-            title: 'Error!',
-            text: response.mensaje,
-            class_name: 'danger'
-        });
-        }
-        else 
-        {
-            $('#listaFrecuneciaPagos').append(response.contenido);
-        //alert(response.mensaje);
-        $.gritter.add({
-            title: 'Completado!',
-            text: response.mensaje,
-            class_name: 'success'
-        });                  
-        }
+            if(response.respuesta == false) 
+            {
+                $.gritter.add({
+                    title: 'Error!',
+                    text: response.mensaje,
+                    class_name: 'danger'
+                });
+            }
+            else 
+            {
+                $('#listaFrecuneciaPagos').append(response.contenido);        
+                $.gritter.add({
+                    title: 'Completado!',
+                    text: response.mensaje,
+                    class_name: 'success'
+                });                  
+            }
         },
         error:function(){
             alert('Error general del sistema, intente mas tarde.');
         } 
     });
-
 //return false;
 });
 
@@ -327,11 +329,12 @@ $(document).on('click','#editar_transaccionalidad',function() {
 $(document).on('click','#new_nopersonas',function(){        
     var action =$(this).attr('data-new');
     params={};        
-    $('.modal-body').load('get_nuevo_nopersonas', params,function() {
+    $('#mbnopersonas').load('get_nuevo_nopersonas', params,function() {
         console.log("nuevo nopersonas");
     });  
 });
 
+var tblnopersonas = $('#datatable-nopersonas').DataTable();
 $("#form-nopersonas").submit(function(e) {
     e.preventDefault();
     var formulario_nopersonas = $("#form-nopersonas").serializeArray();
@@ -340,8 +343,31 @@ $("#form-nopersonas").submit(function(e) {
         type: "post",
         dataType: 'json',
         url: "get_insert_nopersonas",
-        cache: false,
-        data: formulario_nopersonas
+        data: formulario_nopersonas,
+        success: function(response) {
+        // Validar mensaje de error
+            if(response.respuesta == false) 
+            {
+                $.gritter.add({
+                    title: 'Error!',
+                    text: response.mensaje,
+                    class_name: 'danger'
+                });
+            }
+            else 
+            {
+                $('#datatable-nopersonas').dataTable().fnDestroy();
+                $('#datatable-nopersonas').dataTable();
+                $.gritter.add({
+                    title: 'Completado!',
+                    text: response.mensaje,
+                    class_name: 'success'
+                });                  
+            }
+        },
+        error:function(){
+            alert('Error general del sistema, intente mas tarde.');
+        }
     });
 //return false;
 });
@@ -352,7 +378,7 @@ $(document).on('click','#editar_nopersonas',function() {
     params={};
     console.log(params.id = id);        
     console.log(params.action = action);
-    $('#form-primary-nopersonas .modal-body').load('get_update_nopersonas', params,function(){
+    $('#mbnopersonas').load('get_update_nopersonas', params,function(){
         console.log("editar" + " " + id);
     });
 });
@@ -404,6 +430,17 @@ $('#tabla-productos').dataTable({
 
 });
 $('#datatable-frecuencia').dataTable({
+    "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+    },
+    "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.0/swf/copy_csv_xls_pdf.swf"
+    }
+
+});
+$('#datatable-nopersonas').dataTable({
     "language": {
         "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
     },
