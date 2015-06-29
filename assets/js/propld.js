@@ -5,6 +5,9 @@ $(document).on("ready", function() {
     App.uiNotifications();
     App.charts();
     $('.md-trigger').modalEffects();
+    var table = $('#tabla-productos').DataTable();
+    var tt = new $.fn.dataTable.TableTools( table ); 
+    $( tt.fnContainer() ).insertBefore('div.dataTables_wrapper');
     
     // Datos Generales
     $('#datos-generales').on('click', function() {        
@@ -395,10 +398,8 @@ $('#tabla-productos').dataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
-    "dom": 'T<"clear">lfrtip',
-    "tableTools": {
-        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.0/swf/copy_csv_xls_pdf.swf"
-    }
+    "dom": 'T<"clear">lfrtip'
+    
 
 });
 $('#datatable-frecuencia').dataTable({
@@ -406,10 +407,7 @@ $('#datatable-frecuencia').dataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
-    "dom": 'T<"clear">lfrtip',
-    "tableTools": {
-        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.0/swf/copy_csv_xls_pdf.swf"
-    }
+    "dom": 'T<"clear">lfrtip'
 
 });
 

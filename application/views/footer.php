@@ -22,6 +22,7 @@
     <script src="<?=base_url('assets/js/page-data-tables.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('assets/lib/jquery.niftymodals/js/jquery.modalEffects.js')?>" type="text/javascript"></script> 
     <script src="//cdn.datatables.net/tabletools/2.2.4/js/dataTables.tableTools.min.js"></script>
+    <script src="<?=base_url('assets/js/dataTables.bootstrap.js')?>" type="text/javascript"></script>   
     <script src="<?=base_url('assets/lib/jquery.gritter/js/jquery.gritter.js')?>" type="text/javascript"></script> 
     <script src="<?=base_url('assets/js/page-ui-notifications.js')?>" type="text/javascript"></script>    
     <script src="<?=base_url('assets/js/propld.js')?>" type="text/javascript"></script>   
