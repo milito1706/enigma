@@ -1,22 +1,27 @@
 $(document).on("ready", function() {
+
 //initialize the javascript
-App.init();
-App.dataTables(12);
-App.uiNotifications();
-App.charts();
-$('.md-trigger').modalEffects();
+    App.init();
+    App.dataTables(12);
+    App.uiNotifications();
+    App.charts();
+    $('.md-trigger').modalEffects();
+    var table = $('#tabla-productos').DataTable();
+    var tt = new $.fn.dataTable.TableTools( table ); 
+    $( tt.fnContainer() ).insertBefore('div.dataTables_wrapper');
 
 
 
 // Datos Generales
-$('#datos-generales').on('click', function() {        
-    var action =$(this).attr('data-new');
-    params={};
-    console.log(params.action = action);
-    $('#mb-datos-generales').load('get_datos_generales', params, function() {
-        console.log("Datos Generales")
-    }) 
-});
+    $('#datos-generales').on('click', function() {        
+        var action =$(this).attr('data-new');
+        params={};
+        console.log(params.action = action);
+        $('#mb-datos-generales').load('get_datos_generales', params, function() {
+            console.log("Datos Generales")
+        }) 
+
+    });
 // Guardar Datos Generales
 $("#form-datos-generales").on("submit", function(e) {
     e.preventDefault();
@@ -39,10 +44,11 @@ $("#form-datos-generales").on("submit", function(e) {
         },
         complete: function() {
             console.log("Ajax realizado complete");
-        }  
-    });
+        }   
+    
 
 });
+    });
 ////////////eventos de expedientes///////////////
 $("#frminformacion").submit(function(e) {
     e.preventDefault();
@@ -423,10 +429,8 @@ $('#tabla-productos').dataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
-    "dom": 'T<"clear">lfrtip',
-    "tableTools": {
-        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.0/swf/copy_csv_xls_pdf.swf"
-    }
+    "dom": 'T<"clear">lfrtip'
+    
 
 });
 $('#datatable-frecuencia').dataTable({
@@ -434,10 +438,7 @@ $('#datatable-frecuencia').dataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
-    "dom": 'T<"clear">lfrtip',
-    "tableTools": {
-        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.0/swf/copy_csv_xls_pdf.swf"
-    }
+    "dom": 'T<"clear">lfrtip'
 
 });
 $('#datatable-nopersonas').dataTable({
