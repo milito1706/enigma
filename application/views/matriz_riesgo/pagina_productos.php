@@ -67,7 +67,7 @@
                   <div class="modal-header">          
                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
                   </div>
-                  <div class="modal-body mb-nuevo-producto" id="mb-nuevo-producto">
+                  <div class="modal-body form" id="mb-nuevo-producto">
 
                   </div>
                   <div class="modal-footer">

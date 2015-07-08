@@ -19,7 +19,6 @@
            },
            afterClose: function(button, modal) {
             //do your suff
-            console.log("Cerrado");
            }
         };
         

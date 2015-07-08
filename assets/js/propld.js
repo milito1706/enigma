@@ -1,4 +1,4 @@
-$(document).on("ready", function() {
+$(document).ready(function() {
 
 //initialize the javascript
     App.init();
@@ -132,12 +132,19 @@ $(document).on('click','#editar_credito',function(){
 
     })  
 });
-
+// Nuevo Frecuencia de Pagos
+$(document).on("click",'#new_frecuencia_pago', function() {
+    var action =$(this).attr('data-new');
+    params={};        
+    $('#form-primary-frecuencia .modal-body').load('get_nuevo_frecuencia_pago', params, function() {
+        console.log("nuevo frecuencia pago");
+    })
+});
 // Nuevo producto
 $(document).on("click",'#new_producto', function() {        
     var action = $(this).attr('data-new');
     params = {};        
-    $('#form-primary-productos #mb-nuevo-producto').load('get_nuevo_producto', params, function() {
+    $('#form-primary-productos .modal-body').load('get_nuevo_producto', params, function() {
         console.log("Nuevo producto");
     })
 });
@@ -231,15 +238,8 @@ $(document).on('click','#editar_movimiento',function() {
     });
 });
 
-// Nuevo Frecuencia de Pagos
-$(document).on('click','#new_frecuencia_pago',function() {       
-    var action =$(this).attr('data-new');
-    params={};        
-    $('#mbfrecuencia').load('get_nuevo_frecuencia_pago', params,function(){
-        console.log("nuevo frecuencia pago");
-    });
-    $('#new_frecuencia_pago').off('click', '#mbfrecuencia');
-});
+
+
 $(document).on('click','#editar_frecuencia_pago',function() {
     var id = $(this).attr('data-id');       
     var action =$(this).attr('data-edit');        

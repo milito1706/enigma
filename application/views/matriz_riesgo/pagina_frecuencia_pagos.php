@@ -23,7 +23,7 @@
                 <div class="col-md-12">
                   <div class="block-flat">
                     <div>
-                      <button class="btn btn-default btn-sm md-trigger" id="new_frecuencia_pago" data-modal="form-primary-frecuencia-pago">Nuevo Frecuencia de Pago</button>
+                      <button class="btn btn-default btn-sm md-trigger" id="new_frecuencia_pago" data-modal="form-primary-frecuencia">Nuevo Frecuencia de Pago</button>
                     </div>
                     <div class="content">
                       <div>
@@ -55,23 +55,25 @@
                </div>
              
              <!-- Nifty Modal Frecuencia de Pago -->
-              <div id="form-primary-frecuencia-pago" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
-                <form id="form-frecuencia-pago">
-                  <div class="md-content">
-                    <div class="modal-header">
-                      <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
-                    </div>
-                    <div id="mbfrecuencia" class="modal-body form">
+             <div id="form-primary-frecuencia" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
 
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
-                      <button type="submit" data-dismiss="modal" class="btn btn-primary" id="btn-submit">Guardar</button>
-                    </div>
+              <div class="md-content">
+                <form id="form-frecuencia-pago">
+                  <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
+                  </div>
+                  <div class="modal-body form" id="mb-frecuencia">
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
+                    <button type="submit" data-dismiss="modal" class="btn btn-primary" id="btn-submit">Guardar</button>
                   </div>
                 </form>
               </div>
-              <div class="md-overlay"></div>
+
+            </div>
+            <div class="md-overlay"></div>
           
           </div>
         </div>        
