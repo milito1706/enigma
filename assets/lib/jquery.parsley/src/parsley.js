@@ -28,7 +28,7 @@ define([
   // Tiny Parsley Pub / Sub mechanism, used for `ParsleyUI` and Listeners
   'parsley/pubsub',
   // Default en constraints messages
-  'i18n/en'
+  'i18n/es'
 ], function (ParsleyUtils, ParsleyDefaults, ParsleyAbstract, ParsleyValidator, ParsleyUI, ParsleyOptionsFactory, ParsleyForm, ParsleyField, ParsleyMultiple) {
   // ### Parsley factory
   var Parsley = function (element, options, parsleyInstance) {

@@ -1,10 +1,10 @@
- <div class="row">  
+ <div class="row">
+      <input type="hidden" name="id" id="id" value="<?php if(isset($id)){echo $id;}?>">
   <div class="col-sm-6">
     <div class="form-group">
       <label>Frecuencia</label>
-      <input type="hidden" name="id" id="id" value="<?php if(isset($id)){echo $id;}?>">
       <input type="text" name="unidad_credito" id="unidad_credito" placeholder="Frecuencia" class="form-control" value="<?php if(isset($unidad_credito)){echo $unidad_credito;}?>" required autofocus>
-    </div>    
+    </div> 
   </div>
   <div class="col-sm-6">
     <div class="form-group">

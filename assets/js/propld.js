@@ -4,11 +4,12 @@ $(document).ready(function() {
     App.init();
     App.dataTables(12);
     App.uiNotifications();
+    $('form').parsley();
     App.charts();
     $('.md-trigger').modalEffects();
-    var table = $('#tabla-productos').DataTable();
+    /*var table = $('#tabla-productos').DataTable();
     var tt = new $.fn.dataTable.TableTools( table ); 
-    $( tt.fnContainer() ).insertBefore('div.dataTables_wrapper');
+    $( tt.fnContainer() ).insertBefore('div.dataTables_wrapper');*/
 
 
 
@@ -133,11 +134,23 @@ $(document).on('click','#editar_credito',function(){
     })  
 });
 // Nuevo Frecuencia de Pagos
-$(document).on("click",'#new_frecuencia_pago', function() {
+$(document).on("click",'#new_frecuencia_pago', function(e) {
+    
     var action =$(this).attr('data-new');
     params={};        
-    $('#form-primary-frecuencia .modal-body').load('get_nuevo_frecuencia_pago', params, function() {
+    $('#mb-frecuencia').load('get_nuevo_frecuencia_pago', params, function() {
         console.log("nuevo frecuencia pago");
+    })
+});
+$(document).on("click","#editar_frecuencia_pago", function(e) {
+    
+    var id = $(this).attr("data-id");
+    var action =$(this).attr("data-edit");
+    params={};
+    console.log(params.id = id);        
+    console.log(params.action = action);
+    $("#mb-frecuencia").load("get_update_frecuencia_pago", params, function(){
+        console.log("editar" + " " + id);
     })
 });
 // Nuevo producto
@@ -235,64 +248,58 @@ $(document).on('click','#editar_movimiento',function() {
     console.log(params.action = action);
     $('#form-primary-movimiento .modal-body').load('get_update_movimiento', params,function(){
         console.log("editar" + " " + id);
-    });
+    })
 });
 
 
 
-$(document).on('click','#editar_frecuencia_pago',function() {
-    var id = $(this).attr('data-id');       
-    var action =$(this).attr('data-edit');        
-    params={};
-    console.log(params.id = id);        
-    console.log(params.action = action);
-    $('#mbfrecuencia').load('get_update_frecuencia_pago', params,function(){
-        console.log("editar" + " " + id);
-    });
-});
 
 function ocultarModal(idModal)
 {
     $("#" + idModal).css("display", "none");
     $(".md-overlay").css("display", "none");
 }
-$("#form-frecuencia-pago").submit(function(e) {
+$("#form-frecuencia-pago").on("submit", function(e) {
     e.preventDefault();    
     
-    ocultarModal("form-primary-frecuencia-pago");
+    var form = $(this);
+    form.parsley().validate();
+    
+    if (form.parsley().validate()) {            
+        ocultarModal("form-primary-frecuencia-pago");
+        var formulario_frecuencia_pago = $("#form-frecuencia-pago").serializeArray();
+        console.log('Form frecuencia pago');
 
-    var formulario_frecuencia_pago = $("#form-frecuencia-pago").serializeArray();
-    console.log('Form frecuencia pago');
-
-    $.ajax({
-        type: "post",
-        dataType: 'json',
-        url: "get_insert_frecuencia_pago",
-        data: formulario_frecuencia_pago,
-        success: function(response) {
-        // Validar mensaje de error
-            if(response.respuesta == false) 
-            {
-                $.gritter.add({
-                    title: 'Error!',
-                    text: response.mensaje,
-                    class_name: 'danger'
-                });
-            }
-            else 
-            {
-                $('#listaFrecuneciaPagos').append(response.contenido);        
-                $.gritter.add({
-                    title: 'Completado!',
-                    text: response.mensaje,
-                    class_name: 'success'
-                });                  
-            }
-        },
-        error:function(){
-            alert('Error general del sistema, intente mas tarde.');
-        } 
-    });
+        $.ajax({            
+            type: "post",
+            dataType: 'json',
+            url: "get_insert_frecuencia_pago",
+            data: formulario_frecuencia_pago,
+            success: function(response) {
+            // Validar mensaje de error
+                if(response.respuesta == false) 
+                {
+                    $.gritter.add({
+                        title: 'Error!',
+                        text: response.mensaje,
+                        class_name: 'danger'
+                    });
+                }
+                else 
+                {
+                    $('#listaFrecuneciaPagos').append(response.contenido);        
+                    $.gritter.add({
+                        title: 'Completado!',
+                        text: response.mensaje,
+                        class_name: 'success'
+                    });                  
+                }
+            },
+            error:function(){
+                alert('Error general del sistema, intente mas tarde.');
+            } 
+        });
+    }
 //return false;
 });
 
