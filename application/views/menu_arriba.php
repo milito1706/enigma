@@ -15,6 +15,7 @@
                 <li><a href="#">Cambio de Contraseña</a></li>
                 <li><a href="#">Perfil de Usuario</a></li>
                 <li class="dropdown-header"><i class="fa fa-question-circle"></i>Información</li>
+                <li><a href="#" class="md-trigger" data-modal="form-primary-datos-generales" id="datos-generales">Datos Generales</a></li>
                 <li><a href="#">Listas Peps y Negras</a></li>
                 <li><a href="#">Listas Personas Bloquedas</a></li>
                 <li><a href="#">FAQ</a></li>
@@ -23,13 +24,11 @@
             </li>
             <li  class="col-sm-6 no-padding">
               <ul>
-                <li class="dropdown-header"><i class="fa fa-gear"></i>Matriz de Riesgo</li>
-                <li><a href="#" class="md-trigger" data-modal="form-primary-datos-generales" id="datos-generales">Datos Generales</a></li>
+                <li class="dropdown-header"><i class="fa fa-gear"></i>Matriz de Riesgo</li>                
                 <li><a href="<?=base_url('index.php/matriz/mostrar_productos');?>">Productos</a></li>
                 <li><a href="<?=base_url('index.php/matriz/mostrar_frecuencia_pagos');?>">Frecuencia de Pagos</a></li>
                 <li><a href="<?=base_url('index.php/matriz/mostrar_transaccionalidad');?>">Transaccionalidad</a></li>
-                <li><a href="<?=base_url('index.php/matriz/mostrar_pagina_matriz');?>">Riesgo por Estados</a></li>
-                <li><a href="<?=base_url('index.php/matriz/mostrar_pagina_matriz');?>">Riesgo por País</a></li>
+                <li><a href="<?=base_url('index.php/matriz/mostrar_pagina_matriz');?>">Riesgo Geográfico</a></li>
                 <li><a href="<?=base_url('index.php/matriz/mostrar_actividad');?>">Riesgo por Actividad</a></li>
                 <li><a href="<?=base_url('index.php/matriz/mostrar_tipo_persona');?>">Tipo de Persona</a></li>
                 <li><a href="<?=base_url('index.php/matriz/mostrar_numero_personas');?>">Número de Personas</a></li>

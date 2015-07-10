@@ -254,9 +254,9 @@ $(document).on('click','#editar_movimiento',function() {
 
 
 
-function ocultarModal(idModal)
+function ocultarModal()
 {
-    $("#" + idModal).css("display", "none");
+    $(".md-modal").css("display", "none");
     $(".md-overlay").css("display", "none");
 }
 $("#form-frecuencia-pago").on("submit", function(e) {
@@ -266,7 +266,7 @@ $("#form-frecuencia-pago").on("submit", function(e) {
     form.parsley().validate();
     
     if (form.parsley().validate()) {            
-        ocultarModal("form-primary-frecuencia-pago");
+        
         var formulario_frecuencia_pago = $("#form-frecuencia-pago").serializeArray();
         console.log('Form frecuencia pago');
 
@@ -276,6 +276,7 @@ $("#form-frecuencia-pago").on("submit", function(e) {
             url: "get_insert_frecuencia_pago",
             data: formulario_frecuencia_pago,
             success: function(response) {
+                ocultarModal();
             // Validar mensaje de error
                 if(response.respuesta == false) 
                 {
@@ -453,9 +454,6 @@ $('#datatable-nopersonas').dataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
-    "dom": 'T<"clear">lfrtip',
-    "tableTools": {
-        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.0/swf/copy_csv_xls_pdf.swf"
-    }
+    "dom": 'T<"clear">lfrtip'
 
 });
