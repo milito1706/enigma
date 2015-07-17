@@ -66,7 +66,7 @@
                 <div id="home" class="tab-pane active cont">
                   <div class="row">
                     <div class="col-md-12">
-                    <?php foreach ($clientes_creditos as $data_creditos) { $id_credito=$data_creditos['Id'];   $limite_cuota=$data_creditos['T2'];?>
+                    <?php foreach ($clientes_creditos as $data_creditos) { $id_credito=$data_creditos['Id']; $limite_cuota=$data_creditos['T2'];?>
                       <table class="no-border blue">
                         <thead>
                           <tr>

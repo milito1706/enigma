@@ -22,10 +22,13 @@
     <script src="<?=base_url('assets/lib/jquery.datatables/plugins/bootstrap/3/dataTables.bootstrap.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('assets/js/page-data-tables.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('assets/lib/jquery.niftymodals/js/jquery.modalEffects.js')?>" type="text/javascript"></script> 
+     <script src="<?=base_url('assets/lib/jquery.gritter/js/jquery.gritter.js')?>" type="text/javascript"></script>
+    <script type="text/javascript" src="<?=base_url('assets/js/page-ui-notifications.js')?>"></script>
 <script type="text/javascript"> 
     $(document).ready(function(){
         //initialize the javascript
         App.init();
+         App.uiNotifications();
         App.dataTables(12);
         App.pageProfile();
         App.charts();
@@ -112,7 +115,6 @@
 //////////////EVENTO DE MOVIMIENTOS/////////77
  $("#form-movimientos").submit(function() {
               var formulario=$("#form-movimientos").serializeArray();
-              console.log('hola putos');
                 $.ajax({
                 type: "post",
                 dataType: 'json',

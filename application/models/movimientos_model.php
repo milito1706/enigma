@@ -1,6 +1,5 @@
 <?php
-class Movimientos_model extends CI_Model{
-
+class Movimientos_model extends CI_Model{    
     function __construct()
     {
         $this->load->database();
@@ -106,59 +105,53 @@ class Movimientos_model extends CI_Model{
 			}
 		}
 	}
+//////////// CONSULTA PARA REALIZAR LA FRECUENCIAS DE PAGOS//////////////////	
 function get_DatosFrecuenciapago(){
 			
 			if($this->auni_unidad_credito=='SEMANAL'){
-
 					$dias=7;
 			}
 			if($this->auni_unidad_credito=='QUINCENAL'){
-
 					$dias=15;
 			}
 			if($this->auni_unidad_credito=='MENSUAL'){
-
 					$dias=30;
 			}
 			if($this->auni_unidad_credito=='BIMESTRAL'){
-
 					$dias=60;
 			}
 			if($this->auni_unidad_credito=='TRIMESTRAL'){
-
 					$dias=90;
 			}
 			if($this->auni_unidad_credito=='SEMESTRAL'){
-
 					$dias=180;
 			}
 			if($this->auni_unidad_credito=='ANUAL'){
-
 					$dias=360;
 			}
 			if($this->auni_unidad_credito=='AL VENCIMIENTO'){
-					
 					$this->fecha_movimiento=$this->T2;//'2014-07-24';
 					$this->a=$this->acre_T3;
 					$this->b=$this->acre_T4;
 					if ($this->b > $this->fecha_movimiento) {
 						$this->rango_fecha=$this->a;
 						$this->rango_fecha2=$this->b;
-					$query=$this->db->query("select id_credito,count(T1) as contar,sum(T1) as suma from book_movimientos where id_credito='$this->acre_no_credito' and T2 between '$this->a' and '$this->b' group by id_credito;");
-					$row=$query->row(); 
-					$this->frecuenciasuma_pagos=$row->contar;
-					$this->frecuencia_suma=$row->suma;
+						$query=$this->db->query("select id_credito,count(T1) as contar,sum(T1) as suma from book_movimientos where id_credito='$this->acre_no_credito' and T2 between '$this->a' and '$this->b' group by id_credito;");
+						$row=$query->row(); 
+						$this->frecuenciasuma_pagos=$row->contar;
+						$this->frecuencia_suma=$row->suma;
 					}
 					if ($this->b < $this->fecha_movimiento) {
 						$this->rango_fecha=$this->a;
 						$this->rango_fecha2=$this->fecha_movimiento;
-					$query=$this->db->query("select id_credito,count(T1) as contar,sum(T1) as suma from book_movimientos where id_credito='$this->acre_no_credito' and T2 between '$this->a' and '$this->fecha_movimiento' group by id_credito;");
-					$row=$query->row();			
-					$this->frecuenciasuma_pagos=$row->contar;
-					$this->frecuencia_suma=$row->suma;
+						$query=$this->db->query("select id_credito,count(T1) as contar,sum(T1) as suma from book_movimientos where id_credito='$this->acre_no_credito' and T2 between '$this->a' and '$this->fecha_movimiento' group by id_credito;");
+						$row=$query->row();			
+						$this->frecuenciasuma_pagos=$row->contar;
+						$this->frecuencia_suma=$row->suma;
 					}
 			}
 			if($dias){
+					
 					$fecha_movimiento=$this->T2;//'2014-07-24';
 					$a=$this->acre_T3;
 					$b=$this->acre_T4;
@@ -167,18 +160,18 @@ function get_DatosFrecuenciapago(){
 					$row=$query->row();
 					$rango_fechainicial=$row->dias;
 
-					$query=$this->db->query("SELECT TO_DAYS('$b' as diasb);");
+					$query=$this->db->query("SELECT TO_DAYS('$b') as diasb;");
 					$row=$query->row();
 					$rango_fechafinal=$row->diasb;
 
-					for($j=$rango_fechainicial; $j<$rango_fechafinal;  $j=$j+$dias ){		
-							$query=$this->query("SELECT from_DAYS($j) as diasc;");
+					for($j=$rango_fechainicial; $j<$rango_fechafinal; $j=$j+$dias ){		
+							$query=$this->db->query("SELECT from_DAYS($j) as diasc;");
 							$row=$query->row();
-							$frecuencia_pagos=$row->diasc;
+						$frecuencia_pagos=$row->diasc; 
 
 					if ($fecha_movimiento >= $frecuencia_pagos) {
 							$this->rango_fecha=$frecuencia_pagos;
-							$query=$this->query("SELECT from_days(TO_DAYS('$this->rango_fecha')+$dias as diasd);");
+							$query=$this->db->query("SELECT from_days(TO_DAYS('$this->rango_fecha')+$dias) as diasd;");
 							$row=$query->row();
 							$this->rango_fecha2=$row->diasd;
 						}
@@ -190,7 +183,8 @@ function get_DatosFrecuenciapago(){
 					
 				}
 		}
-
+/////////////////////////// FIN DE CONSULTA PARA FRECUENCIAS //////////////////////////////////////
+////////////////////////// INSERT DE ALERTAS PARA  FRECUENCIAS DE PAGOS////////////////////////////
 	public function get_Frecuencias(){
 				
 		if("CARGA INICIAL" !== $this->tipo_cargo){
@@ -220,7 +214,6 @@ function get_DatosFrecuenciapago(){
 						}
 					}
 				}
-
 				if ($this->auni_unidad_credito =='MENSUAL') {
 					      $fech= $this->T2;
                      $fechaac= explode("-",$fech);
@@ -242,10 +235,6 @@ function get_DatosFrecuenciapago(){
 					}
 								
 				}
-
-
-
-
 				if ($this->auni_unidad_credito =='QUINCENAL') {
 
 							$fech= $this->T2;
@@ -293,7 +282,9 @@ function get_DatosFrecuenciapago(){
 				}
 			}
 
-		}	
+		}	 
+/////////////////////// FIN DE INSERT DE ALERTAS DE FRECUECIAS ///////////////////////////////////
+		
 
 
 }
