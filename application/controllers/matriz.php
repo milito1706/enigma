@@ -289,7 +289,7 @@ class Matriz extends CI_Controller {
                 $list_nuevo_frecuencia_pago = $this->matriz_model->get_update_frecuencia_pago($data,$id);
                 if ($list_nuevo_frecuencia_pago == true) {
                     $respuestaOK = true;
-                    $mensajeError = "Frecuencia ". $this->input->post('unidad_credito') ." actualizada";                    
+                    $mensajeError = "Frecuencia ". $this->input->post('unidad_credito') ." actualizada";                
                 }               
                 else {
                     $mensajeError = "No se ha podido actualizar, intentalo nuevamente.";
@@ -306,7 +306,7 @@ class Matriz extends CI_Controller {
                             <td>'.$this->input->post('unidad_credito').'</td>                            
                             <td align="center">'.$this->input->post('frecuencia_pago').'</td>                            
                             <td class="center">
-                                <button id="editar_frecuencia_pago" class="btn btn-primary btn-xs md-trigger" data-id="'. $maxid .'" data-edit="editFrecuencia" data-modal="form-primary-frecuencia-pago" ><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-primary btn-xs editar_frecuencia_pago md-trigger" data-id="'. $maxid .'" data-edit="editFrecuencia" data-modal="form-primary-frecuencia-pago" ><i class="fa fa-pencil"></i></button>
                             </td>
                         <tr>
                     ';

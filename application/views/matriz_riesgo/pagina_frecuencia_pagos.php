@@ -24,7 +24,7 @@
                   <div class="block-flat">
                     
                     <div>
-                      <button class="btn btn-sm md-trigger" id="new_frecuencia_pago" data-modal="form-primary-frecuencia"><i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Nuevo Frecuencia de Pago</button>
+                      <button class="btn btn-sm btn-default md-trigger" id="new_frecuencia_pago" data-modal="form-primary-frecuencia"><i class="fa fa-plus-circle fa-2x  pull-left color-success"> </i>Nuevo Frecuencia de Pago</button>
                     </div>
                     <div class="content">
                       <div>
@@ -42,7 +42,7 @@
                                     <td><?= $frecuencia_pago['unidad_credito'];?></td>
                                     <td align="center"><?= $frecuencia_pago['frecuencia_pago'];?></td>                                
                                     <td class="center">
-                                     <button id="editar_frecuencia_pago" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $frecuencia_pago['id'];?>" data-edit="editFrecuencia" data-modal="form-primary-frecuencia" ><i class="fa fa-pencil"></i></button>
+                                     <button class="btn btn-primary btn-xs editar_frecuencia_pago md-trigger" data-id="<?php echo $frecuencia_pago['id'];?>" data-edit="editFrecuencia" data-modal="form-primary-frecuencia" ><i class="fa fa-pencil"></i></button>
                                     </td>
                                    </tr>
                                  <?php endforeach;?>

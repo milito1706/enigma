@@ -10,7 +10,7 @@ $(document).ready(function() {
     /*var table = $('#tabla-productos').DataTable();
     var tt = new $.fn.dataTable.TableTools( table ); 
     $( tt.fnContainer() ).insertBefore('div.dataTables_wrapper');*/
-
+    
 
 
 // Datos Generales
@@ -142,7 +142,7 @@ $(document).on("click",'#new_frecuencia_pago', function(e) {
         console.log("nuevo frecuencia pago");
     })
 });
-$(document).on("click","#editar_frecuencia_pago", function(e) {
+$(document).on("click",".editar_frecuencia_pago", function(e) {
     
     var id = $(this).attr("data-id");
     var action =$(this).attr("data-edit");
@@ -169,7 +169,23 @@ $("#form-productos").submit(function(e) {
         type: "post",
         dataType: 'json',
         url: "get_Insert_Nuevo_Producto",
-        data: formulario_producto
+        data: formulario_producto,
+        success: function(response) {
+                ocultarModal();
+            // Validar mensaje de error
+                if(response.respuesta == false) 
+                {
+                    alert(response.mensaje);
+                }
+                else 
+                {                    
+                    alert(response.mensaje);
+                    location.reload();                    
+                }
+            },
+            error:function(){
+                alert('Error general del sistema, intente mas tarde.');
+            } 
     });
 //return false;
 });
@@ -280,20 +296,20 @@ $("#form-frecuencia-pago").on("submit", function(e) {
             // Validar mensaje de error
                 if(response.respuesta == false) 
                 {
-                    $.gritter.add({
-                        title: 'Error!',
-                        text: response.mensaje,
-                        class_name: 'danger'
-                    });
+                    alert(response.mensaje);
                 }
                 else 
-                {
-                    $('#listaFrecuneciaPagos').append(response.contenido);        
+                {                    
+                    alert(response.mensaje);
+                    location.reload();
+                    /*$('#listaFrecuneciaPagos').append(response.contenido); 
+
                     $.gritter.add({
                         title: 'Completado!',
                         text: response.mensaje,
                         class_name: 'success'
-                    });                  
+                    });*/
+                    
                 }
             },
             error:function(){
@@ -446,10 +462,21 @@ $('#datatable-frecuencia').dataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
-    "dom": 'T<"clear">lfrtip'
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+        "sSwfPath": "<?= base_url('assets/lib/jquery.datatables/extensions/swf/copy_csv_xls_pdf.swf') ?>"
+    }
 
 });
 $('#datatable-nopersonas').dataTable({
+    "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+    },
+    "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
+    "dom": 'T<"clear">lfrtip'
+
+});
+$('#datatable-actividad').dataTable({
     "language": {
         "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
     },

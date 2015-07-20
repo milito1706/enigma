@@ -13,3 +13,10 @@
     </div>
   </div>
 </div>
+<script>
+  $( "input" ).on( "blur", function() {
+        $( this ).val(function( i, val ) {
+          return val.toUpperCase();
+        });
+    });
+</script>

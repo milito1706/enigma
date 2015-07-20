@@ -15,7 +15,7 @@
                 <li><a href="#">Cambio de Contraseña</a></li>
                 <li><a href="#">Perfil de Usuario</a></li>
                 <li class="dropdown-header"><i class="fa fa-question-circle"></i>Información</li>
-                <li><a href="#" class="md-trigger" data-modal="form-primary-datos-generales" id="datos-generales">Datos Generales</a></li>
+                <li><a href="<?=base_url('index.php/datos_generales/mostrar_datos_generales');?>">Datos Generales</a></li>
                 <li><a href="#">Listas Peps y Negras</a></li>
                 <li><a href="#">Listas Personas Bloquedas</a></li>
                 <li><a href="#">FAQ</a></li>
