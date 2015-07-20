@@ -209,6 +209,7 @@ class Clientes extends CI_Controller{
                     $this->movimientos_model->parametros_pld();
                     $this->movimientos_model->alerta_efectivo($this->input->post('origen_pago'),$this->input->post('tipo_moneda'));
                     $this->movimientos_model->alertamensualesmx($this->input->post('origen_pago'),$this->input->post('tipo_moneda'),$this->input->post('T2'));
+                    $this->movimientos_model->alertamensualesusd($this->input->post('origen_pago'),$this->input->post('tipo_moneda'),$this->input->post('T2'));
                // }
                 
 

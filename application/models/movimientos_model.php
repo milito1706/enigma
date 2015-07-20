@@ -494,5 +494,100 @@ function get_DatosFrecuenciapago(){
 			}
 
 		}
+/////////////ALERTA MENSUALES EN DOLARES /////////////////
+
+		function alertamensualesusd($origen_pago,$tipo_moneda,$fecha){
+					
+					$fecha_movimiento=$fecha;//'2014-07-24';
+					$a=$this->acre_T3;
+					$b=$this->acre_T4;
+
+					$query=$this->db->query("SELECT TO_DAYS('$a') as dias;");
+					$row=$query->row();
+					$rango_fechainicial=$row->dias;
+
+					$query=$this->db->query("SELECT TO_DAYS('$b') as diasb;");
+					$row=$query->row();
+					$rango_fechafinal=$row->diasb;
+
+					for($j=$rango_fechainicial; $j<$rango_fechafinal; $j=$j+30){		
+							$query=$this->db->query("SELECT from_DAYS($j) as diasc;");
+							$row=$query->row();
+						$frecuencia_pagos=$row->diasc; 
+
+					if ($fecha_movimiento >= $frecuencia_pagos) {
+							$this->rango_fecha=$frecuencia_pagos;
+							$query=$this->db->query("SELECT from_days(TO_DAYS('$this->rango_fecha')+ 30) as diasd;");
+							$row=$query->row();
+							$this->rango_fecha2=$row->diasd;
+						}
+					}
+
+			if($origen_pago=='EFECTIVO' && $tipo_moneda=='USD' &&  $this->tipo_persona=='FISICA' OR $this->tipo_persona=='EXTRANJERO PERSONA FISICA')
+			{
+
+					
+				    $query=$this->db->query("select id_credito,count(T1) as fpa ,sum(T1) as fspa  from book_movimientos where id_credito='$this->acre_no_credito' and T2 between '$this->rango_fecha' and '$this->rango_fecha2' group by id_credito;");
+					$row=$query->row();
+					$this->frecuenciasuma_pagosalerta=$row->fpa;
+					$this->frecuencia_sumapagosalerta=$row->fspa;
+
+				if( $this->frecuencia_sumapagosalerta >= $this->max_acumulado_mensual_fisicas_usd){
+
+					$hoy = date("Y-m-d H:i:s");
+					$fecha=date("Y-m-d");
+					//$entidad= $_COOKIE["id_entidad"];
+					//$operador= $_COOKIE["id_operador"];  
+					$entidad='1000';
+					$operador='1000';  
+					$alerta="Se excedió la suma de pagos acumulados  en un mes para personas FISICAS con moneda extranjera usd : ".$this->max_acumulado_mensual_fisicas_usd." suma de los Montos registrados ".$this->frecuencia_sumapagosalerta." # Movimiento ".$this->no_movimiento." con fecha ".$fecha;
+					$this->db->query("insert into book_alertas(id_operador,id_entidad,no_credito,id_movimiento,alerta,fecha_emision,origen,estado,pldkind)values('$operador','$entidad','$this->acre_no_credito','$this->id_mov','$alerta','$hoy','MOVIMIENTOS','PENDIENTE','OR')");		
+				}
+				if($this->frecuencia_sumapagosalerta >=  $this->minfisicas_usd_mes){
+					$hoy = date("Y-m-d H:i:s");
+					$fecha=date("Y-m-d");
+					//$entidad= $_COOKIE["id_entidad"];
+					//$operador= $_COOKIE["id_operador"];  
+					$entidad='1000';
+					$operador='1000';  
+					$alerta="Se excedió la suma de pagos acumulados para personas FISICAS con moneda extranjera usd  : ".$this->minfisicas_usd_mes." suma de los Montos registrados ".$this->frecuencia_sumapagosalerta." # Movimiento ".$this->no_movimiento." con fecha ".$fecha;
+					$this->db->query("insert into book_alertas(id_operador,id_entidad,no_credito,id_movimiento,alerta,fecha_emision,origen,estado,pldkind)values('$operador','$entidad','$this->acre_no_credito','$this->id_mov','$alerta','$hoy','MOVIMIENTOS','PENDIENTE','OR')");
+				}
+			}
+///////// ACUMULADO PARA PERSONAS MORALES USD////////
+			if($origen_pago=='EFECTIVO' && $tipo_moneda=='USD' &&  $this->tipo_persona=='MORAL' OR $this->tipo_persona=='EXTRANJERO PERSONA MORAL')
+			{
+
+					
+				    $query=$this->db->query("select id_credito,count(T1),sum(T1) from book_movimientos where id_credito='$this->acre_no_credito' and T2 between '$this->rango_fecha' and '$this->rango_fecha2' group by id_credito;");
+					$row=$query->row();
+					$this->frecuenciasuma_pagosalerta=$row->fpa;
+					$this->frecuencia_sumapagosalerta=$row->fspa;
+
+				if( $this->frecuencia_sumapagosalerta >= $this->max_acumulado_mensual_morales_usd){
+
+					$hoy = date("Y-m-d H:i:s");
+					$fecha=date("Y-m-d");
+					//$entidad= $_COOKIE["id_entidad"];
+					//$operador= $_COOKIE["id_operador"];  
+					$entidad='1000';
+					$operador='1000';  
+					$alerta="Se excedió la suma de pagos acumulados para personas morales: : ".$this->max_acumulado_mensual_morales_mxn." suma de los Montos registrados ".$this->frecuencia_sumapagosalerta." # Movimiento ".$this->no_movimiento." con fecha ".$fecha;
+					$this->db->query("insert into book_alertas(tipo,id_operador,id_entidad,no_credito,id_movimiento,alerta,fecha_emision,origen,estado,pldkind)values(4,'$operador','$entidad','$this->acre_no_credito','$this->id_mov','$alerta','$hoy','MOVIMIENTOS','PENDIENTE','OR')");		
+				}
+				if($this->frecuencia_sumapagosalerta >= $this->minmorales_usd_mes){
+					$hoy = date("Y-m-d H:i:s");
+					$fecha=date("Y-m-d");
+					//$entidad= $_COOKIE["id_entidad"];
+					//$operador= $_COOKIE["id_operador"];  
+					$entidad='1000';
+					$operador='1000';  
+					$alerta="Se excedió la suma de pagos acumulados para personas morales: ".$this->max_un_solo_pago_morales_mxn." suma de los Montos registrados ".$this->frecuencia_sumapagosalerta." # Movimiento ".$this->no_movimiento." con fecha ".$fecha;
+					$this->db->query("insert into book_alertas(tipo,id_operador,id_entidad,no_credito,id_movimiento,alerta,fecha_emision,origen,estado,pldkind)values(4,'$operador','$entidad','$this->acre_no_credito','$this->id_mov','$alerta','$hoy','MOVIMIENTOS','PENDIENTE','OR')");
+				}
+			}
+
+		}
+
 }
 ?>
