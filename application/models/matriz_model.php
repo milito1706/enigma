@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Matriz_model extends MY_model_base{    
+class Matriz_model extends CI_Model {    
 
     function __construct()
     {
@@ -55,10 +55,39 @@ class Matriz_model extends MY_model_base{
         $query = $this->db->get('cat_origen_pago');
         return $query->result_array();
     }
+
+    public function get_Estados(){
+        $this->db->group_by("nombre_estado"); 
+        $query = $this->db->get('r_estado');
+        return $query->result_array();
+    }
+
+    public function get_Paises(){
+        $this->db->group_by("nombre_estado"); 
+        $query = $this->db->get('r_pais');
+        return $query->result_array();
+    }
+    
     
     // Tab Productos
     public function get_Insert_tabla_cat_productos($data) {
-        $this->db->insert('cat_productos',$data); 
+
+        $Nombre_Producto = $this->input->post('T1');
+        $query = $this->db->where('Nombre_Producto', $Nombre_Producto);
+        $query = $this->db->get('cat_productos');
+        if( $query->num_rows() > 0)
+        {
+            return false;
+        }
+        else
+        {
+            $this->db->insert('cat_productos',$data);
+            if($this->db->affected_rows() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     public function get_consulta_productos($id) {
@@ -69,12 +98,34 @@ class Matriz_model extends MY_model_base{
     public function get_update_tabla_cat_productos($data, $id) {
         $this->db->where('Id', $id);
         $this->db->update('cat_productos',$data);
+
+        if($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
     // Fin Tab Productos
     
     // Tab Tipo Persona
     public function get_insert_tipo_persona($data) {
-        $this->db->insert('cat_tipopersona',$data); 
+
+        $tipo_persona = $this->input->post('T1');
+        $query = $this->db->where('etiqueta', $tipo_persona);
+        $query = $this->db->get('cat_tipopersona');
+        if( $query->num_rows() > 0)
+        {
+            return false;
+        }
+        else
+        {
+            $this->db->insert('cat_tipopersona',$data);            
+            if($this->db->affected_rows() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     public function get_consulta_tipo_persona($id) {
@@ -85,12 +136,33 @@ class Matriz_model extends MY_model_base{
     public function get_update_tipo_persona($data, $id) {
         $this->db->where('Id', $id);
         $this->db->update('cat_tipopersona',$data);
+        if($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
     // Fin Tipo Persona
     
     // Tab Movimientos
     public function get_insert_movimiento($data) {
-        $this->db->insert('cat_origen_pago',$data); 
+
+        $movimiento = $this->input->post('etiqueta');
+        $query = $this->db->where('etiqueta', $movimiento);
+        $query = $this->db->get('cat_origen_pago');
+        if( $query->num_rows() > 0)
+        {
+            return false;
+        }
+        else
+        {
+            $this->db->insert('cat_origen_pago',$data);            
+            if($this->db->affected_rows() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     public function get_consulta_movimiento($id) {
@@ -101,6 +173,11 @@ class Matriz_model extends MY_model_base{
     public function get_update_movimiento($data, $id) {
         $this->db->where('Id', $id);
         $this->db->update('cat_origen_pago',$data);
+        if($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
     // Fin Movimientos
     
@@ -144,7 +221,23 @@ class Matriz_model extends MY_model_base{
     
     // Tab transaccionalidad
     public function get_insert_transaccionalidad($data) {
-        $this->db->insert('transaccionalidad',$data); 
+
+        $r_min = $this->input->post('minimo');
+        $query = $this->db->where('r_min', $r_min);
+        $query = $this->db->get('transaccionalidad');
+        if( $query->num_rows() > 0)
+        {
+            return false;
+        }
+        else
+        {
+            $this->db->insert('transaccionalidad',$data);            
+            if($this->db->affected_rows() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     public function get_consulta_transaccionalidad($id) {
@@ -155,9 +248,45 @@ class Matriz_model extends MY_model_base{
     public function get_update_transaccionalidad($data, $id) {
         $this->db->where('Id', $id);
         $this->db->update('transaccionalidad',$data);
+        if($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
     // Fin transaccionalidad
     
+    public function get_consulta_estados($id) {
+        $query = $this->db->get_where('r_estado', array('Id' => $id));
+        return $query->result_array();
+    }
+
+    public function get_update_estado($data, $id) {
+        $this->db->where('Id', $id);
+        $this->db->update('r_estado',$data);
+        if($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function get_consulta_paises($id) {
+        $query = $this->db->get_where('r_pais', array('Id' => $id));
+        return $query->result_array();
+    }
+
+    public function get_update_pais($data, $id) {
+        $this->db->where('Id', $id);
+        $this->db->update('r_pais',$data);
+        if($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // Tab no personas
     public function get_insert_nopersonas($data) {
         $this->db->insert('r_numpersonas',$data); 
@@ -192,6 +321,11 @@ class Matriz_model extends MY_model_base{
     public function get_update_actividad($data, $id) {
         $this->db->where('Id', $id);
         $this->db->update('r_actividad',$data);
+        if($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
     // Fin no personas
 }

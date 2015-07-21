@@ -47,7 +47,7 @@
                                 <td class="center" align="right"><?= number_format($producto['min_monto'],2);?> </td>
                                 <td class="center" align="right"><?= number_format($producto['max_monto'],2);?></td>
                                 <td class="center noprint">
-                                 <button id="edit_producto" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $producto['Id'];?>" data-edit="editProducto" data-modal="form-primary-productos" ><i class="fa fa-pencil"></i></button></td>
+                                 <button class="btn btn-primary btn-xs edit_producto md-trigger noprint" data-id="<?php echo $producto['Id'];?>" data-edit="editProducto" data-modal="form-primary-productos" ><i class="fa fa-pencil"></i></button></td>
                                </tr>
                              <?php endforeach;?>
 
@@ -63,11 +63,11 @@
              <div id="form-primary-productos" class="md-modal colored-header-encabezado custom-width-productos md-effect-9">
 
               <div class="md-content">
-                <form id="form-productos">
+                <form id="form-productos" data-parsley-validate>
                   <div class="modal-header">          
                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
                   </div>
-                  <div class="modal-body form" id="mb-nuevo-producto">
+                  <div class="modal-body form" id="mb-productos">
 
                   </div>
                   <div class="modal-footer">

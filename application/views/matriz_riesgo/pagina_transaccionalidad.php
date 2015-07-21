@@ -34,7 +34,7 @@
                                   <th>Maximo</th>
                                   <th>Clasificación del Riesgo</th>
                                   <th>Divisa</th>                                  
-                                  <th></th>
+                                  <th class="noprint"></th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -45,7 +45,7 @@
                                     <td align="center"><?= $transaccion['calificacion'];?></td>
                                     <td class="center" align="center"><?= $transaccion['divisa'];?> </td>                                    
                                     <td class="center" align="center">
-                                     <button id="editar_transaccionalidad" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $transaccion['Id'];?>" data-persona="<?php echo $transaccion['Id'];?>" data-edit="editTransaccionalidad" data-modal="form-primary-transaccionalidad" ><i class="fa fa-pencil"></i></button></td>
+                                     <button class="btn btn-primary btn-xs editar_transaccionalidad md-trigger noprint" data-id="<?php echo $transaccion['Id'];?>" data-persona="<?php echo $transaccion['Id'];?>" data-edit="editTransaccionalidad" data-modal="form-primary-transaccionalidad" ><i class="fa fa-pencil"></i></button></td>
                                    </tr>
                                  <?php endforeach;?>
                                </tbody>
@@ -63,7 +63,7 @@
                     <div class="modal-header">
                       <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
                     </div>
-                    <div class="modal-body form">
+                    <div class="modal-body form" id="mb-transaccionalidad">
 
                     </div>
                     <div class="modal-footer">

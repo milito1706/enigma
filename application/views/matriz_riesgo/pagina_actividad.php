@@ -32,7 +32,7 @@
                             <tr>
                               <th>Actividad</th>
                               <th>Calificación</th>                                                                    
-                              <th></th>
+                              <th class="noprint"></th>
                             </tr>
                           </thead>
                           <tbody>
@@ -41,7 +41,7 @@
                                 <td><?= $actividad['actividad_economica'];?></td>
                                 <td align="center"><?= $actividad['calificacion'];?></td>                                                                       
                                 <td class="center">
-                                 <button id="editar_actividad" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $actividad['Id'];?>" data-persona="<?php echo $actividad['Id'];?>" data-edit="editActividad" data-modal="form-primary-actividad" ><i class="fa fa-pencil"></i></button></td>
+                                 <button class="btn btn-primary btn-xs editar_actividad md-trigger noprint" data-id="<?php echo $actividad['Id'];?>" data-persona="<?php echo $actividad['Id'];?>" data-edit="editActividad" data-modal="form-primary-actividad" ><i class="fa fa-pencil"></i></button></td>
                                </tr>
                              <?php endforeach;?>
                            </tbody>
@@ -59,7 +59,7 @@
                     <div class="modal-header">
                       <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
                     </div>
-                    <div class="modal-body form">
+                    <div class="modal-body form" id="mb-actividad">
 
                     </div>
                     <div class="modal-footer">

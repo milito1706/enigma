@@ -33,7 +33,7 @@
                                 <tr>
                                   <th>Unidad de Credito</th>
                                   <th>Números de Pagos</th>                      
-                                  <th></th>
+                                  <th class="noprint"></th>
                                 </tr>
                               </thead>
                               <tbody id="listaFrecuneciaPagos">
@@ -42,7 +42,7 @@
                                     <td><?= $frecuencia_pago['unidad_credito'];?></td>
                                     <td align="center"><?= $frecuencia_pago['frecuencia_pago'];?></td>                                
                                     <td class="center">
-                                     <button class="btn btn-primary btn-xs editar_frecuencia_pago md-trigger" data-id="<?php echo $frecuencia_pago['id'];?>" data-edit="editFrecuencia" data-modal="form-primary-frecuencia" ><i class="fa fa-pencil"></i></button>
+                                     <button class="btn btn-primary btn-xs editar_frecuencia_pago md-trigger noprint" data-id="<?php echo $frecuencia_pago['id'];?>" data-edit="editFrecuencia" data-modal="form-primary-frecuencia" ><i class="fa fa-pencil"></i></button>
                                     </td>
                                    </tr>
                                  <?php endforeach;?>

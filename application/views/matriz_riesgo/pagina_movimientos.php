@@ -32,7 +32,7 @@
                             <tr>
                               <th>Nombre</th>                                  
                               <th>Clasificación</th>                                                            
-                              <th></th>
+                              <th class="noprint"></th>
                             </tr>
                           </thead>
                           <tbody>
@@ -41,7 +41,7 @@
                                 <td><?php echo $movimiento['etiqueta'];?></td>
                                 <td align="center"><?= $movimiento['calificacion'];?></td>                                                                      
                                 <td class="center">
-                                 <button id="editar_movimiento" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $movimiento['Id'];?>" data-persona="<?php echo $movimiento['Id'];?>" data-edit="editMovimiento" data-modal="form-primary-movimiento" ><i class="fa fa-pencil"></i></button></td>
+                                 <button class="btn btn-primary btn-xs editar_movimiento md-trigger noprint" data-id="<?php echo $movimiento['Id'];?>" data-persona="<?php echo $movimiento['Id'];?>" data-edit="editMovimiento" data-modal="form-primary-movimiento" ><i class="fa fa-pencil"></i></button></td>
                                </tr>
                              <?php endforeach;?>
                            </tbody>
@@ -59,7 +59,7 @@
                     <div class="modal-header">
                       <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
                     </div>
-                    <div class="modal-body form">
+                    <div class="modal-body form" id="mb-movimiento">
 
                     </div>
                     <div class="modal-footer">

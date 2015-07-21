@@ -11,6 +11,8 @@ var App = (function () {
     $("#datatable-clientes").dataTable();
     $("#datatable-creditos").dataTable();
     $("#datatable-alertas").dataTable();
+    $("#datatable-estados").dataTable();
+    $("#datatable-paises").dataTable();
     $(".datatable").dataTable();
 
     

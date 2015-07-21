@@ -7,6 +7,22 @@ div.dataTables_wrapper
 	clear: both; 
 }
 
+#chart_div
+{
+	margin-left: 10px; 
+	margin-top: 150px;
+	width: 500px;	
+}
+#divestados
+{
+	width: 500px;
+}
+#chart_div, #divestados
+{
+	display: inline-block;
+	vertical-align: top;
+}
+
 @media print { 
  /* All your print styles go here */
  .noprint

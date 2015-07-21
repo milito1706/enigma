@@ -10,46 +10,35 @@ $(document).ready(function() {
     /*var table = $('#tabla-productos').DataTable();
     var tt = new $.fn.dataTable.TableTools( table ); 
     $( tt.fnContainer() ).insertBefore('div.dataTables_wrapper');*/
-    
 
-
-// Datos Generales
-    $('#datos-generales').on('click', function() {        
-        var action =$(this).attr('data-new');
-        params={};
-        console.log(params.action = action);
-        $('#mb-datos-generales').load('get_datos_generales', params, function() {
-            console.log("Datos Generales")
-        }) 
-
-    });
 // Guardar Datos Generales
-$("#form-datos-generales").on("submit", function(e) {
+$("#form-datos").submit(function(e) {
     e.preventDefault();
-    var formulario_datos_generales = $("#form-datos-generales").serializeArray();
+    form_datos = $(this).serializeArray();
     console.log('Form Datos Generales activado');
     $.ajax({
         type: "post",
         dataType: 'json',
         url: "get_insert_datos_generales",
-        data: formulario_datos_generales,
+        data: form_datos,
         success: function(response) {
             if(response.respuesta == true){
                 alert("Datos guardados correctamente");
             } else {
-                alert("Hubo un error al guardar, intenta mas tarde.");
+                alert("Hubo un error al guardar, intenta mas tarde 1.");
             }
         },
-        error: function() {
-            console.log('Hubo un error al guardar, intenta mas tarde.!');
+        error: function(jqxhr, status, error) {
+            console.log('Hubo un error al guardar, intenta mas tarde. 2!');
+            console.log(error);
         },
         complete: function() {
             console.log("Ajax realizado complete");
         }   
-    
 
-});
+
     });
+});
 ////////////eventos de expedientes///////////////
 $("#frminformacion").submit(function(e) {
     e.preventDefault();
@@ -190,13 +179,14 @@ $("#form-productos").submit(function(e) {
 //return false;
 });
 
-$(document).on("click",'#edit_producto', function() {
-    var id = $(this).attr('data-id');
-    var action =$(this).attr('data-edit');
+$(document).on("click",".edit_producto", function(e) {
+    
+    var id = $(this).attr("data-id");
+    var action =$(this).attr("data-edit");
     params={};
     console.log(params.id = id);
     console.log(params.action = action);
-    $('#mb-nuevo-producto').load('get_update_producto', params, function(){
+    $('#mb-productos').load('get_update_producto', params, function(){
         console.log("editar" + " " + id);
     })
 });
@@ -218,22 +208,63 @@ $("#form-tipo-persona").submit(function(e) {
         type: "post",
         dataType: 'json',
         url: "get_insert_tipo_persona",
-        data: formulario_tipo_persona
+        data: formulario_tipo_persona,
+        success: function(response) {
+                ocultarModal();
+            // Validar mensaje de error
+                if(response.respuesta == false) 
+                {
+                    alert(response.mensaje);
+                }
+                else 
+                {                    
+                    alert(response.mensaje);
+                    location.reload();                    
+                }
+            },
+            error:function(){
+                alert('Error general del sistema, intente mas tarde.');
+            }
     });
 //return false;
 });
 
-$(document).on('click','#editar_tipo_persona',function() {
+$(document).on('click','.editar_tipo_persona',function() {
     var id = $(this).attr('data-id');       
     var action =$(this).attr('data-edit');
     params={};
     console.log(params.id = id);        
     console.log(params.action = action);
-    $('#form-primary-tipo-persona .modal-body').load('get_update_tipo_persona', params,function(){
+    $('#mb-tipo-persona').load('get_update_tipo_persona', params,function(){
         console.log("editar" + " " + id);
     });
 });
 
+// Editar Riesgo por Estados
+$(document).on("click",".editar_estado", function(e) {
+    
+    var id = $(this).attr("data-id");
+    var action =$(this).attr("data-edit");
+    params={};
+    console.log(params.id = id);        
+    console.log(params.action = action);
+    $("#mb-estado").load("get_update_estado", params, function(){
+        console.log("editar" + " " + id);
+    })
+});
+
+// Editar Riesgo por Pais
+$(document).on("click",".editar_pais", function(e) {
+    
+    var id = $(this).attr("data-id");
+    var action =$(this).attr("data-edit");
+    params={};
+    console.log(params.id = id);        
+    console.log(params.action = action);
+    $("#mb-pais").load("get_update_pais", params, function(){
+        console.log("editar" + " " + id);
+    })
+});
 // Nuevo Movimientos
 $(document).on('click','#new_movimiento',function(){        
     var action =$(this).attr('data-new');
@@ -241,6 +272,63 @@ $(document).on('click','#new_movimiento',function(){
     $('.modal-body').load('get_nuevo_movimiento', params,function() {
         console.log("nuevo movimiento");
     }); 
+});
+$("#form-estado").submit(function(e) {
+    e.preventDefault();
+    var form_estado = $(this).serializeArray();
+    console.log('Form estados');
+    $.ajax({
+        type: "post",
+        dataType: 'json',
+        url: "get_insert_estado",
+        data: form_estado,
+        success: function(response) {
+            ocultarModal();
+            
+            if(response.respuesta == false) 
+            {
+                alert(response.mensaje);
+            }
+            else 
+            {                    
+                alert(response.mensaje);
+                location.reload();                    
+            }
+        },
+        error: function() {
+            alert('Error general del sistema, intente mas tarde.');
+        }
+    });
+//return false;
+});
+
+$("#form-pais").submit(function(e) {
+    e.preventDefault();
+    var form_pais = $(this).serializeArray();
+    console.log('Form paises');
+    $.ajax({
+        type: "post",
+        dataType: 'json',
+        url: "get_insert_pais",
+        data: form_pais,
+        success: function(response) {
+            ocultarModal();
+            
+            if(response.respuesta == false) 
+            {
+                alert(response.mensaje);
+            }
+            else 
+            {                    
+                alert(response.mensaje);
+                location.reload();                    
+            }
+        },
+        error: function() {
+            alert('Error general del sistema, intente mas tarde.');
+        }
+    });
+//return false;
 });
 
 $("#form-movimientos").submit(function(e) {
@@ -251,18 +339,34 @@ $("#form-movimientos").submit(function(e) {
         type: "post",
         dataType: 'json',
         url: "get_insert_movimiento",
-        data: formulario_movimiento
+        data: formulario_movimiento,
+        success: function(response) {
+            ocultarModal();
+            
+            if(response.respuesta == false) 
+            {
+                alert(response.mensaje);
+            }
+            else 
+            {                    
+                alert(response.mensaje);
+                location.reload();                    
+            }
+        },
+        error:function(){
+            alert('Error general del sistema, intente mas tarde.');
+        }
     });
 //return false;
 });
 
-$(document).on('click','#editar_movimiento',function() {
+$(document).on('click','.editar_movimiento',function() {
     var id = $(this).attr('data-id');       
     var action =$(this).attr('data-edit');
     params={};
     console.log(params.id = id);        
     console.log(params.action = action);
-    $('#form-primary-movimiento .modal-body').load('get_update_movimiento', params,function(){
+    $('#mb-movimiento').load('get_update_movimiento', params,function(){
         console.log("editar" + " " + id);
     })
 });
@@ -338,19 +442,35 @@ $("#form-transaccionalidad").submit(function(e) {
     $.ajax({
         type: "post",
         dataType: 'json',
-        url: "get_insert_transaccionalidad",        
-        data: formulario_transaccionalidad
+        url: "get_insert_transaccionalidad",    
+        data: formulario_transaccionalidad,
+        success: function(response) {
+                ocultarModal();
+            // Validar mensaje de error
+                if(response.respuesta == false) 
+                {
+                    alert(response.mensaje);
+                }
+                else 
+                {                    
+                    alert(response.mensaje);
+                    location.reload();                    
+                }
+            },
+            error:function(){
+                alert('Error general del sistema, intente mas tarde.');
+            }
     });
 //return false;
 });
 
-$(document).on('click','#editar_transaccionalidad',function() {
+$(document).on('click','.editar_transaccionalidad',function() {
     var id = $(this).attr('data-id');       
     var action =$(this).attr('data-edit');
     params={};
     console.log(params.id = id);        
     console.log(params.action = action);
-    $('#form-primary-transaccionalidad .modal-body').load('get_update_transaccionalidad', params,function(){
+    $('#mb-transaccionalidad').load('get_update_transaccionalidad', params,function(){
         console.log("editar" + " " + id);
     });
 });
@@ -375,40 +495,32 @@ $("#form-nopersonas").submit(function(e) {
         url: "get_insert_nopersonas",
         data: formulario_nopersonas,
         success: function(response) {
-        // Validar mensaje de error
-            if(response.respuesta == false) 
-            {
-                $.gritter.add({
-                    title: 'Error!',
-                    text: response.mensaje,
-                    class_name: 'danger'
-                });
+                ocultarModal();
+            // Validar mensaje de error
+                if(response.respuesta == false) 
+                {
+                    alert(response.mensaje);
+                }
+                else 
+                {                    
+                    alert(response.mensaje);
+                    location.reload();                    
+                }
+            },
+            error:function(){
+                alert('Error general del sistema, intente mas tarde.');
             }
-            else 
-            {
-                $('#datatable-nopersonas').dataTable().fnDestroy();
-                $('#datatable-nopersonas').dataTable();
-                $.gritter.add({
-                    title: 'Completado!',
-                    text: response.mensaje,
-                    class_name: 'success'
-                });                  
-            }
-        },
-        error:function(){
-            alert('Error general del sistema, intente mas tarde.');
-        }
     });
 //return false;
 });
 
-$(document).on('click','#editar_nopersonas',function() {
+$(document).on('click','.editar_nopersonas',function() {
     var id = $(this).attr('data-id');       
     var action =$(this).attr('data-edit');
     params={};
     console.log(params.id = id);        
     console.log(params.action = action);
-    $('#mbnopersonas').load('get_update_nopersonas', params,function(){
+    $('#mb-nopersonas').load('get_update_nopersonas', params,function(){
         console.log("editar" + " " + id);
     });
 });
@@ -431,18 +543,35 @@ $("#form-actividad").submit(function(e) {
         dataType: 'json',
         url: "get_insert_actividad",
         cache: false,
-        data: formulario_actividad
+        data: formulario_actividad,
+        success: function(response) {
+                ocultarModal();
+            // Validar mensaje de error
+                if(response.respuesta == false) 
+                {
+                    alert(response.mensaje);
+                }
+                else 
+                {                    
+                    alert(response.mensaje);
+                    location.reload();                    
+                }
+            },
+            error:function(){
+                alert('Error general del sistema, intente mas tarde.');
+            }
+
     });
 //return false;
 });
 
-$(document).on('click','#editar_actividad',function() {
+$(document).on('click','.editar_actividad',function() {
     var id = $(this).attr('data-id');       
     var action =$(this).attr('data-edit');
     params={};
     console.log(params.id = id);        
     console.log(params.action = action);
-    $('#form-primary-actividad .modal-body').load('get_update_actividad', params,function(){
+    $('#mb-actividad').load('get_update_actividad', params,function(){
         console.log("editar" + " " + id);
     });
 });
@@ -453,9 +582,10 @@ $('#tabla-productos').dataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
-    "dom": 'T<"clear">lfrtip'
-    
-
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+    }
 });
 $('#datatable-frecuencia').dataTable({
     "language": {
@@ -464,7 +594,7 @@ $('#datatable-frecuencia').dataTable({
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-        "sSwfPath": "<?= base_url('assets/lib/jquery.datatables/extensions/swf/copy_csv_xls_pdf.swf') ?>"
+            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
     }
 
 });
@@ -473,7 +603,10 @@ $('#datatable-nopersonas').dataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
-    "dom": 'T<"clear">lfrtip'
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+    }
 
 });
 $('#datatable-actividad').dataTable({
@@ -481,6 +614,42 @@ $('#datatable-actividad').dataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
-    "dom": 'T<"clear">lfrtip'
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+    }
+
+});
+$('#datatable-movimientos').dataTable({
+    "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+    },
+    "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+    }
+
+});
+$('#datatable-estados').dataTable({
+    "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+    },
+    "lengthMenu": [[10, 20, -1], [10, 20, "Todos"]],
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+    }
+
+});
+$('#datatable-paises').dataTable({
+    "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+    },
+    "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+    }
 
 });

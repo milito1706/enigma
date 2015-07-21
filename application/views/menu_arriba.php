@@ -20,6 +20,7 @@
                 <li><a href="#">Listas Personas Bloquedas</a></li>
                 <li><a href="#">FAQ</a></li>
                 <li><a href="#">Buzón</a></li>
+                <li><a href="#">Acerca de...</a></li>
               </ul>
             </li>
             <li  class="col-sm-6 no-padding">
@@ -28,7 +29,8 @@
                 <li><a href="<?=base_url('index.php/matriz/mostrar_productos');?>">Productos</a></li>
                 <li><a href="<?=base_url('index.php/matriz/mostrar_frecuencia_pagos');?>">Frecuencia de Pagos</a></li>
                 <li><a href="<?=base_url('index.php/matriz/mostrar_transaccionalidad');?>">Transaccionalidad</a></li>
-                <li><a href="<?=base_url('index.php/matriz/mostrar_pagina_matriz');?>">Riesgo Geográfico</a></li>
+                <li><a href="<?=base_url('index.php/matriz/mostrar_pagina_estados');?>">Riesgo por Estados</a></li>
+                <li><a href="<?=base_url('index.php/matriz/mostrar_pagina_paises');?>">Riesgo por País</a></li>
                 <li><a href="<?=base_url('index.php/matriz/mostrar_actividad');?>">Riesgo por Actividad</a></li>
                 <li><a href="<?=base_url('index.php/matriz/mostrar_tipo_persona');?>">Tipo de Persona</a></li>
                 <li><a href="<?=base_url('index.php/matriz/mostrar_numero_personas');?>">Número de Personas</a></li>
@@ -43,7 +45,7 @@
           <ul class="dropdown-menu">
             <li><a href="#">Mi Cuenta</a></li>
             <li><a href="#">Perfil</a></li>
-            <li><a href="#">Mnsajes</a></li>
+            <li><a href="#">Mensajes</a></li>
             <li class="divider"></li>
             <li><a href="#">Cerrar Sistema</a></li>
           </ul>

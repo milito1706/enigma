@@ -5,9 +5,9 @@
       <input type="hidden" name="id" id="id" value="<?php if(isset($Id)){echo $Id;}?>">
       <input type="text" name="T1" id="T1" placeholder="Nombre" class="form-control" value="<?php if(isset($Nombre_Producto)){echo $Nombre_Producto;}?>">
       <input type="hidden" name="tiempo_liquidacion" id="tiempo_liquidacion" class="form-control">
-      <input type="hidden" name="id_entidad" id="id_entidad" class="form-control" value="1000">
-      <input type="hidden" name="id_operador" id="id_operador" class="form-control" value="1000">
-      <input type="hidden" name="fecha_alta" id="fecha_alta" class="form-control" value="2015-06-10">
+      <input type="hidden" name="id_entidad" id="id_entidad" class="form-control" value="0">
+      <input type="hidden" name="id_operador" id="id_operador" class="form-control" value="0">
+    
     </div>
   </div>
   <div class="col-sm-6">

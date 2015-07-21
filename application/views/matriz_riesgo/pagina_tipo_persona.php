@@ -27,12 +27,12 @@
                   </div>
                   <div class="content">
                     <div>
-                      <table id="datatable-tipo_persona" class="table no-border blue">
+                      <table id="datatable-tipo_persona" class="table table-bordered datatable no-border blue">
                         <thead>
                           <tr>
                             <th>Nombre</th>
                             <th>Calificación</th>                                                                    
-                            <th></th>
+                            <th class="noprint"></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -41,7 +41,7 @@
                               <td><?= $tipo_persona['etiqueta'];?></td>
                               <td align="center"><?= $tipo_persona['codigo'];?></td>                                                                       
                               <td class="center">
-                               <button id="editar_tipo_persona" class="btn btn-primary btn-xs md-trigger" data-id="<?php echo $tipo_persona['Id'];?>" data-edit="editTipoPersona" data-modal="form-primary-tipo-persona" ><i class="fa fa-pencil"></i></button></td>
+                               <button class="btn btn-primary btn-xs editar_tipo_persona md-trigger noprint" data-id="<?php echo $tipo_persona['Id'];?>" data-edit="editTipoPersona" data-modal="form-primary-tipo-persona" ><i class="fa fa-pencil"></i></button></td>
                              </tr>
                            <?php endforeach;?>
                          </tbody>
@@ -59,7 +59,7 @@
                   <div class="modal-header">
                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
                   </div>
-                  <div class="modal-body form">
+                  <div class="modal-body form" id="mb-tipo-persona">
 
                   </div>
                   <div class="modal-footer">

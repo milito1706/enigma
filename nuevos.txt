@@ -1,0 +1,180 @@
+commit 976f36db84fa41a91a3692968471c5299583bad3
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Mon Jul 20 17:44:46 2015 -0500
+
+    ultimo 20 jul
+
+commit 944cfe34ce45bd9785f343ebeb8331c28c70878d
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Fri Jul 10 16:59:08 2015 -0500
+
+    Datos Generales en info
+
+commit 5f606c31e7845a06ab92abad8becf0d3db9fc713
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Thu Jul 9 17:39:11 2015 -0500
+
+    Nuevo y edicion frecuencia pagos ok
+
+commit 6a7c41d640ab15b4d5990a78afeac71d9357ed4a
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Wed Jul 8 17:53:16 2015 -0500
+
+    Form productos visualizado, frecuencia de pagos no
+
+commit 546618f5297ee36d21f340a0bb431ba73d3f20e2
+Merge: 2106bca c215d36
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Mon Jun 29 17:53:09 2015 -0500
+
+    lunes actualizado
+
+commit 2106bca6cc3689ef8450a059061e24faaa5a38fc
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Mon Jun 29 09:53:23 2015 -0500
+
+    Hasta numero de personas
+
+commit c215d36a829dae89669bc45ca9ea5a4850e30ed3
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Mon Jun 29 00:33:39 2015 -0500
+
+    Agregado bootstrap para botones toolbar
+
+commit f6652c89f3f7e8554de879d743ec72523f9e2314
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Fri Jun 26 10:23:21 2015 -0500
+
+    matriz separada avance
+
+commit e597af608bcfa661e928de865076b6d8b6486c3a
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Thu Jun 25 14:04:17 2015 -0500
+
+    Notificacion para frecuencia de pagos
+
+commit 176d6757341002549f2f655ac28f017b4f669f37
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Mon Jun 22 17:57:54 2015 -0500
+
+    Datos Generales
+
+commit ed9ec398b0292f72b0a1d2df60d7e85eaf12e91f
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Fri Jun 19 09:29:13 2015 -0500
+
+    Ajax
+
+commit d74f5d9d1ec72e28b675941799bcd3ab92e66f2c
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Tue Jun 16 17:54:50 2015 -0500
+
+    Algunos detalles
+
+commit 3807f913cc7e88ef131bb9d734fe419414a491ad
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Mon Jun 15 12:30:19 2015 -0500
+
+    Tab estados
+
+commit 903690343a14ab29ccbbc4d8326ddce5bc8a10ea
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Fri Jun 12 17:20:07 2015 -0500
+
+    Acomodo form actividad
+
+commit 6cb5b8525a4313981158109dca0708fcd3bd0a0d
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Fri Jun 12 17:09:35 2015 -0500
+
+    Actividad ok
+
+commit b239d048961d2c056c76b7ee578dfdb01f8479ac
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Fri Jun 12 14:29:04 2015 -0500
+
+    no personas update ok
+
+commit 4d60736f6f5da5f2545fb0eb0325147599caad11
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Fri Jun 12 13:51:58 2015 -0500
+
+    transaccionalidad update ok
+
+commit 793a9d843d41a80640a4c65ba5a2c9981a1f7bd5
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Fri Jun 12 12:57:04 2015 -0500
+
+    frecuencia pagos insert-update ok
+
+commit d8846cdc7ee3bd48845f4a9e460827ef6ab396d6
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Fri Jun 12 11:34:56 2015 -0500
+
+    Movimientos insert-update ok
+
+commit cf414d29810bdbe110b32522f3d347a9673be076
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Thu Jun 11 23:14:29 2015 -0500
+
+    Avance tipo de persona
+
+commit 5aff1ba1781e913cb3d75f8bc53df3929b0b296f
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Thu Jun 11 17:59:48 2015 -0500
+
+    Trabajando tipo de persona
+
+commit 69fee3eb1f46c28530963b98007a0af6eec9099a
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Thu Jun 11 16:54:46 2015 -0500
+
+    Productos insert-update ok
+
+commit b95d7c367c9378fa8c076af24450dba75ab67e1e
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Wed Jun 10 17:37:37 2015 -0500
+
+    editando productos
+
+commit 0a5b7969027cc005fd1b5d87318aa80719164cc1
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Mon Jun 8 17:20:29 2015 -0500
+
+    Matriz de riesgo
+
+commit b236d57864bc0466fea72cdca8016b3ec6b0f000
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Wed Jun 3 16:56:07 2015 -0500
+
+    Productos visualizados
+
+commit 353b0984b91f2c5aec2440b9c6028a7dc1fb566a
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Wed Jun 3 10:45:30 2015 -0500
+
+    Formulario de productos terminado
+
+commit 28c984f0652a4774014cadc596707a903e4b78f8
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Tue Jun 2 18:01:45 2015 -0500
+
+    Trabajando en modal nuevos productos
+
+commit c01899d128ab6e05c385a34abfe3024238f93419
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Tue Jun 2 17:46:33 2015 -0500
+
+    Cambios: menu_arriba, page-data-tables, y agregados matriz, pagina_matriz
+
+commit 722e2285ed1ed5d77a19d48eeba12d64fddf8563
+Author: Isaac Vqz <isaacvqz@gmail.com>
+Date:   Tue Jun 2 16:23:39 2015 -0500
+
+    Cambio de tamaño para la modal
+
+commit d89c97bc72b26e39fc15e4812e43c97ee488341c
+Author: mike <milito1706@gmail.com>
+Date:   Tue Jun 2 15:10:25 2015 -0500
+
+    Estructura_base
