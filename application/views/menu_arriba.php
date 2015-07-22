@@ -15,26 +15,26 @@
                 <li><a href="#">Cambio de Contraseña</a></li>
                 <li><a href="#">Perfil de Usuario</a></li>
                 <li class="dropdown-header"><i class="fa fa-question-circle"></i>Información</li>
-                <li><a href="<?=base_url('index.php/datos_generales/mostrar_datos_generales');?>">Datos Generales</a></li>
+                <li><a href="<?=base_url('datos_generales/mostrar_datos_generales');?>">Datos Generales</a></li>
                 <li><a href="#">Listas Peps y Negras</a></li>
                 <li><a href="#">Listas Personas Bloquedas</a></li>
                 <li><a href="#">FAQ</a></li>
-                <li><a href="#">Buzón</a></li>
+                <li><a href="<?=base_url('datos_generales/mostrar_buzon');?>">Buzón</a></li>
                 <li><a href="#">Acerca de...</a></li>
               </ul>
             </li>
             <li  class="col-sm-6 no-padding">
               <ul>
                 <li class="dropdown-header"><i class="fa fa-gear"></i>Matriz de Riesgo</li>                
-                <li><a href="<?=base_url('index.php/matriz/mostrar_productos');?>">Productos</a></li>
-                <li><a href="<?=base_url('index.php/matriz/mostrar_frecuencia_pagos');?>">Frecuencia de Pagos</a></li>
-                <li><a href="<?=base_url('index.php/matriz/mostrar_transaccionalidad');?>">Transaccionalidad</a></li>
-                <li><a href="<?=base_url('index.php/matriz/mostrar_pagina_estados');?>">Riesgo por Estados</a></li>
-                <li><a href="<?=base_url('index.php/matriz/mostrar_pagina_paises');?>">Riesgo por País</a></li>
-                <li><a href="<?=base_url('index.php/matriz/mostrar_actividad');?>">Riesgo por Actividad</a></li>
-                <li><a href="<?=base_url('index.php/matriz/mostrar_tipo_persona');?>">Tipo de Persona</a></li>
-                <li><a href="<?=base_url('index.php/matriz/mostrar_numero_personas');?>">Número de Personas</a></li>
-                <li><a href="<?=base_url('index.php/matriz/mostrar_movimientos');?>">Movimientos</a></li>
+                <li><a href="<?=base_url('matriz/mostrar_productos');?>">Productos</a></li>
+                <li><a href="<?=base_url('matriz/mostrar_frecuencia_pagos');?>">Frecuencia de Pagos</a></li>
+                <li><a href="<?=base_url('matriz/mostrar_transaccionalidad');?>">Transaccionalidad</a></li>
+                <li><a href="<?=base_url('matriz/mostrar_pagina_estados');?>">Riesgo por Estados</a></li>
+                <li><a href="<?=base_url('matriz/mostrar_pagina_paises');?>">Riesgo por País</a></li>
+                <li><a href="<?=base_url('matriz/mostrar_actividad');?>">Riesgo por Actividad</a></li>
+                <li><a href="<?=base_url('matriz/mostrar_tipo_persona');?>">Tipo de Persona</a></li>
+                <li><a href="<?=base_url('matriz/mostrar_numero_personas');?>">Número de Personas</a></li>
+                <li><a href="<?=base_url('matriz/mostrar_movimientos');?>">Movimientos</a></li>
               </ul>
             </li>
           </ul>

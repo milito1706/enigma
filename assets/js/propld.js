@@ -653,3 +653,14 @@ $('#datatable-paises').dataTable({
     }
 
 });
+$('#datatable-oi').dataTable({
+    "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+    },
+    "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+    }
+
+});

@@ -49,6 +49,13 @@ class Datos_generales extends CI_Controller {
             echo json_encode($salidaJson);
     }
 
+    public function mostrar_buzon()
+    {        
+        $this->load->view('header');
+        $this->load->view("pagina_buzon");
+        $this->load->view('footer');
+    }
+
 }
 
 /* End of file datosGenerales.php */

@@ -13,6 +13,7 @@ var App = (function () {
     $("#datatable-alertas").dataTable();
     $("#datatable-estados").dataTable();
     $("#datatable-paises").dataTable();
+    $("#datatable-oi").dataTable();
     $(".datatable").dataTable();
 
     
