@@ -39,6 +39,7 @@ $("#form-datos").submit(function(e) {
 
     });
 });
+/*
 ////////////eventos de expedientes///////////////
 $("#frminformacion").submit(function(e) {
     e.preventDefault();
@@ -122,6 +123,7 @@ $(document).on('click','#editar_credito',function(){
 
     })  
 });
+*/
 // Nuevo Frecuencia de Pagos
 $(document).on("click",'#new_frecuencia_pago', function(e) {
     
