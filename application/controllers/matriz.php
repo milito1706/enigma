@@ -189,7 +189,7 @@ class Matriz extends CI_Controller {
 
             if ($list_nuevo_producto == true) {
                 $respuestaOK = true;
-                $mensajeError = "Producto ". $this->input->post('T1') ." actualizado";                
+                $mensajeError = "El producto ". $this->input->post('T1') ." fue actualizado correctamente";
             }               
             else {
                 $mensajeError = "No se ha podido actualizar, intentalo nuevamente.";
@@ -201,7 +201,7 @@ class Matriz extends CI_Controller {
             $list_nuevo_producto = $this->matriz_model->get_Insert_tabla_cat_productos($data);
             if ($list_nuevo_producto == true) {
                 $respuestaOK = true;
-                $mensajeError = "Producto ". $this->input->post('T1') ." agregado correctamente";
+                $mensajeError = "El producto ". $this->input->post('T1') ." fue agregado correctamente.";
                 $contenidoOK = '
                     <tr>
                         <td>'.$this->input->post('T1').'</td>                            
@@ -267,7 +267,7 @@ class Matriz extends CI_Controller {
             $list_nuevo_tipo_persona = $this->matriz_model->get_update_tipo_persona($data,$id);                
             if ($list_nuevo_tipo_persona == true) {
                 $respuestaOK = true;
-                $mensajeError = "Tipo de persona ". $this->input->post('T1') ." actualizada";                
+                $mensajeError = "El tipo de persona ". $this->input->post('T1') ." fue actualizado correctamente.";
             }               
             else {
                 $mensajeError = "No se ha podido actualizar, intentalo nuevamente.";
@@ -278,7 +278,7 @@ class Matriz extends CI_Controller {
             $list_nuevo_tipo_persona = $this->matriz_model->get_insert_tipo_persona($data);                
             if ($list_nuevo_tipo_persona == true) {
                 $respuestaOK = true;
-                $mensajeError = "Tipo de persona ". $this->input->post('T1') ." agregada correctamente";
+                $mensajeError = "El tipo de persona ". $this->input->post('T1') ." fue agregado correctamente.";
                 $contenidoOK = '
                 <tr>
                     <td>'.$this->input->post('T1').'</td>                            
@@ -333,7 +333,7 @@ class Matriz extends CI_Controller {
             $list_nuevo_movimiento = $this->matriz_model->get_update_movimiento($data,$id);                
             if ($list_nuevo_movimiento == true) {
                 $respuestaOK = true;
-                $mensajeError = "Movimiento ". $this->input->post('etiqueta') ." actualizado";                
+                $mensajeError = "El movimiento ". $this->input->post('etiqueta') ." fue actualizado correctamente";
             }               
             else {
                 $mensajeError = "No se ha podido actualizar, intentalo nuevamente.";
@@ -344,7 +344,7 @@ class Matriz extends CI_Controller {
             $list_nuevo_movimiento = $this->matriz_model->get_insert_movimiento($data);
             if ($list_nuevo_movimiento == true) {
                 $respuestaOK = true;
-                $mensajeError = "Movimiento ". $this->input->post('etiqueta') ." agregado correctamente";
+                $mensajeError = "El movimiento ". $this->input->post('etiqueta') ." fue agregado correctamente.";
                 $contenidoOK = '
                 <tr>
                     <td>'.$this->input->post('etiqueta').'</td>                            
@@ -407,7 +407,7 @@ class Matriz extends CI_Controller {
                     $list_nuevo_frecuencia_pago = $this->matriz_model->get_update_frecuencia_pago($data,$id);
                     if ($list_nuevo_frecuencia_pago == true) {
                         $respuestaOK = true;
-                        $mensajeError = "Frecuencia ". $this->input->post('unidad_credito') ." actualizada";                
+                        $mensajeError = "La frecuencia: ". $this->input->post('unidad_credito') ." fue actualizada correctamente.";
                     }               
                     else {
                         $mensajeError = "No se ha podido actualizar, intentalo nuevamente.";
@@ -418,7 +418,7 @@ class Matriz extends CI_Controller {
                     $list_nuevo_frecuencia_pago = $this->matriz_model->get_insert_frecuencia_pago($data);
                     if ($list_nuevo_frecuencia_pago == true) {
                         $respuestaOK = true;
-                        $mensajeError = "Frecuencia ". $this->input->post('unidad_credito') ." agregada correctamente";
+                        $mensajeError = "La frecuencia: ". $this->input->post('unidad_credito') ." fue agregada correctamente.";
                         $contenidoOK = '
                         <tr>
                             <td>'.$this->input->post('unidad_credito').'</td>                            
@@ -537,7 +537,7 @@ class Matriz extends CI_Controller {
                     $list_nuevo_estado = $this->matriz_model->get_update_estado($data,$id);
                     if ($list_nuevo_estado == true) {
                         $respuestaOK = true;
-                        $mensajeError = "Estado ". $this->input->post('nombre_estado') . " actualizado correctamente.";                    
+                        $mensajeError = "El estado ". $this->input->post('nombre_estado') . " fue actualizado correctamente.";
                     }               
                     else {
                         $mensajeError = "No se ha podido actualizar, intentalo nuevamente.";
@@ -579,7 +579,7 @@ class Matriz extends CI_Controller {
                     $list_nuevo_pais = $this->matriz_model->get_update_pais($data,$id);
                     if ($list_nuevo_pais == true) {
                         $respuestaOK = true;
-                        $mensajeError = "País ". $this->input->post('nombre_estado') . " actualizado correctamente.";
+                        $mensajeError = "El país ". $this->input->post('nombre_estado') . " fue actualizado correctamente.";
                     }               
                     else {
                         $mensajeError = "No se ha podido actualizar, intentalo nuevamente.";
