@@ -579,112 +579,115 @@ $(document).on('click','.editar_actividad',function() {
 });
 
 }); // Fin ready
+var langTabl = '//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json';
+var cdnSwf = '//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf';
+
 $('#tabla-productos').dataTable({
     "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+        "url": langTabl
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+            "sSwfPath": cdnSwf
     }
 });
 $('#datatable-frecuencia').dataTable({
     "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+        "url": langTabl
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+            "sSwfPath": cdnSwf
     }
 
 });
 $('#datatable-nopersonas').dataTable({
     "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+        "url": langTabl
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+            "sSwfPath": cdnSwf
     }
 
 });
 $('#datatable-actividad').dataTable({
     "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+        "url": langTabl
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+            "sSwfPath": cdnSwf
     }
 
 });
 $('#datatable-movimientos').dataTable({
     "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+        "url": langTabl
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+            "sSwfPath": cdnSwf
     }
 
 });
 $('#datatable-estados').dataTable({
     "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+        "url": langTabl
     },
-    "lengthMenu": [[10, 20, -1], [10, 20, "Todos"]],
+    "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+            "sSwfPath": cdnSwf
     }
 
 });
 $('#datatable-paises').dataTable({
     "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+        "url": langTabl
     },
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+            "sSwfPath": cdnSwf
     }
 
 });
 $('#datatable-oi').dataTable({
     "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+        "url": langTabl
     },
     "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+            "sSwfPath": cdnSwf
     }
 
 });
 $('#datatable-or').dataTable({
     "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+        "url": langTabl
     },
     "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+            "sSwfPath": cdnSwf
     }
 
 });
 $('#datatable-ip').dataTable({
     "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json"
+        "url": langTabl
     },
     "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
+            "sSwfPath": cdnSwf
     }
 
 });
