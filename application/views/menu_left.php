@@ -17,7 +17,7 @@ $max = 500;
                 </div>
               </div>
             </div>
-              <ul class="cl-vnavigation">          
+              <ul class="cl-vnavigation">        
               </p>
               <li><a href="<?=base_url('expediente/mostrar_pagina_expedientes');?>"><i class="fa fa-book"></i><span>Expedientes</span></a></li>
               <li><a href="<?=base_url('clientes/mostrar_pagina_clientes');?>"><i class="fa fa-users"></i><span>Clientes</span></a></li>
